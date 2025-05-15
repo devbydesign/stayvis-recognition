@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayVisible Promotions - Employee Recognition</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/stayvisiblelogo.png" alt="StayVisible Promotions Logo">
+      </a>
+      <nav>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul id="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="build-program.html">Build Your Program</a></li>
+          <li><a href="resources.html">Program Resources</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <form class="search-form" id="search-form-header">
+          <input type="search" name="query" placeholder="Search Products..." aria-label="Search">
+          <button type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- New Homepage Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-landing">
+      <div class="hero-landing-content">
+        <!-- Text removed as requested -->
+      </div>
+      <!-- Placeholder for blended background image -->
+      <div class="hero-landing-bg"></div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-matters">
+      <div class="container">
+        <h2>Why Employee Recognition Matters</h2>
+        <div class="why-content">
+          <div class="why-text">
+            <p>A thriving workplace isn't built by accident—it's built by people who feel seen, valued, and celebrated. Recognizing your team's hard work and dedication sparks motivation, strengthens loyalty, and creates a culture where employees are excited to bring their best every day.</p>
+            <p>Whether you're launching a brand-new program or giving your current one a refresh, we've got exciting ideas to help you energize your team and drive success!</p>
+          </div>
+          <div class="why-image">
+            <!-- Placeholder for successful workplace image -->
+            <img src="assets/images/Workplacebackground.png" alt="Successful workplace with employees collaborating">
+          </div>
+        </div>
+         <a href="build-program.html" class="btn sticky-cta">
+            Build Your Program <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- GIF Demo Section -->
+    <section class="demo-section container">
+      <div class="demo-content">
+        <h3>See How Easy It Is</h3>
+        <p>Drag, drop, and customize your ideal recognition program in minutes.</p>
+        <div class="demo-visual">
+           <!-- Replaced placeholder video with GIF -->
+           <img src="assets/images/Drag-and-Drop.gif" alt="Animation showing drag and drop program builder interface" class="demo-gif">
+           <a href="build-program.html" class="arrow-link" aria-label="Go to Build Your Program page">
+             <span class="arrow-icon oscillate">➜</span>
+           </a>
+        </div>
+        <a href="build-program.html" class="btn demo-action-button">Build Your Program <i class="fas fa-tools"></i></a>
+      </div>
+    </section>
+
+     <!-- Do They Work Section -->
+     <section class="proof-section">
+        <div class="container">
+            <h2>Do Recognition Programs Really Work?</h2>
+            <p class="emphasis">Absolutely.</p>
+            <!-- Optional: Add some stats or brief testimonials here later -->
+        </div>
+        <div class="powerful-image-wrapper">
+          <img src="assets/images/ThePowerful.png" alt="Infographic about the power of employee recognition" class="powerful-image">
+        </div>
+     </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-section footer-company">
+        <h3>StayVisible</h3>
+        <p>P.O. Box 8234<br>New Fairfield, CT 06812<br>(888) 746-2111</p>
+      </div>
+      <div class="footer-section footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#" onclick="document.querySelector('#search-form-header input[type=\'search\']').focus(); return false;">Search</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html">Support</a></li>
+          <li><a href="contact.html">Feedback and Suggestions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/stayvisiblellc" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://x.com/StayVizLLC" target="_blank" aria-label="X (Twitter)">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/stayvisible2018/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/stay-visible-llc/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <p>&copy; <span id="current-year"></span> StayVisible Promotions. All rights reserved. | Website by YourName/Company</p>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Product Image">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <a href="contact.html?product=PRODUCT_TITLE" class="btn">Request Quote</a>
+    </div>
+  </div>
+</body>
+</html> 

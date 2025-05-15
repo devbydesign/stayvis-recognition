@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StayVisible Promotions - Build Your Program</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/stayvisiblelogo.png" alt="StayVisible Promotions Logo">
+      </a>
+      <nav>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <ul id="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="build-program.html" class="active">Build Your Program</a></li>
+          <li><a href="resources.html">Program Resources</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <form class="search-form" id="search-form-header">
+          <input type="search" name="query" placeholder="Search Products..." aria-label="Search">
+          <button type="submit">Search</button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content wrapper -->
+  <main>
+
+    <!-- MOVED: Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h1>Build your Employee Recognition Program</h1>
+        <!-- Removed p and button -->
+      </div>
+    </section>
+
+    <!-- Program Builder Section -->
+    <section class="program-builder-section container">
+      <p class="builder-instructions">Drag modules from the left palette onto the canvas on the right to build your ideal program.</p>
+
+      <div class="builder-interface">
+        <!-- Module Palette (Left Sidebar) -->
+        <div id="module-palette" class="module-palette">
+          <h3>Available Modules</h3>
+          <div class="program-module" draggable="true" data-module-id="welcome" data-tooltip="Onboard new hires with essential gear and a warm welcome.">
+            <i class="fas fa-gift"></i> Welcome Kits
+          </div>
+          <div class="program-module" draggable="true" data-module-id="anniversary" data-tooltip="Celebrate milestones with tiered awards based on years of service.">
+            <i class="fas fa-calendar-alt"></i> Years of Service
+          </div>
+          <div class="program-module" draggable="true" data-module-id="performance" data-tooltip="Reward top performers for exceeding goals and targets.">
+            <i class="fas fa-trophy"></i> Performance Bonuses
+          </div>
+          <div class="program-module" draggable="true" data-module-id="wellness" data-tooltip="Promote health and well-being with fitness challenges and incentives.">
+            <i class="fas fa-heartbeat"></i> Wellness Programs
+          </div>
+          <div class="program-module" draggable="true" data-module-id="spot" data-tooltip="Enable managers to give immediate recognition for great work.">
+            <i class="fas fa-star"></i> Spot Recognition
+          </div>
+          <div class="program-module" draggable="true" data-module-id="peer" data-tooltip="Foster teamwork by allowing colleagues to recognize each other.">
+            <i class="fas fa-users"></i> Peer-to-Peer
+          </div>
+          <!-- Added Modules -->
+          <div class="program-module" draggable="true" data-module-id="points" data-tooltip="Implement a flexible system where points are earned and redeemed for rewards.">
+            <i class="fas fa-star-half-alt"></i> Point-Based Rewards
+          </div>
+          <div class="program-module" draggable="true" data-module-id="awards" data-tooltip="Recognize specific achievements or contributions with formal awards.">
+            <i class="fas fa-award"></i> General Awards
+          </div>
+          <div class="program-module" draggable="true" data-module-id="incentives" data-tooltip="Motivate specific behaviors with tangible rewards (merch, gift cards, experiences).">
+            <i class="fas fa-concierge-bell"></i> Incentives
+          </div>
+          <div class="program-module" draggable="true" data-module-id="holiday" data-tooltip="Show appreciation during holidays with thoughtful corporate gifts.">
+            <i class="fas fa-candy-cane"></i> Holiday Gifts
+          </div>
+          <!-- Add more modules as needed -->
+        </div>
+
+        <!-- Program Canvas (Right Side) -->
+        <div id="program-canvas" class="program-canvas">
+          <h3>Your Program Plan</h3>
+          <div id="canvas-dropzone" class="canvas-dropzone">
+             <p class="dropzone-placeholder">Drop modules here</p>
+             <!-- Dropped modules will appear here -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Strength Meter -->
+      <div class="strength-meter">
+        <label for="strength-bar">Program Strength:</label>
+        <div class="strength-bar-container">
+            <div id="strength-bar" class="strength-bar" style="width: 0%;"></div>
+        </div>
+        <span id="strength-text">Add up to 3 modules</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="builder-actions">
+        <button id="save-program-btn" class="btn">Save & Continue</button>
+        <button id="start-over-btn" class="btn btn-outline">Start Over</button>
+      </div>
+    </section>
+
+    <!-- Contact & Delivery Details Section -->
+    <section id="contact-delivery-section" class="contact-delivery-section container">
+      <h2>Where shall we send your personalized plan?</h2>
+      <form id="plan-details-form">
+        <div class="form-grid">
+            <div class="form-group">
+              <label for="first-name">First Name*</label>
+              <input type="text" id="first-name" name="firstName" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+              <small>Optional: Only if you'd like a quick call.</small>
+            </div>
+             <!-- Simple Math Captcha -->
+            <div class="form-group captcha-group">
+                <label for="captcha">Security Check* <span id="captcha-question"></span> = ?</label>
+                <input type="number" id="captcha" name="captcha" required>
+                <input type="hidden" id="captcha-num1">
+                <input type="hidden" id="captcha-num2">
+            </div>
+        </div>
+        <button type="submit" id="generate-plan-btn" class="btn">Generate My Plan</button>
+      </form>
+    </section>
+
+    <!-- Printable Plan Summary (Initially Hidden) -->
+    <section id="plan-summary-section" class="plan-summary-section" style="display: none;">
+        <div class="container">
+            <div id="plan-summary-content" class="plan-summary-content">
+                <!-- Content generated by JS -->
+                <div class="summary-header">
+                    <img src="assets/images/stayvisiblelogo.png" alt="StayVisible Logo" class="summary-logo">
+                    <h2>Great, we're building your custom program!</h2>
+                </div>
+                <div id="whats-next" class="whats-next">
+                     <h3>What's Next:</h3>
+                     <ul>
+                         <li>We've emailed your summary</li>
+                         <li>Expect tips over the next week</li>
+                         <li>Book a strategy chat if you'd like</li>
+                     </ul>
+                </div>
+                <h3>Your Selected Modules:</h3>
+                <ul id="summary-modules-list"></ul>
+                <h3>Your Details:</h3>
+                <p id="summary-contact-info"></p>
+            </div>
+            <button onclick="window.print()" class="btn btn-outline print-button">Print Summary</button>
+        </div>
+    </section>
+
+    <!-- MOVED: Existing content moved below the new sections -->
+    <!-- The following container and its content will be removed -->
+    <!-- 
+    <div class="container"> 
+        <section class="featured-products-section">
+          [...]
+        </section>
+
+        <section class="why-choose-us">
+          [...]
+        </section>
+    </div> 
+    -->
+
+  </main> <!-- Close main content wrapper -->
+
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-section footer-company">
+        <h3>StayVisible</h3>
+        <p>P.O. Box 8234<br>New Fairfield, CT 06812<br>(888) 746-2111</p>
+      </div>
+      <div class="footer-section footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#" onclick="document.querySelector('#search-form-header input[type='search']').focus(); return false;">Search</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html">Support</a></li>
+          <li><a href="contact.html">Feedback and Suggestions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/stayvisiblellc" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://x.com/StayVizLLC" target="_blank" aria-label="X (Twitter)">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com/stayvisible2018/" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/stay-visible-llc/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <p>&copy; <span id="current-year"></span> StayVisible Promotions. All rights reserved. | Website by YourName/Company</p>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Product Image">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <a href="contact.html?product=PRODUCT_TITLE" class="btn modal-quote-btn">Request Quote</a>
+    </div>
+  </div>
+</body>
+</html> 
