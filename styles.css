@@ -1810,68 +1810,99 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 
 .builder-interface {
   display: grid;
-  grid-template-columns: 250px 1fr; /* Sidebar width and canvas */
-  gap: 2rem;
+  grid-template-columns: 620px 1fr; /* Match new palette width */
+  gap: 2.5rem;
   margin-bottom: 2rem;
-  min-height: 400px; /* Give it some height */
+  min-height: 400px;
 }
 
 /* Module Palette */
 .module-palette {
   background-color: #f8f9fa;
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem;
   border: 1px solid #e9ecef;
+  width: 620px; /* Doubled width plus gap */
 }
 
 .module-palette h3 {
   margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
   color: var(--primary-color);
   border-bottom: 1px solid #dee2e6;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.module-palette .see-more-link {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: normal;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+}
+
+.module-palette .see-more-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.module-palette .modules-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
 .program-module {
-  background-color: var(--light-color);
-  border: 1px solid #ced4da;
-  border-radius: var(--border-radius);
-  padding: 0.8rem 1rem;
-  margin-bottom: 1rem;
+  position: relative;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   cursor: grab;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.75rem;
-  font-weight: 500;
-  position: relative; /* For tooltip */
-}
-
-.program-module i {
-  color: var(--secondary-color);
-  width: 25px; /* Slightly wider if needed */
-  text-align: center;
-  font-size: 1.4rem; /* Increased font size */
+  z-index: 1; /* Default z-index */
 }
 
 .program-module:hover {
-  border-color: var(--primary-color);
-  background-color: #f0edf8;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Higher z-index on hover */
 }
 
-.program-module.dragging {
-  opacity: 0.5;
-  cursor: grabbing;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+.program-module .module-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-color);
 }
 
-/* Tooltip Styles */
+.program-module i {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.program-module .module-summary {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
 .program-module::after {
   content: attr(data-tooltip);
   position: absolute;
-  left: 105%;
+  left: calc(100% + 10px);
   top: 50%;
   transform: translateY(-50%);
   background-color: #333;
@@ -1879,11 +1910,14 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   padding: 0.5rem 0.8rem;
   border-radius: var(--border-radius);
   font-size: 0.85rem;
-  white-space: nowrap;
+  white-space: normal; /* Allow text to wrap */
+  min-width: 200px; /* Minimum width */
+  max-width: 300px; /* Maximum width */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, visibility 0.2s ease;
-  z-index: 10;
+  z-index: 1001; /* Ensure tooltip is above everything */
+  line-height: 1.4;
 }
 
 .program-module:hover::after {
@@ -2185,36 +2219,148 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   }
 }
 
-/* Responsive Builder Adjustments */
-@media (max-width: 992px) {
+/* Detailed Modules Section adjustments */
+.detailed-modules-section {
+  padding: 2rem 0 4rem; /* Reduced top padding */
+  background-color: #f0edf8;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.detailed-modules-section h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+.section-intro {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.detailed-modules-grid {
+  padding: 0 2rem; /* Add horizontal padding */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.detailed-module {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detailed-module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.module-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.detailed-module h3 {
+  color: var(--primary-dark);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.module-description {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.module-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.module-benefits li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.module-benefits li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+}
+
+@media (max-width: 1200px) {
   .builder-interface {
-      grid-template-columns: 200px 1fr; /* Smaller sidebar */
+    grid-template-columns: 1fr;
+  }
+  
+  .module-palette {
+    width: 100%;
+  }
+  
+  .module-palette .modules-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 }
 
 @media (max-width: 768px) {
-  .builder-interface {
-      grid-template-columns: 1fr; /* Stack palette and canvas */
-      min-height: auto;
+  .module-palette .modules-grid {
+    grid-template-columns: 1fr;
   }
-  .module-palette {
-      margin-bottom: 2rem;
-  }
-  .program-module::after { /* Hide tooltips on mobile */
-    display: none;
-  }
-  .strength-meter {
-      flex-direction: column;
-      gap: 0.5rem;
-      align-items: flex-start;
-  }
-  .strength-bar-container {
-      width: 100%;
+  
+  .program-module::after {
+    display: none; /* Hide tooltips on mobile */
   }
 }
 
-/* Increase font size for specific instruction paragraph */
-.builder-instructions {
-    font-size: 1.25rem; /* Increased size */
-    font-weight: 500; /* Slightly bolder */
+/* Add sticky CTA to resources page */
+.resources-sticky-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  background-color: var(--brand-orange);
+  color: var(--light-color);
+  padding: 1.25rem 1.875rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.resources-sticky-cta:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: #a04828;
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.resources-sticky-cta i {
+  transition: transform 0.3s ease;
+}
+
+.resources-sticky-cta:hover i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 576px) {
+  .resources-sticky-cta {
+    display: none;
+  }
 }
