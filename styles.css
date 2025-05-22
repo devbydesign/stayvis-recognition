@@ -2,7 +2,7 @@
   --primary-color: #3a0ca3; /* Vibrant Purple */
   --secondary-color: #4cc9f0; /* Bright Cyan */
   --accent-color: #f7b801; /* Energetic Yellow */
-  --brand-orange: #b65230; /* Brand Orange */
+  --brand-orange: #df7241; /* Brand Orange */
   --dark-color: #333333; /* Dark Grey for text */
   --light-color: #ffffff; /* White background */
   --medium-color: #f0f2f5; /* Light grey for backgrounds/borders */
@@ -95,6 +95,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  margin-bottom: 0;
 }
 
 header .container {
@@ -137,6 +138,8 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  gap: 2.5rem;
+  margin-left: -2rem; /* Move menu items left */
 }
 
 nav ul li {
@@ -149,31 +152,12 @@ nav ul li a {
   transition: color var(--transition-speed);
   padding: 0.5rem 0;
   position: relative;
-  transition: width var(--transition-speed) ease;
+  font-size: 1.25rem; /* Bigger font size */
+  font-weight: 600;
 }
-
-/* Remove or comment out the ::after rule if you dislike the underline */
-/* KEEPING UNDERLINE COMMENTED OUT FOR DEBUGGING
-nav ul li a::after { 
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px; 
-  bottom: -5px; 
-  left: 0;
-  background-color: var(--accent-color); 
-  transition: width var(--transition-speed) ease;
-}
-
-nav ul li a:hover::after {
-  width: 100%;
-}
-*/
-/* END OF COMMENTING OUT */
 
 nav ul li a:hover {
   color: var(--brand-orange);
-  /* text-decoration: none; */
 }
 
 nav ul li a:focus {
@@ -184,8 +168,7 @@ nav ul li a:focus {
 
 /* Search Form in Header */
 .search-form {
-  display: flex;
-  margin-left: 2rem;
+  display: none;
 }
 
 .search-form input[type="search"] {
@@ -237,20 +220,21 @@ main {
 
 .btn {
   display: inline-block;
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--light-color);
   padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius);
   text-decoration: none;
-  transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+  transition: all var(--transition-speed);
   margin-top: 1rem;
   font-weight: 600;
-  border: 1px solid transparent;
+  border: 2px solid var(--primary-color);
 }
 
 .btn:hover {
-  background-color: var(--primary-color);
-  color: var(--light-color);
+  background-color: var(--light-color);
+  color: #3b0ba7;
+  border-color: #3b0ba7;
   text-decoration: none;
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.15);
@@ -366,12 +350,13 @@ footer::before {
   color: var(--dark-color);
 }
 
-/* Educational Snippet */
+/* Hero Section */
 .hero {
   background: linear-gradient(rgba(58, 12, 163, 0.05), rgba(58, 12, 163, 0.1));
   text-align: center;
   padding: var(--section-padding);
   border-bottom: 1px solid rgba(58, 12, 163, 0.1);
+  margin-top: -1rem; /* Remove gap */
 }
 
 .hero .container {
@@ -619,7 +604,7 @@ button[type="submit"]:hover {
 .resource-card {
   background: #fff;
   border-radius: var(--border-radius);
-  padding: 1.5rem;
+  padding: 2rem;
   text-align: center;
   box-shadow: 0 3px 6px rgba(0,0,0,0.04);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed);
@@ -627,6 +612,12 @@ button[type="submit"]:hover {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.resource-card .card-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
 }
 
 .resource-card p {
@@ -662,10 +653,9 @@ button[type="submit"]:hover {
 
 /* Icon placeholders (simple text) */
 .card-icon {
-  font-size: 1.8rem;
-  color: var(--secondary-color);
+  font-size: 2rem;
+  color: var(--primary-color);
   margin-bottom: 1rem;
-  display: block; /* Make it block level */
 }
 
 .trend-card img {
@@ -1964,7 +1954,18 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 }
 
 .canvas-dropzone .program-module {
-  cursor: grab; /* Allow re-dragging */
+  background: #ffffff;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.canvas-dropzone .program-module:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 /* Strength Meter */
@@ -2019,32 +2020,31 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 }
 
 .builder-actions button {
-  margin: 0 0.5rem;
-  /* Base styles from .btn are inherited. Add specific overrides or new styles here. */
   background-color: var(--primary-color);
   color: var(--light-color);
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
+  margin: 0 0.5rem;
 }
 
 .builder-actions button:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border-color: var(--secondary-color);
+  background-color: var(--light-color);
+  color: #3b0ba7;
+  border-color: #3b0ba7;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Ensure #start-over-btn which might have .btn-outline keeps purple bg */
+/* Ensure Start Over button matches */
 .builder-actions #start-over-btn {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border: 2px solid var(--primary-color);
 }
 
 .builder-actions #start-over-btn:hover {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    border-color: var(--secondary-color);
+  background-color: var(--light-color);
+  color: #3b0ba7;
+  border-color: #3b0ba7;
 }
 
 /* Contact/Delivery Form */
@@ -2229,8 +2229,8 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 
 .detailed-modules-section h2 {
   text-align: center;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
-  color: var(--primary-dark);
 }
 
 .section-intro {
@@ -2263,14 +2263,17 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 }
 
 .module-icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
 .detailed-module h3 {
-  color: var(--primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   margin-bottom: 1rem;
+  color: var(--primary-color);
   font-size: 1.5rem;
 }
 
@@ -2346,9 +2349,9 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 
 .resources-sticky-cta:hover {
   transform: translateY(-3px) scale(1.05);
-  background-color: #a04828;
-  color: var(--light-color);
-  text-decoration: none;
+  background-color: var(--light-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 .resources-sticky-cta i {
@@ -2363,4 +2366,66 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   .resources-sticky-cta {
     display: none;
   }
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+  display: none; /* Hide by default on desktop */
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  order: 1;
+}
+
+/* Responsive nav adjustments */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block; /* Only show on mobile/tablet */
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--light-color);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    flex-direction: column;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 0.5rem 1rem;
+    text-align: center;
+  }
+}
+
+/* Make Program Resources buttons match Build Program style */
+.modal-quote-btn,
+.resource-card .btn,
+.detailed-module .btn,
+.featured-products-section .btn {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border: 2px solid var(--primary-color);
+}
+
+.modal-quote-btn:hover,
+.resource-card .btn:hover,
+.detailed-module .btn:hover,
+.featured-products-section .btn:hover {
+  background-color: var(--light-color);
+  color: #3b0ba7;
+  border-color: #3b0ba7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
