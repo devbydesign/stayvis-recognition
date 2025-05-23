@@ -96,6 +96,7 @@ header {
   top: 0;
   z-index: 1000;
   margin-bottom: 0;
+  border-bottom: 1px solid rgba(59, 17, 142, 0.1);
 }
 
 header .container {
@@ -129,8 +130,12 @@ header .container {
 }
 
 nav {
-  display: flex; /* Use flexbox for nav items and search */
+  display: flex;
   align-items: center;
+  background: linear-gradient(to right, rgba(59, 17, 142, 0.02), rgba(59, 17, 142, 0.05));
+  padding: 0.5rem 2rem; /* Increased horizontal padding */
+  border-radius: 8px;
+  margin: 0 -1rem; /* Negative margin to extend background */
 }
 
 nav ul {
@@ -138,32 +143,29 @@ nav ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 2.5rem;
-  margin-left: -2rem; /* Move menu items left */
-}
-
-nav ul li {
-  margin-left: 1.5rem;
+  gap: 1.5rem;
+  justify-content: center; /* Center the menu items */
+  width: 100%; /* Take full width */
 }
 
 nav ul li a {
   color: #3B118E;
   text-decoration: none;
-  transition: color var(--transition-speed);
-  padding: 0.5rem 0;
+  transition: all var(--transition-speed);
+  padding: 0.75rem 1rem;
   position: relative;
-  font-size: 1.25rem; /* Bigger font size */
+  font-size: 1.25rem;
   font-weight: 600;
+  border-radius: 6px;
 }
 
 nav ul li a:hover {
   color: var(--brand-orange);
+  background-color: rgba(59, 17, 142, 0.05);
 }
 
-nav ul li a:focus {
-  color: var(--brand-orange);
-  outline: none;
-  background-color: transparent;
+nav ul li a.active {
+  background-color: rgba(59, 17, 142, 0.08);
 }
 
 /* Search Form in Header */
@@ -992,6 +994,7 @@ button[type="submit"]:hover {
   box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   transform: translateY(-50px); /* Initial state for animation */
   transition: transform var(--transition-speed) ease-out;
+  text-align: center; /* Center all content in modal */
 }
 
 .modal.show .modal-content {
@@ -1031,23 +1034,28 @@ button[type="submit"]:hover {
 }
 
 #modal-desc {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.modal-content .btn {
+.modal-content .btn,
+.modal-quote-btn {
+  background-color: #de733f;
+  color: var(--light-color);
+  border: none;
+  transition: all var(--transition-speed);
   display: block;
   width: fit-content;
-  margin: 0 auto;
-  background-color: #b65230;
-  color: var(--light-color);
+  margin: 1rem auto; /* Center the button */
 }
 
-.modal-content .btn:hover {
-  background-color: #a04828;
+.modal-content .btn:hover,
+.modal-quote-btn:hover {
+  background-color: #c55f2f;
   color: var(--light-color);
-  text-decoration: none;
+  border-color: #c55f2f;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(222, 115, 63, 0.25);
 }
 
 /* Search Results */
@@ -2266,15 +2274,20 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 1rem;
+  margin-top: 0.25rem; /* Add top margin to move icon down slightly */
 }
 
 .detailed-module h3 {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Align items to top */
   gap: 1rem;
   margin-bottom: 1rem;
   color: var(--primary-color);
   font-size: 1.5rem;
+}
+
+.detailed-module h3 i {
+  margin-top: 0.25rem; /* Add top margin to move icon down slightly */
 }
 
 .module-description {
@@ -2414,18 +2427,18 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 .resource-card .btn,
 .detailed-module .btn,
 .featured-products-section .btn {
-  background-color: var(--primary-color);
+  background-color: #de733f;
   color: var(--light-color);
-  border: 2px solid var(--primary-color);
+  border: 2px solid #de733f;
 }
 
 .modal-quote-btn:hover,
 .resource-card .btn:hover,
 .detailed-module .btn:hover,
 .featured-products-section .btn:hover {
-  background-color: var(--light-color);
-  color: #3b0ba7;
-  border-color: #3b0ba7;
+  background-color: #c55f2f;
+  color: var(--light-color);
+  border-color: #c55f2f;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(222, 115, 63, 0.25);
 }
