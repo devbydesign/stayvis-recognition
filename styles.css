@@ -588,9 +588,9 @@ button[type="submit"]:hover {
 /* Resource Grid */
 .resources-section {
   text-align: center;
-  margin: 2rem auto;
+  margin: 1rem auto; /* Reduced top margin */
   max-width: 1400px;
-  padding: 0 1rem;
+  padding: 2rem 1rem;
 }
 
 .resource-grid {
@@ -599,7 +599,7 @@ button[type="submit"]:hover {
   gap: 1.5rem;
   margin: 2rem 0;
   padding: 1.5rem;
-  background-color: #f0edf8;
+  background-color: #f8f9fb;
   border-radius: 12px;
 }
 
@@ -646,6 +646,7 @@ button[type="submit"]:hover {
 @media (max-width: 768px) {
   .resource-grid {
     grid-template-columns: 1fr;
+    padding: 1rem;
   }
   
   .resource-card {
@@ -2226,34 +2227,35 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   }
 }
 
-/* Detailed Modules Section adjustments */
+/* Detailed Modules Section */
 .detailed-modules-section {
-  padding: 2rem 0 4rem; /* Reduced top padding */
-  background-color: #f0edf8;
-  border-radius: 12px;
-  margin: 2rem 0;
+  padding: 0 0 3rem; /* Removed top padding */
+  margin: 0 0 1rem 0; /* Removed top margin */
 }
 
 .detailed-modules-section h2 {
   text-align: center;
   color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-intro {
   text-align: center;
   color: var(--text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   font-size: 1.1rem;
 }
 
+/* Maintain grid spacing */
 .detailed-modules-grid {
-  padding: 0 2rem; /* Add horizontal padding */
+  padding: 2rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #f8f9fb;
+  border-radius: 12px;
 }
 
 .detailed-module {
@@ -2476,4 +2478,140 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   color: var(--light-color);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(222, 115, 63, 0.25);
+}
+
+/* Detailed Modules Grid Responsive Adjustments */
+.detailed-modules-grid {
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .detailed-modules-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+  }
+
+  .detailed-module {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .detailed-modules-section {
+    padding: 2rem 1rem;
+  }
+
+  .detailed-modules-grid {
+    padding: 0;
+    gap: 1.5rem;
+  }
+
+  .detailed-module {
+    padding: 1.5rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .detailed-module h3 {
+    font-size: 1.3rem;
+    flex-wrap: wrap;
+  }
+
+  .module-description {
+    font-size: 0.95rem;
+  }
+
+  .module-benefits {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .detailed-modules-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .detailed-modules-grid {
+    gap: 1rem;
+  }
+
+  .detailed-module {
+    padding: 1.25rem;
+  }
+
+  .detailed-module h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Search Form Mobile Visibility */
+@media (max-width: 992px) {
+  .search-form {
+    display: none; /* Hide search on mobile/tablet */
+  }
+}
+
+/* Resources Section Background Updates */
+.resources-section {
+  text-align: center;
+  margin: 1rem auto; /* Reduced top margin */
+  max-width: 1400px;
+  padding: 2rem 1rem;
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: #f8f9fb;
+  border-radius: 12px;
+}
+
+/* Detailed Modules Section */
+.detailed-modules-section {
+  padding: 0 0 3rem; /* Removed top padding */
+  margin: 0 0 1rem 0; /* Removed top margin */
+}
+
+.detailed-modules-grid {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fb;
+  border-radius: 12px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .detailed-modules-grid {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .resource-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .detailed-modules-grid {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+
+  .resources-section,
+  .detailed-modules-section {
+    margin: 1rem 0;
+  }
 }
