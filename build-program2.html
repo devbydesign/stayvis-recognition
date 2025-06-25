@@ -2329,13 +2329,13 @@
             <p>First impressions matter more than ever in today's competitive talent market. A thoughtfully crafted welcome kit sets the tone for an employee's entire journey with your organization.</p>
             
             <h4>Why Welcome Kits Drive Success</h4>
-            <p>Research from the Society for Human Resource Management shows that <span class="stat-highlight">69% of employees</span> are more likely to stay with a company for three years if they experienced great onboarding. Welcome kits are a tangible representation of your company's investment in new hires.</p>
+            <p>Research from the Society for Human Resource Management shows that <span class="stat-highlight">69% of employees</span> are more likely to stay with a company for three years if they experienced great onboarding. </p>
             
             <h4>Proven Benefits</h4>
             <p>Organizations with structured onboarding programs see <span class="stat-highlight">54% greater new-hire productivity</span> and <span class="stat-highlight">50% greater new-hire retention</span> according to the Aberdeen Group. Your welcome kit becomes the first touchpoint in this critical process.</p>
             
             <h4>What Makes Welcome Kits Effective</h4>
-            <p>The most successful welcome kits combine practical items employees will use daily with branded elements that reinforce company culture. From premium drinkware that accompanies morning coffee to tech accessories that enhance productivity, each item serves as a daily reminder of belonging.</p>
+            <p>The most successful welcome kits combine practical items employees will use daily with branded elements that reinforce company culture. From premium drinkware to tech accessories that enhance productivity, each item serves as a daily reminder of belonging.</p>
             <p><span class="stat-highlight">Customize your onboarding kits</span> to greet new hires with branded merchandise, information packets, and all essentials to start their journey.</p>
           `,
           products: [
@@ -2362,19 +2362,25 @@
             <p>Long-term employee retention is one of the greatest challenges facing modern organizations. Years of service recognition programs create powerful emotional connections that keep your best talent engaged.</p>
             
             <h4>The Retention Crisis</h4>
-            <p>With the average cost of replacing an employee reaching <span class="stat-highlight">$15,000</span> according to the Center for American Progress, retaining experienced team members is crucial. Gallup research shows that <span class="stat-highlight">87% of millennials</span> rate career development opportunities as important to them in a job.</p>
+            <p>With the average cost of replacing an employee reaching <span class="stat-highlight">$15,000</span> according to the Center for American Progress, retaining experienced team members is crucial.</p>
             
             <h4>Building Legacy and Loyalty</h4>
             <p>Service recognition programs demonstrate that you value longevity and growth. Companies with recognition programs have <span class="stat-highlight">31% lower voluntary turnover</span> than those without, according to Bersin by Deloitte research.</p>
             
-            <h4>Milestone Moments That Matter</h4>
-            <p>Each service anniversary represents hundreds of hours of dedication, accumulated knowledge, and relationship building. Recognizing these milestones with meaningful gifts creates emotional anchors that strengthen the employee-employer bond and inspire others to envision their own long-term future with your organization.</p>
+            <h4>Building Lasting Loyalty</h4>
+            <p>Encourages long-term retention, shows appreciation for loyalty, and reinforces a culture of stability and commitment. Celebrate employee milestones with personalized gifts or awards recognizing 1, 5, 10, 20+ years of dedication. Let's explore the possibilities and tailor a program just for you.</p>
           `,
           products: [
-            { name: "Premium Sherpa", image: "assets/images/Warm and Cozy Sherpa.jpg" },
-            { name: "Arctic Zone Mug", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
-            { name: "Words to Live By", image: "assets/images/Womens-Words-to-live-by.jpg" },
-            { name: "Ceramic Mugs", image: "assets/images/Ceramic Mugs.jpg" }
+            { name: "Pins and Jewelry", image: "assets/images/PinsAndBadges.PNG" },
+            { name: "Crystal", image: "assets/images/GlassAward.PNG" },
+            { name: "Congratulations Note", image: "assets/images/AwardImage.PNG" },
+            { name: "Customizable Cubes", image: "assets/images/YearsOfService_Safety.PNG" }
+          ],
+          customizeProducts: [
+            { name: "Wall Plaque", image: "assets/images/WallAward.PNG" },
+            { name: "Customized Merch", image: "assets/images/ServicePins.PNG" },
+            { name: "Awards", image: "assets/images/EmployeeOfTheMonth.PNG" },
+            { name: "Plateau Merch Catalog", image: "assets/images/CustomGiftLevels.PNG" }
           ]
         },
         performance: {
@@ -2654,7 +2660,7 @@
             // Populate products with feature-specific titles
             const productTitles = {
               'welcome': 'Package It Like a Gift',
-              'service': 'Celebrate Their Journey',
+              'service': 'Years of Service Ideas',
               'performance': 'Reward Excellence',
               'wellness': 'Nurture Their Well-Being',
               'spot': 'Make It Memorable',
@@ -2676,10 +2682,14 @@
             
             modalProductsGrid.innerHTML = '';
             
-            // Remove any existing customize sections
+            // Remove any existing customize and CTA sections
             const existingCustomizeSection = document.querySelector('.modal-customize-section');
             if (existingCustomizeSection) {
               existingCustomizeSection.remove();
+            }
+            const existingCtaSection = document.querySelector('.modal-cta-section');
+            if (existingCtaSection) {
+              existingCtaSection.remove();
             }
             
             feature.products.forEach(product => {
@@ -2692,12 +2702,30 @@
               modalProductsGrid.appendChild(productCard);
             });
 
-            // Add customize section for welcome kits
-            if (featureKey === 'welcome' && feature.customizeProducts) {
+            // Add CTA section for Years of Service
+            if (featureKey === 'service') {
+              const ctaSection = document.createElement('div');
+              ctaSection.className = 'modal-cta-section';
+              ctaSection.innerHTML = `
+                <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8f9fa; border: 2px solid var(--primary-color); border-radius: 8px; text-align: center;">
+                  <h4 style="margin-bottom: 1rem; color: var(--primary-color);">How Are You Going To Present It?</h4>
+                  <p style="margin: 0; font-weight: bold; font-size: 1.1em; color: #333;">In Person • Newsletter • Monthly Department Meeting • Deliver</p>
+                  <p style="margin: 0.5rem 0 0 0; font-style: italic; color: #666;">Make every milestone moment memorable with the perfect presentation approach.</p>
+                </div>
+              `;
+              
+              // Insert after the main products section
+              const modalProductsSection = document.querySelector('.modal-products');
+              modalProductsSection.parentNode.insertBefore(ctaSection, modalProductsSection.nextSibling);
+            }
+
+            // Add customize section for welcome kits and years of service
+            if ((featureKey === 'welcome' || featureKey === 'service') && feature.customizeProducts) {
               const customizeSection = document.createElement('div');
               customizeSection.className = 'modal-customize-section';
+              const customizeTitle = featureKey === 'service' ? 'Customize it: Personal and Public' : 'Customize to Fit Your Audience and Your Brand';
               customizeSection.innerHTML = `
-                <h3>Customize to Fit Your Audience and Your Brand</h3>
+                <h3>${customizeTitle}</h3>
                 <div class="modal-customize-grid">
                   ${feature.customizeProducts.map(product => `
                     <div class="modal-product-card">
