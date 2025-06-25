@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const productCard = document.createElement('div');
                 productCard.className = 'modal-product-card';
                 productCard.innerHTML = `
-                  <img src="${product.image}" alt="${product.name}" loading="lazy">
+                  <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='assets/images/StayVisibleLogo.png'">
                   <h4>${product.name}</h4>
                 `;
                 modalProductsGrid.appendChild(productCard);
@@ -654,7 +654,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   <div class="modal-customize-grid">
                     ${feature.customizeProducts.map(product => `
                       <div class="modal-product-card">
-                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='assets/images/StayVisibleLogo.png'">
                         <h4>${product.name}</h4>
                       </div>
                     `).join('')}
@@ -1664,7 +1664,7 @@ document.addEventListener('DOMContentLoaded', function() {
               const productCard = document.createElement('div');
               productCard.className = 'modal-product-card';
               productCard.innerHTML = `
-                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='assets/images/StayVisibleLogo.png'">
                 <h4>${product.name}</h4>
               `;
               modalProductsGrid.appendChild(productCard);
@@ -1679,7 +1679,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="modal-customize-grid">
                   ${feature.customizeProducts.map(product => `
                     <div class="modal-product-card">
-                      <img src="${product.image}" alt="${product.name}" loading="lazy">
+                      <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='assets/images/StayVisibleLogo.png'">
                       <h4>${product.name}</h4>
                     </div>
                   `).join('')}
