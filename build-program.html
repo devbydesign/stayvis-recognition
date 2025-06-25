@@ -4,31 +4,718 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StayVisible Promotions - Build Your Program</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navigation.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js" defer></script>
+  <style>
+
+    /* Plan Summary Section Styling */
+    .container-wide {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .plan-summary-section {
+        background: #f8f9fa;
+        padding: 60px 0;
+        margin-top: 40px;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .summary-details-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+        margin-top: 30px;
+    }
+
+    .summary-left h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.575em; /* Proportionally increased: 1.4 * 1.125 */
+    }
+
+    .summary-left ul {
+        margin-bottom: 30px;
+        padding-left: 20px;
+    }
+
+    .summary-left li {
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    .get-started-faster {
+        background: white;
+        border: 2px solid var(--primary-color);
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(58, 12, 163, 0.1);
+    }
+
+    .get-started-faster h3 {
+        color: var(--primary-color);
+        margin-bottom: 15px;
+        font-size: 1.4625em; /* Proportionally increased: 1.3 * 1.125 */
+        text-align: center;
+    }
+
+    .get-started-faster p {
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 1.069em; /* Proportionally increased: 0.95 * 1.125 */
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2);
+    }
+
+    .contact-item i {
+        color: var(--primary-color);
+        font-size: 1.2375em; /* Proportionally increased: 1.1 * 1.125 */
+        width: 20px;
+        text-align: center;
+    }
+
+    .contact-item:hover i {
+        color: white;
+    }
+
+    .contact-item span {
+        font-weight: 500;
+        font-size: 1.069em; /* Proportionally increased: 0.95 * 1.125 */
+    }
+
+    @media (max-width: 768px) {
+        .summary-details-grid {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .container-wide {
+            padding: 0 15px;
+        }
+    }
+
+    /* Consultation Note Styling - Modern Professional */
+    .consultation-note {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(58, 12, 163, 0.15);
+        border-radius: 16px;
+        margin: 2rem 0;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(58, 12, 163, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .consultation-note:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(58, 12, 163, 0.12);
+        border-color: rgba(58, 12, 163, 0.25);
+    }
+
+    .consultation-note::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+    }
+
+    .consultation-note-content {
+        padding: 2rem 2.5rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .consultation-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        flex-shrink: 0;
+        background: rgba(58, 12, 163, 0.08);
+        padding: 0.75rem;
+        border-radius: 12px;
+        margin-top: 0.25rem;
+    }
+
+    .consultation-note p {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #2c3e50;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+    }
+
+    .consultation-note strong {
+        color: var(--primary-color);
+        font-weight: 600;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    @media (max-width: 768px) {
+        .consultation-note-content {
+            padding: 1.75rem 1.5rem;
+            gap: 1rem;
+        }
+        
+        .consultation-icon {
+            font-size: 1.25rem;
+            padding: 0.625rem;
+            border-radius: 10px;
+        }
+        
+        .consultation-note p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+    }
+
+    /* Button Styling - Make Save My Plan match Save & Continue */
+    #generate-plan-btn {
+        background-color: var(--primary-color) !important;
+        color: var(--light-color) !important;
+        padding: 0.75rem 1.5rem !important;
+        border-radius: var(--border-radius) !important;
+        text-decoration: none !important;
+        transition: all var(--transition-speed) !important;
+        margin: 1rem auto 0 !important;
+        font-weight: 600 !important;
+        border: 2px solid var(--primary-color) !important;
+        display: block !important;
+        font-size: 1.125rem !important; /* Added proportional base font size */
+    }
+
+    #generate-plan-btn:hover {
+        background-color: var(--light-color) !important;
+        color: #3b0ba7 !important;
+        border-color: #3b0ba7 !important;
+        text-decoration: none !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15) !important;
+    }
+
+    /* See Details Button Styling */
+    .see-details-btn {
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 0.75rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      width: 100%;
+      text-align: center;
+    }
+
+    .see-details-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
+    }
+
+    /* Feature Modal Styles - copied from build-program2.html */
+    .feature-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+    }
+    
+    .feature-modal-content {
+      background-color: white;
+      margin: 2% auto;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(58, 12, 163, 0.3);
+      animation: modalSlideIn 0.4s ease-out;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    .feature-modal-close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #666;
+      cursor: pointer;
+      z-index: 10;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-modal-close:hover {
+      background-color: #f0f0f0;
+      color: var(--primary-color);
+      transform: scale(1.1);
+    }
+    
+    .feature-modal-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 2rem 2.5rem;
+      border-radius: 20px 20px 0 0;
+      text-align: center;
+      position: relative;
+    }
+    
+    .feature-modal-header i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    
+    .feature-modal-header h2,
+    #modal-title {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white !important;
+    }
+    
+    .feature-modal-body {
+      padding: 2rem 2.5rem;
+    }
+    
+    /* Custom Form Styles */
+    .custom-form-container {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 1.5rem 0;
+      border: 2px solid #e9ecef;
+    }
+    
+    .custom-form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .custom-form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    
+    .custom-form-group input,
+    .custom-form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .custom-form-group input:focus,
+    .custom-form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(58, 12, 163, 0.1);
+    }
+    
+    .custom-form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .custom-add-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .custom-add-btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2);
+    }
+    
+    .validation-note {
+      color: #dc3545;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: block;
+    }
+    
+    .modal-description {
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      color: #444;
+    }
+    
+    .modal-description h4 {
+      color: #444;
+      margin: 1.5rem 0 0.8rem 0;
+      font-size: 1.3rem;
+    }
+    
+    .modal-description .stat-highlight {
+      background: none;
+      color: black;
+      padding: 0;
+      border-radius: 0;
+      font-weight: bold;
+      display: inline;
+      margin: 0;
+      background-image: linear-gradient(120deg, var(--accent-color), #f39c12);
+      background-size: 100% 3px;
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      padding-bottom: 2px;
+    }
+    
+    .modal-products {
+      margin: 2rem 0;
+    }
+    
+    .modal-products h3 {
+      color: #444;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+    
+    .modal-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .modal-product-card {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 0.3rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .modal-product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      border-color: var(--accent-color);
+    }
+    
+    .modal-product-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.3rem;
+    }
+    
+    .modal-product-card h5 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* Modal Customize Section */
+    .modal-customize-section {
+      margin: 2rem 0;
+    }
+    
+    .modal-customize-section h3 {
+      color: #444;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.4rem;
+    }
+    
+    .modal-customize-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+      .modal-customize-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    /* Canvas Item Styles - matching see-details-btn */
+    .canvas-item {
+      background: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      cursor: move;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .canvas-item:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
+    }
+
+    .canvas-item-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .canvas-item-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .canvas-item-left i {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .canvas-item-left span {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .canvas-item-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .canvas-see-details {
+      font-size: 0.75rem !important;
+      padding: 0.3rem 0.6rem !important;
+      margin: 0 !important;
+      width: auto !important;
+      white-space: nowrap;
+      background: white !important;
+      color: var(--primary-color) !important;
+      border: 1px solid var(--primary-color) !important;
+    }
+
+    .canvas-see-details:hover {
+      background: white !important;
+      color: var(--primary-color) !important;
+      border: 1px solid var(--primary-color) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
+    }
+
+    .remove-btn {
+      background: white !important;
+      border: 1px solid #dc3545 !important;
+      color: #dc3545 !important;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .remove-btn:hover {
+      background: #dc3545 !important;
+      color: white !important;
+      border: 1px solid #dc3545 !important;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(220, 53, 69, 0.2);
+    }
+
+    /* Drag and Drop Visual Feedback */
+    .drag-over {
+      background-color: #e6f3ff !important;
+      border: 2px dashed var(--primary-color) !important;
+      border-radius: 8px;
+    }
+
+    .return-drop-zone {
+      background-color: #fff3e0 !important;
+      border: 2px dashed #f39c12 !important;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .return-drop-zone::after {
+      content: "Drop here to remove from program";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #f39c12;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+
+    /* Canvas dropzone when empty */
+    .canvas-dropzone.drag-over .dropzone-placeholder {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Modal Actions - Sticky Bottom */
+    .modal-actions {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: stretch;
+      padding: 1rem 2.5rem;
+      border-top: 1px solid #eee;
+      background: white;
+      z-index: 10;
+      margin-top: 2rem;
+    }
+    
+    .modal-actions .btn {
+      height: 44px;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border: 2px solid var(--primary-color);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      line-height: 1;
+      margin: 0;
+      vertical-align: baseline;
+      min-width: 150px;
+      background-color: transparent;
+      color: var(--primary-color);
+    }
+    
+    .modal-actions .add-to-program-btn {
+      background-color: var(--primary-color) !important;
+      color: white !important;
+      border-color: var(--primary-color) !important;
+    }
+    
+    .modal-actions .add-to-program-btn:hover {
+      background-color: #2d0a8a;
+      border-color: #2d0a8a;
+    }
+    
+    .modal-actions .add-to-program-btn:disabled {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      cursor: not-allowed;
+      opacity: 0.8;
+    }
+    
+    .modal-actions .add-to-program-btn.added {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+      opacity: 0.8;
+    }
+    
+    .modal-actions .btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
+    }
+    
+    @media (max-width: 768px) {
+      .modal-actions {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .modal-actions .btn {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  </style>
+  <!-- Load centralized navigation BEFORE your main script -->
+  <script src="navigation.js"></script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/images/StayVisibleLogo.png" alt="StayVisible Promotions Logo">
-      </a>
-      <nav>
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <ul id="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="build-program.html" class="active">Build Your Program</a></li>
-          <li><a href="resources.html">Program Resources</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        <form class="search-form" id="search-form-header">
-          <input type="search" name="query" placeholder="Search Products..." aria-label="Search">
-          <button type="submit">Search</button>
-        </form>
-      </nav>
-    </div>
-  </header>
+  <!-- Navigation will be inserted here automatically by navigation.js -->
 
   <!-- Main content wrapper -->
   <main>
@@ -49,7 +736,7 @@
         <!-- Module Palette (Left Sidebar) -->
         <div id="module-palette" class="module-palette">
           <h3>
-            Available Features
+            Choose Your Elements
             <a href="resources.html#detailed-features" class="see-more-link">See more detailed benefits of each feature</a>
           </h3>
           <div class="modules-grid">
@@ -59,6 +746,7 @@
                 Welcome Kits
               </div>
               <p class="module-summary">Create memorable first impressions for new team members.</p>
+              <button class="see-details-btn" data-feature="welcome">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="anniversary" data-tooltip="Celebrate milestones with tiered awards based on years of service.">
               <div class="module-title">
@@ -66,6 +754,7 @@
                 Years of Service
               </div>
               <p class="module-summary">Honor loyalty and celebrate career milestones.</p>
+              <button class="see-details-btn" data-feature="service">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="performance" data-tooltip="Reward top performers for exceeding goals and targets.">
               <div class="module-title">
@@ -73,6 +762,7 @@
                 Performance Bonuses
               </div>
               <p class="module-summary">Recognize and reward outstanding achievements.</p>
+              <button class="see-details-btn" data-feature="performance">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="wellness" data-tooltip="Promote health and well-being with fitness challenges and incentives.">
               <div class="module-title">
@@ -80,6 +770,7 @@
                 Wellness Programs
               </div>
               <p class="module-summary">Support employee health and work-life balance.</p>
+              <button class="see-details-btn" data-feature="wellness">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="spot" data-tooltip="Enable managers to give immediate recognition for great work.">
               <div class="module-title">
@@ -87,6 +778,7 @@
                 Spot Recognition
               </div>
               <p class="module-summary">Provide instant appreciation for exceptional work.</p>
+              <button class="see-details-btn" data-feature="spot">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="peer" data-tooltip="Foster teamwork by allowing colleagues to recognize each other.">
               <div class="module-title">
@@ -94,6 +786,7 @@
                 Peer-to-Peer
               </div>
               <p class="module-summary">Empower team members to celebrate each other.</p>
+              <button class="see-details-btn" data-feature="peer">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="points" data-tooltip="Implement a flexible system where points are earned and redeemed for rewards.">
               <div class="module-title">
@@ -101,6 +794,7 @@
                 Point-Based Rewards
               </div>
               <p class="module-summary">Create flexible, engaging reward experiences.</p>
+              <button class="see-details-btn" data-feature="points">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="awards" data-tooltip="Recognize specific achievements or contributions with formal awards.">
               <div class="module-title">
@@ -108,6 +802,7 @@
                 General Awards
               </div>
               <p class="module-summary">Celebrate specific accomplishments formally.</p>
+              <button class="see-details-btn" data-feature="awards">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="incentives" data-tooltip="Motivate specific behaviors with tangible rewards (merch, gift cards, experiences).">
               <div class="module-title">
@@ -115,13 +810,39 @@
                 Incentives
               </div>
               <p class="module-summary">Drive desired behaviors with meaningful rewards.</p>
+              <button class="see-details-btn" data-feature="incentives">View Ideas</button>
             </div>
-            <div class="program-module" draggable="true" data-module-id="holiday" data-tooltip="Show appreciation during holidays with thoughtful corporate gifts.">
+            <div class="program-module" draggable="true" data-module-id="attendance" data-tooltip="Recognize perfect attendance and improvement to build reliability culture.">
               <div class="module-title">
-                <i class="fas fa-candy-cane"></i>
-                Holiday Gifts
+                <i class="fas fa-calendar-check"></i>
+                Attendance Recognition
               </div>
-              <p class="module-summary">Share seasonal joy with thoughtful gifts.</p>
+              <p class="module-summary">Celebrate reliable team members and reduce absenteeism.</p>
+              <button class="see-details-btn" data-feature="attendance">View Ideas</button>
+            </div>
+            <div class="program-module" draggable="true" data-module-id="safety" data-tooltip="Promote workplace safety through recognition and create safety champions.">
+              <div class="module-title">
+                <i class="fas fa-shield-alt"></i>
+                Safety Recognition
+              </div>
+              <p class="module-summary">Build a culture of safety and prevent workplace incidents.</p>
+              <button class="see-details-btn" data-feature="safety">View Ideas</button>
+            </div>
+            <div class="program-module" draggable="true" data-module-id="community" data-tooltip="Recognize volunteer work and community engagement efforts.">
+              <div class="module-title">
+                <i class="fas fa-hands-helping"></i>
+                Community Impact
+              </div>
+              <p class="module-summary">Honor service and build purpose-driven culture.</p>
+              <button class="see-details-btn" data-feature="community">View Ideas</button>
+            </div>
+            <div class="program-module" draggable="true" data-module-id="custom" data-tooltip="Create a custom recognition program tailored to your unique needs.">
+              <div class="module-title">
+                <i class="fas fa-edit"></i>
+                Custom Recognition
+              </div>
+              <p class="module-summary">Design something unique for your organization.</p>
+              <button class="see-details-btn" data-feature="custom">Design Here</button>
             </div>
           </div>
         </div>
@@ -153,43 +874,65 @@
     </section>
 
     <!-- Contact & Delivery Details Section -->
-    <section id="contact-delivery-section" class="contact-delivery-section container">
-      <h2>Where shall we send your personalized plan?</h2>
-      <form id="plan-details-form">
-        <div class="form-grid">
-            <div class="form-group">
-              <label for="first-name">First Name*</label>
-              <input type="text" id="first-name" name="firstName" required>
+    <section id="contact-delivery-section" class="contact-delivery-section" style="display: none;">
+      <div class="form-container">
+        <h2>Submit and Save Your Plan.</h2>
+        <form id="plan-details-form">
+          <div class="form-grid">
+              <div class="form-group">
+                <label for="first-name">First Name*</label>
+                <input type="text" id="first-name" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone">
+                <small>Optional: Only if you'd like a quick call.</small>
+              </div>
+               <!-- Simple Math Captcha -->
+              <div class="form-group captcha-group">
+                  <label for="captcha">Security Check* <span id="captcha-question"></span> = ?</label>
+                  <input type="number" id="captcha" name="captcha" required>
+                  <input type="hidden" id="captcha-num1">
+                  <input type="hidden" id="captcha-num2">
+              </div>
+          </div>
+          
+          <!-- Selected Features Display -->
+          <div id="form-selected-features" class="form-selected-features">
+            <h3>Your Customized Selection</h3>
+            <div id="form-features-list" class="form-features-list">
+              <!-- Features will be populated by JavaScript -->
             </div>
-            <div class="form-group">
-              <label for="email">Email*</label>
-              <input type="email" id="email" name="email" required>
+            <div class="inspirational-text">
+              The hardest part of anything is the first step—with us it's the easiest.
             </div>
-            <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone">
-              <small>Optional: Only if you'd like a quick call.</small>
+          </div>
+          
+          <!-- Consultation Note -->
+          <div class="consultation-note">
+            <div class="consultation-note-content">
+              <i class="fas fa-handshake consultation-icon"></i>
+              <p>Submit your plan today to receive a <strong>no-charge consultation</strong> with us. We can share ideas that fit your goals and budget -- at no cost to you!</p>
             </div>
-             <!-- Simple Math Captcha -->
-            <div class="form-group captcha-group">
-                <label for="captcha">Security Check* <span id="captcha-question"></span> = ?</label>
-                <input type="number" id="captcha" name="captcha" required>
-                <input type="hidden" id="captcha-num1">
-                <input type="hidden" id="captcha-num2">
-            </div>
-        </div>
-        <button type="submit" id="generate-plan-btn" class="btn">Generate My Plan</button>
-      </form>
+          </div>
+          
+          <button type="submit" id="generate-plan-btn" class="btn">Save My Plan</button>
+        </form>
+      </div>
     </section>
 
     <!-- Printable Plan Summary (Initially Hidden) -->
     <section id="plan-summary-section" class="plan-summary-section" style="display: none;">
-        <div class="container">
+        <div class="container-wide">
             <div id="plan-summary-content" class="plan-summary-content">
                 <!-- Content generated by JS -->
                 <div class="summary-header">
                     <img src="assets/images/StayVisibleLogo.png" alt="StayVisible Logo" class="summary-logo">
-                    <h2>Great, we're building your custom program!</h2>
+                    <h2>Your Customized Selection</h2>
                 </div>
                 <div id="whats-next" class="whats-next">
                      <h3>What's Next:</h3>
@@ -199,10 +942,32 @@
                          <li>We'll reach out shortly to talk about your personalized plan!</li>
                      </ul>
                 </div>
-                <h3>Your Selected Features:</h3>
-                <ul id="summary-modules-list"></ul>
-                <h3>Your Details:</h3>
-                <p id="summary-contact-info"></p>
+                
+                <div class="summary-details-grid">
+                    <div class="summary-left">
+                        <h3>Your Customized Selection:</h3>
+                        <ul id="summary-modules-list"></ul>
+                        <h3>Your Details:</h3>
+                        <p id="summary-contact-info"></p>
+                    </div>
+                    
+                    <div class="summary-right">
+                        <div class="get-started-faster">
+                            <h3>Get Started Faster</h3>
+                            <p>Have questions or ready to move forward? Contact us directly:</p>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>(888) 746-2111</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>theresa@stayvisible.com</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <button onclick="window.print()" class="btn btn-outline print-button">Print Summary</button>
         </div>
@@ -224,6 +989,31 @@
 
   </main> <!-- Close main content wrapper -->
 
+  <!-- Feature Modal -->
+  <div id="feature-modal" class="feature-modal">
+    <div class="feature-modal-content">
+      <span class="feature-modal-close">&times;</span>
+      <div class="feature-modal-header">
+        <i id="modal-icon" class="fas fa-gift"></i>
+        <h2 id="modal-title">Feature Title</h2>
+      </div>
+      <div class="feature-modal-body">
+        <div id="modal-description" class="modal-description">
+          <!-- Description content will be populated by JavaScript -->
+        </div>
+        <div class="modal-products">
+          <h3>Recommended Products for This Feature</h3>
+          <div id="modal-products-grid" class="modal-products-grid">
+            <!-- Products will be populated by JavaScript -->
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="modal-add-to-program" class="btn add-to-program-btn">Add to Program</button>
+          <button id="modal-chat" class="btn btn-outline">Chat with Us</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <div class="container footer-grid">
@@ -273,5 +1063,7 @@
       <a href="contact.html?product=PRODUCT_TITLE" class="btn modal-quote-btn">Request Quote</a>
     </div>
   </div>
+
+  <!-- Inline script removed - functionality moved to script.js -->
+
 </body>
-</html> 

@@ -1,0 +1,140 @@
+/* Centralized Navigation Styles - Include in all pages */
+/* Fix navigation menu height issue and center alignment - 20% smaller */
+nav {
+  align-items: center !important;
+  padding: 0.4rem 1.6rem !important; /* 20% smaller: was 0.5rem 2rem */
+}
+
+nav ul {
+  flex-wrap: nowrap !important;
+  white-space: nowrap;
+  align-items: center !important;
+  gap: 1.2rem !important; /* 20% smaller: was 1.5rem */
+}
+
+nav ul li {
+  flex-shrink: 0;
+  display: flex !important;
+  align-items: center !important;
+}
+
+nav ul li a {
+  padding: 0.6rem 0.8rem !important; /* 20% smaller: was 0.75rem 1rem */
+  font-size: 1.125rem !important; /* 20% smaller: was 1.406rem */
+  display: flex !important;
+  align-items: center !important;
+  line-height: 1.2 !important;
+  font-weight: 600 !important;
+}
+
+/* Ensure dropdown items are also properly aligned and sized */
+.dropdown-menu {
+  min-width: 160px !important; /* 20% smaller: was 200px */
+  padding: 0.6rem 0 !important; /* 20% smaller: was 0.75rem 0 */
+}
+
+.dropdown-menu li a {
+  padding: 0.7rem 1rem !important; /* 20% smaller: was 0.875rem 1.25rem */
+  font-size: 0.95rem !important; /* Increased by 4px: was 0.76rem */
+  line-height: 1.4 !important;
+}
+
+.dropdown-menu li a:hover {
+  padding-left: 1.2rem !important; /* 20% smaller: was 1.5rem */
+}
+
+/* 3-Column Dropdown Layout for Program Resources */
+.dropdown-menu.three-column {
+  display: flex !important;
+  min-width: 600px !important;
+  padding: 1rem 0 !important;
+  gap: 0;
+}
+
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.dropdown-column.overview-column {
+  flex: 0 0 180px;
+  border-right: 1px solid #e0e0e0;
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+.dropdown-column.features-column {
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+.dropdown-column li {
+  width: 100%;
+  margin: 0;
+}
+
+.dropdown-column li a {
+  display: block !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding: 0.7rem 1rem !important;
+  font-size: 0.95rem !important;
+  line-height: 1.4 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-column li a {
+  font-weight: 500 !important;
+}
+
+.dropdown-column li a:hover {
+  background-color: #f8f9fa !important;
+  padding-left: 1.2rem !important;
+  color: var(--brand-orange) !important;
+}
+
+/* Responsive adjustments for 3-column dropdown */
+@media (max-width: 992px) {
+  .dropdown-menu.three-column {
+    min-width: 500px !important;
+  }
+  
+  .dropdown-column.overview-column {
+    flex: 0 0 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul li a {
+    padding: 0.32rem 0.48rem !important; /* 20% smaller: was 0.4rem 0.6rem */
+    font-size: 0.81rem !important; /* 20% smaller: was 1.0125rem */
+  }
+  
+  .dropdown-menu.three-column {
+    flex-direction: column !important;
+    min-width: 250px !important;
+    padding: 0.6rem 0 !important;
+  }
+  
+  .dropdown-column.overview-column {
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-right: 0;
+    padding-bottom: 0.5rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dropdown-column.features-column {
+    padding: 0;
+  }
+  
+  .dropdown-column li a {
+    font-size: 0.85rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+} 

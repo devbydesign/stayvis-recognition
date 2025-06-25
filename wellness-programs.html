@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Programs | Employee Recognition Programs | StayVisible Promotions</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navigation.css">
+  <!-- Load centralized navigation BEFORE your main script -->
+  <script src="navigation.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Navigation will be inserted here automatically by navigation.js -->
+
+  <main class="container">
+    <!-- Wellness Programs Header -->
+    <section class="resources-header">
+      <div class="text-content">
+        <h1>Wellness Programs</h1>
+        <p>Invest in your employees' health and wellbeing with comprehensive wellness initiatives that reduce healthcare costs, boost productivity, and demonstrate genuine care for your team.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
+          <button class="btn btn-primary-subtle" 
+                  onclick="handleFeatureAdditionWithFeedback(this, event)" 
+                  data-feature-name="Wellness Programs" 
+                  data-href="build-program2.html"
+                  style="font-size: 1.1rem; padding: 0.8rem 1.6rem;">
+            <i class="fas fa-plus-circle"></i> Add to My Program
+          </button>
+          <a href="contact.html?inquiry=wellness-programs" class="btn btn-outline">
+            <i class="fas fa-comments"></i> Chat with Our Experts
+          </a>
+        </div>
+      </div>
+      <img src="assets/images/Warm and Cozy Sherpa.jpg" alt="Wellness program gifts including cozy items and health-focused products">
+    </section>
+
+    <!-- Why Wellness Programs Matter -->
+    <section class="content-section">
+      <h2>Why Wellness Programs Drive Success</h2>
+      <div class="main-grid">
+        <div class="info-card">
+          <i class="fas fa-dollar-sign card-icon"></i>
+          <h3>Exceptional ROI</h3>
+          <p>The CDC reports that employers see an average return of <strong style="color: var(--brand-orange);">$3.27 for every $1</strong> invested in wellness programs through reduced healthcare costs and increased productivity.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-chart-line card-icon"></i>
+          <h3>Reduce Absenteeism</h3>
+          <p>Companies with comprehensive wellness programs experience <strong style="color: var(--brand-orange);">28% reduction in sick days</strong> and <strong style="color: var(--brand-orange);">26% reduction in healthcare costs</strong>.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-heart card-icon"></i>
+          <h3>Boost Engagement</h3>
+          <p>Employees who feel their company cares about their health are <strong style="color: var(--brand-orange);">3x more likely</strong> to be engaged at work, according to Gallup research.</p>
+        </div>
+      </div>
+      
+      <!-- CTA Link to Vital Statistics -->
+      <div class="section-cta">
+        <a href="vital-statistics.html" class="vital-stats-cta">
+          <i class="fas fa-chart-bar"></i>
+          See our Vital Statistics page for more information!
+        </a>
+      </div>
+    </section>
+
+    <!-- Wellness Program Products -->
+    <section class="content-section">
+      <h2>Health and Wellness Essentials</h2>
+      <p class="section-intro">
+        Thoughtfully selected products that support physical health, mental wellbeing, and work-life balance.
+      </p>
+      
+      <div class="compact-grid">
+        <div class="compact-card product-card" data-title="Hydration Station Mug" data-img="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" data-desc="A premium insulated mug that encourages healthy hydration habits throughout the workday. The copper design provides excellent temperature retention while the generous size promotes adequate daily water intake.">
+          <img src="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" alt="Hydration Station Mug">
+          <h4>Hydration Station Mug</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="Comfort & Wellness Sherpa" data-img="assets/images/Warm and Cozy Sherpa.jpg" data-desc="A luxurious sherpa blanket that promotes relaxation and stress relief. Perfect for creating cozy moments at home or in the office, supporting mental health through comfort and warmth.">
+          <img src="assets/images/Warm and Cozy Sherpa.jpg" alt="Comfort & Wellness Sherpa">
+          <h4>Comfort & Wellness Sherpa</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="Active Lifestyle Bag" data-img="assets/images/Weekend Travel bag.jpg" data-desc="A versatile travel bag perfect for gym visits, weekend getaways, and active pursuits. Encourages work-life balance by supporting employees' fitness and recreational activities outside of work.">
+          <img src="assets/images/Weekend Travel bag.jpg" alt="Active Lifestyle Bag">
+          <h4>Active Lifestyle Bag</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="On-the-Go Wellness Kit" data-img="assets/images/Popular Sling Bag.jpg" data-desc="A compact sling bag perfect for carrying wellness essentials - water bottles, healthy snacks, fitness trackers, and personal care items. Supports healthy habits both at work and during commutes.">
+          <img src="assets/images/Popular Sling Bag.jpg" alt="On-the-Go Wellness Kit">
+          <h4>On-the-Go Wellness Kit</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wellness Program Categories -->
+    <section class="content-section">
+      <h2>Comprehensive Wellness Solutions</h2>
+      <p class="section-intro">
+        Address different aspects of employee wellbeing with targeted programs that create lasting positive impact.
+      </p>
+      <div class="compact-grid">
+        <div class="compact-card product-card" data-title="Physical Wellness" data-img="assets/images/Popular Sling Bag.jpg" data-desc="Support physical health with fitness challenges, ergonomic assessments, on-site health screenings, and gym membership incentives. Include products that encourage movement and healthy lifestyle choices.">
+          <img src="assets/images/Popular Sling Bag.jpg" alt="Physical Wellness Programs">
+          <h4>Physical Wellness</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="Mental Health Support" data-img="assets/images/Warm and Cozy Sherpa.jpg" data-desc="Promote mental wellbeing through stress management workshops, mindfulness programs, Employee Assistance Programs, and comfort items that provide emotional support and relaxation.">
+          <img src="assets/images/Warm and Cozy Sherpa.jpg" alt="Mental Health Support">
+          <h4>Mental Health Support</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="Nutrition & Hydration" data-img="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" data-desc="Encourage healthy eating and proper hydration with premium drinkware, healthy snack programs, nutrition education, and wellness challenges that promote better dietary habits.">
+          <img src="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" alt="Nutrition Programs">
+          <h4>Nutrition & Hydration</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <div class="compact-card product-card" data-title="Work-Life Balance" data-img="assets/images/Weekend Travel bag.jpg" data-desc="Support healthy boundaries between work and personal life with flexible scheduling, remote work options, and products that encourage recreational activities and family time.">
+          <img src="assets/images/Weekend Travel bag.jpg" alt="Work-Life Balance">
+          <h4>Work-Life Balance</h4>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wellness Engagement Tools -->
+    <section class="content-section">
+      <h2>Drive Participation and Engagement</h2>
+      <p class="section-intro">
+        Create excitement and sustained participation in your wellness programs with engaging tools and incentives.
+      </p>
+      <div class="compact-grid">
+        <div class="compact-card-simple">
+          <img src="assets/images/bundle1.png" alt="Wellness Challenges">
+        </div>
+        <div class="compact-card-simple">
+          <img src="assets/images/kit1.png" alt="Health Tracking">
+        </div>
+        <div class="compact-card-simple">
+          <img src="assets/images/bundle2.png" alt="Team Activities">
+        </div>
+        <div class="compact-card-simple">
+          <img src="assets/images/kit2.png" alt="Wellness Rewards">
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation Best Practices -->
+    <section class="content-section">
+      <h2>What Makes Wellness Programs Effective</h2>
+      <p class="section-intro">Strategic implementation ensures maximum participation and measurable health outcomes.</p>
+      <div class="main-grid">
+        <div class="info-card">
+          <i class="fas fa-users card-icon"></i>
+          <h3>Leadership Participation</h3>
+          <p>When leadership actively participates in wellness programs, employee engagement increases dramatically. Visible executive involvement demonstrates genuine organizational commitment to employee health.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-chart-bar card-icon"></i>
+          <h3>Measure and Celebrate</h3>
+          <p>Track participation rates, health metrics, and program outcomes. Celebrate successes publicly to maintain momentum and demonstrate the positive impact of wellness initiatives on your organization.</p>
+        </div>
+        <div class="info-card">
+          <i class="fas fa-calendar-alt card-icon"></i>
+          <h3>Year-Round Commitment</h3>
+          <p>Effective wellness programs are ongoing, not one-time events. Consistent programming throughout the year creates lasting behavior change and demonstrates sustained organizational commitment to employee health.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <button class="resources-sticky-cta" onclick="handleFeatureAdditionWithFeedback(this, event)" data-feature-name="Wellness Programs" data-href="build-program2.html">
+    <i class="fas fa-plus-circle"></i>
+    Add Wellness Programs to My Program
+  </button>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-section footer-company">
+        <h3>StayVisible</h3>
+        <p>P.O. Box 8234<br>New Fairfield, CT 06812<br>(888) 746-2111</p>
+      </div>
+      <div class="footer-section footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#" onclick="document.querySelector('#search-form-header input[type=search]').focus(); return false;">Search</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="contact.html">Support</a></li>
+          <li><a href="contact.html">Feedback and Suggestions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section footer-social">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/stayvisiblellc" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://x.com/StayVizLLC" target="_blank" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/stayvisible2018/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/stay-visible-llc/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <p>&copy; <span id="current-year"></span> StayVisible Promotions. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close-btn">&times;</span>
+      <img id="modal-img" src="" alt="Product Image">
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <a href="contact.html" class="btn modal-quote-btn">
+        <i class="fas fa-comments"></i> Chat With Us
+      </a>
+    </div>
+  </div>
+
+</body>
+</html> 

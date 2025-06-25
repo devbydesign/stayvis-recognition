@@ -6,29 +6,13 @@
   <title>Program Resources | StayVisible Promotions</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navigation.css">
+  <!-- Load centralized navigation BEFORE your main script -->
+  <script src="navigation.js"></script>
   <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="index.html" class="logo">
-        <img src="assets/images/StayVisibleLogo.png" alt="StayVisible Promotions Logo">
-      </a>
-      <nav>
-        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
-        <ul id="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="build-program.html">Build Your Program</a></li>
-          <li><a href="resources.html" class="active">Program Resources</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-        <form class="search-form" id="search-form-header">
-          <input type="search" name="query" placeholder="Search Products..." aria-label="Search">
-          <button type="submit">Search</button>
-        </form>
-      </nav>
-    </div>
-  </header>
+  <!-- Navigation will be inserted here automatically by navigation.js -->
 
   <main class="container">
     <!-- Resources Header -->
@@ -42,24 +26,24 @@
     </section>
     
     <!-- Resources Section -->
-    <section class="resources-section">
-      <h2>Resources</h2>
-      <div class="resource-grid">
-        <div class="resource-card">
+    <section class="content-section">
+      <h2>Top Resources</h2>
+      <div class="main-grid">
+        <div class="info-card">
           <i class="fas fa-building card-icon"></i>
           <h3>How to Level-Up Your Company Culture</h3>
           <p>Learn how recognition programs can strengthen team bonds and create a positive workplace environment that attracts and retains talent.</p>
           <a href="https://stayvisibleclientportal.com/2022/02/05/company-culture-employee/" target="_blank" class="btn">Read More</a>
         </div>
         
-        <div class="resource-card">
+        <div class="info-card">
           <i class="fas fa-lightbulb card-icon"></i>
           <h3>Nine Tips to Keep Employees Happy</h3>
           <p>Discover practical strategies for employee satisfaction, from recognition timing to selecting the right rewards for maximum impact.</p>
           <a href="https://sage.clientcenter360.com/2022/02/05/employee-more-tips/" target="_blank" class="btn">Read More</a>
         </div>
         
-        <div class="resource-card">
+        <div class="info-card">
           <i class="fas fa-gift card-icon"></i>
           <h3>Top Product Ideas for Your Program</h3>
           <p>Explore our curated selection of employee appreciation products, from premium drinkware to tech accessories.</p>
@@ -69,33 +53,33 @@
     </section>
 
     <!-- Detailed Features Section -->
-    <section id="detailed-features" class="detailed-modules-section">
+    <section id="detailed-features" class="content-section">
       <h2>Recognition Program Features</h2>
       <p class="section-intro">Discover how each feature strengthens your employee recognition strategy</p>
       
-      <div class="detailed-modules-grid">
+      <div class="main-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
         <!-- Welcome Kits Feature -->
-        <div class="detailed-module">
+        <div class="info-card">
           <h3>
-            <i class="fas fa-gift module-icon"></i>
+            <i class="fas fa-gift card-icon"></i>
             Welcome Kits
           </h3>
-          <p class="module-description">Make a lasting first impression with thoughtfully curated welcome packages that help new employees feel valued from day one.</p>
+          <p>Make a lasting first impression with thoughtfully curated welcome packages that help new employees feel valued from day one.</p>
           <ul class="module-benefits">
             <li>Boost new hire engagement by 48%</li>
             <li>Reinforce company culture</li>
             <li>Accelerate team integration</li>
           </ul>
-          <a href="contact.html" class="btn">Learn More</a>
+          <a href="welcome-kits.html" class="btn">Learn More</a>
         </div>
 
         <!-- Years of Service Feature -->
-        <div class="detailed-module">
+        <div class="info-card">
           <h3>
-            <i class="fas fa-calendar-alt module-icon"></i>
+            <i class="fas fa-calendar-alt card-icon"></i>
             Years of Service
           </h3>
-          <p class="module-description">Celebrate loyalty and dedication with meaningful milestone awards that show long-term employees their value to your organization.</p>
+          <p>Celebrate loyalty and dedication with meaningful milestone awards that show long-term employees their value to your organization.</p>
           <ul class="module-benefits">
             <li>Reduce turnover by up to 31%</li>
             <li>Build company legacy</li>
@@ -105,9 +89,9 @@
         </div>
 
         <!-- Performance Bonuses Feature -->
-        <div class="detailed-module">
-          <h3><i class="fas fa-trophy module-icon"></i>Performance Bonuses</h3>
-          <p class="module-description">Drive excellence with targeted rewards that recognize and incentivize outstanding individual and team achievements.</p>
+        <div class="info-card">
+          <h3><i class="fas fa-trophy card-icon"></i>Performance Bonuses</h3>
+          <p>Drive excellence with targeted rewards that recognize and incentivize outstanding individual and team achievements.</p>
           <ul class="module-benefits">
             <li>Increase productivity by 27%</li>
             <li>Motivate high performance</li>
@@ -117,9 +101,9 @@
         </div>
 
         <!-- Wellness Programs Feature -->
-        <div class="detailed-module">
-          <h3><i class="fas fa-heartbeat module-icon"></i>Wellness Programs</h3>
-          <p class="module-description">Promote employee health and well-being through engaging wellness initiatives and rewards that encourage healthy lifestyle choices.</p>
+        <div class="info-card">
+          <h3><i class="fas fa-heartbeat card-icon"></i>Wellness Programs</h3>
+          <p>Promote employee health and well-being through engaging wellness initiatives and rewards that encourage healthy lifestyle choices.</p>
           <ul class="module-benefits">
             <li>Reduce healthcare costs by 25%</li>
             <li>Decrease absenteeism</li>
@@ -129,9 +113,9 @@
         </div>
 
         <!-- Spot Recognition Feature -->
-        <div class="detailed-module">
-          <h3><i class="fas fa-star module-icon"></i>Spot Recognition</h3>
-          <p class="module-description">Enable immediate acknowledgment of exceptional work with on-the-spot rewards that reinforce positive behaviors.</p>
+        <div class="info-card">
+          <h3><i class="fas fa-star card-icon"></i>Spot Recognition</h3>
+          <p>Enable immediate acknowledgment of exceptional work with on-the-spot rewards that reinforce positive behaviors.</p>
           <ul class="module-benefits">
             <li>Strengthen desired behaviors</li>
             <li>Create positive momentum</li>
@@ -141,9 +125,9 @@
         </div>
 
         <!-- Peer-to-Peer Feature -->
-        <div class="detailed-module">
-          <h3><i class="fas fa-users module-icon"></i>Peer-to-Peer</h3>
-          <p class="module-description">Foster a culture of appreciation where team members can recognize and celebrate each other's contributions.</p>
+        <div class="info-card">
+          <h3><i class="fas fa-users card-icon"></i>Peer-to-Peer</h3>
+          <p>Foster a culture of appreciation where team members can recognize and celebrate each other's contributions.</p>
           <ul class="module-benefits">
             <li>Enhance team collaboration</li>
             <li>Improve workplace culture</li>
@@ -151,95 +135,141 @@
           </ul>
           <a href="contact.html" class="btn">Learn More</a>
         </div>
+
+        <!-- Attendance Recognition Feature -->
+        <div class="info-card">
+          <h3><i class="fas fa-calendar-check card-icon"></i>Attendance Recognition</h3>
+          <p>Celebrate reliable team members and build a culture where consistent attendance is valued and rewarded.</p>
+          <ul class="module-benefits">
+            <li>Reduce absenteeism by 41%</li>
+            <li>Improve project completion rates</li>
+            <li>Build reliability culture</li>
+          </ul>
+          <a href="contact.html" class="btn">Learn More</a>
+        </div>
+
+        <!-- Safety Recognition Feature -->
+        <div class="info-card">
+          <h3><i class="fas fa-shield-alt card-icon"></i>Safety Recognition</h3>
+          <p>Promote workplace safety through recognition programs that create safety champions and prevent incidents.</p>
+          <ul class="module-benefits">
+            <li>Reduce workplace incidents by 52%</li>
+            <li>Lower workers' compensation costs</li>
+            <li>Create safety champions</li>
+          </ul>
+          <a href="contact.html" class="btn">Learn More</a>
+        </div>
+
+        <!-- Community Impact Feature -->
+        <div class="info-card">
+          <h3><i class="fas fa-hands-helping card-icon"></i>Community Impact</h3>
+          <p>Recognize volunteer work and community engagement to build purpose-driven culture and attract mission-focused talent.</p>
+          <ul class="module-benefits">
+            <li>Increase employee satisfaction by 38%</li>
+            <li>Improve cross-department collaboration</li>
+            <li>Attract purpose-driven talent</li>
+          </ul>
+          <a href="contact.html" class="btn">Learn More</a>
+        </div>
+
+        <!-- Custom Recognition Feature -->
+        <div class="info-card">
+          <h3><i class="fas fa-edit card-icon"></i>Custom Recognition</h3>
+          <p>Create a tailored recognition program that addresses your organization's unique values, challenges, and opportunities.</p>
+          <ul class="module-benefits">
+            <li>34% higher program participation</li>
+            <li>Better behavior change outcomes</li>
+            <li>Adaptable to evolving needs</li>
+          </ul>
+          <a href="contact.html" class="btn">Learn More</a>
+        </div>
       </div>
     </section>
 
     <!-- Products that Motivate & Inspire Section -->
-    <section class="featured-products-section">
-      <div class="featured-products-container">
-        <h2>Products that Motivate &amp; Inspire Your Teams</h2>
-        <div class="product-grid">
-          <!-- Product Card 1 -->
-          <div class="product-card"
-               data-title="Arctic Zone Titan Copper Mug (24oz)"
-               data-img="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg"
-               data-desc="Premium 24oz copper vacuum insulated mug. Keeps drinks hot for 8 hours, cold for 24 hours. Great for branding.">
-            <img src="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" alt="Arctic Zone Mug">
-            <h3>Arctic Zone Mug</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 2 -->
-          <div class="product-card"
-               data-title="Triblend T-Shirts"
-               data-img="assets/images/triblend-tshirts.jpg"
-               data-desc="Soft and comfortable triblend t-shirts. Available in various colors and sizes. Perfect for apparel promotions.">
-            <img src="assets/images/triblend-tshirts.jpg" alt="Triblend T-shirts">
-            <h3>Triblend T-Shirts</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 3 -->
-          <div class="product-card"
-               data-title="Backpack Tote Combination"
-               data-img="assets/images/backpack-tote-combination.jpg"
-               data-desc="Versatile bag that functions as both a backpack and a tote. Convenient and stylish.">
-            <img src="assets/images/backpack-tote-combination.jpg" alt="Backpack Tote">
-            <h3>Backpack Tote</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 4 -->
-          <div class="product-card"
-               data-title="Ceramic Mugs"
-               data-img="assets/images/Ceramic Mugs.jpg"
-               data-desc="Classic ceramic mugs, perfect for coffee or tea. Large imprint area available.">
-            <img src="assets/images/Ceramic Mugs.jpg" alt="Ceramic Mugs">
-            <h3>Ceramic Mugs</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 5 -->
-          <div class="product-card"
-               data-title="Popular Sling Bag"
-               data-img="assets/images/Popular Sling Bag.jpg"
-               data-desc="Trendy and popular sling bag for everyday carry. Comfortable and practical.">
-            <img src="assets/images/Popular Sling Bag.jpg" alt="Sling Bag">
-            <h3>Sling Bag</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 6 -->
-          <div class="product-card"
-               data-title="Warm and Cozy Sherpa"
-               data-img="assets/images/Warm and Cozy Sherpa.jpg"
-               data-desc="Stay warm with this cozy sherpa pullover or blanket. Ideal for colder seasons.">
-            <img src="assets/images/Warm and Cozy Sherpa.jpg" alt="Sherpa">
-            <h3>Cozy Sherpa</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 7 -->
-          <div class="product-card"
-               data-title="Weekend Travel Bag"
-               data-img="assets/images/Weekend Travel bag.jpg"
-               data-desc="Spacious and durable travel bag, perfect for weekend getaways or short trips.">
-            <img src="assets/images/Weekend Travel bag.jpg" alt="Travel Bag">
-            <h3>Weekend Travel Bag</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-          <!-- Product Card 8 -->
-          <div class="product-card"
-               data-title="Tie Dye Apparel"
-               data-img="assets/images/Tie Dye Apparel.jpg"
-               data-desc="Fun and vibrant tie dye apparel including shirts and hoodies. Great for a retro look.">
-            <img src="assets/images/Tie Dye Apparel.jpg" alt="Tie Dye Apparel">
-            <h3>Tie Dye Apparel</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
-           <!-- Product Card 9 -->
-          <div class="product-card"
-               data-title="Women's 'Words to Live By' Book"
-               data-img="assets/images/Womens-Words-to-live-by.jpg"
-               data-desc="An inspirational book featuring 'Words to Live By' for women. Makes a thoughtful gift.">
-            <img src="assets/images/Womens-Words-to-live-by.jpg" alt="Womens Words to Live By Book">
-            <h3>Words to Live By Book</h3>
-            <button class="btn btn-outline btn-small view-details">View Details</button>
-          </div>
+    <section class="content-section">
+      <h2>Products that Motivate &amp; Inspire</h2>
+      <div class="main-grid">
+        <!-- Product Card 1 -->
+        <div class="info-card product-card"
+             data-title="Arctic Zone Titan Copper Mug (24oz)"
+             data-img="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg"
+             data-desc="Premium 24oz copper vacuum insulated mug. Keeps drinks hot for 8 hours, cold for 24 hours. Great for branding.">
+          <img src="assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" alt="Arctic Zone Mug">
+          <h3>Arctic Zone Mug</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 2 -->
+        <div class="info-card product-card"
+             data-title="Triblend T-Shirts"
+             data-img="assets/images/triblend-tshirts.jpg"
+             data-desc="Soft and comfortable triblend t-shirts. Available in various colors and sizes. Perfect for apparel promotions.">
+          <img src="assets/images/triblend-tshirts.jpg" alt="Triblend T-shirts">
+          <h3>Triblend T-Shirts</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 3 -->
+        <div class="info-card product-card"
+             data-title="Backpack Tote Combination"
+             data-img="assets/images/backpack-tote-combination.jpg"
+             data-desc="Versatile bag that functions as both a backpack and a tote. Convenient and stylish.">
+          <img src="assets/images/backpack-tote-combination.jpg" alt="Backpack Tote">
+          <h3>Backpack Tote</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 4 -->
+        <div class="info-card product-card"
+             data-title="Ceramic Mugs"
+             data-img="assets/images/Ceramic Mugs.jpg"
+             data-desc="Classic ceramic mugs, perfect for coffee or tea. Large imprint area available.">
+          <img src="assets/images/Ceramic Mugs.jpg" alt="Ceramic Mugs">
+          <h3>Ceramic Mugs</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 5 -->
+        <div class="info-card product-card"
+             data-title="Popular Sling Bag"
+             data-img="assets/images/Popular Sling Bag.jpg"
+             data-desc="Trendy and popular sling bag for everyday carry. Comfortable and practical.">
+          <img src="assets/images/Popular Sling Bag.jpg" alt="Sling Bag">
+          <h3>Sling Bag</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 6 -->
+        <div class="info-card product-card"
+             data-title="Warm and Cozy Sherpa"
+             data-img="assets/images/Warm and Cozy Sherpa.jpg"
+             data-desc="Stay warm with this cozy sherpa pullover or blanket. Ideal for colder seasons.">
+          <img src="assets/images/Warm and Cozy Sherpa.jpg" alt="Sherpa">
+          <h3>Cozy Sherpa</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 7 -->
+        <div class="info-card product-card"
+             data-title="Weekend Travel Bag"
+             data-img="assets/images/Weekend Travel bag.jpg"
+             data-desc="Spacious and durable travel bag, perfect for weekend getaways or short trips.">
+          <img src="assets/images/Weekend Travel bag.jpg" alt="Travel Bag">
+          <h3>Weekend Travel Bag</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+        <!-- Product Card 8 -->
+        <div class="info-card product-card"
+             data-title="Tie Dye Apparel"
+             data-img="assets/images/Tie Dye Apparel.jpg"
+             data-desc="Fun and vibrant tie dye apparel including shirts and hoodies. Great for a retro look.">
+          <img src="assets/images/Tie Dye Apparel.jpg" alt="Tie Dye Apparel">
+          <h3>Tie Dye Apparel</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
+        </div>
+         <!-- Product Card 9 -->
+        <div class="info-card product-card"
+             data-title="Women's 'Words to Live By' Book"
+             data-img="assets/images/Womens-Words-to-live-by.jpg"
+             data-desc="An inspirational book featuring 'Words to Live By' for women. Makes a thoughtful gift.">
+          <img src="assets/images/Womens-Words-to-live-by.jpg" alt="Womens Words to Live By Book">
+          <h3>Words to Live By Book</h3>
+          <button class="btn btn-outline btn-small view-details">View Details</button>
         </div>
       </div>
 

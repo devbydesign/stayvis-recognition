@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vital Statistics - Employee Recognition Research | StayVisible Promotions</title>
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="navigation.css">
+  <!-- Load centralized navigation BEFORE your main script -->
+  <script src="navigation.js"></script>
+  <script src="script.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .statistics-hero {
+      background: linear-gradient(135deg, rgba(58, 12, 163, 0.1), rgba(76, 201, 240, 0.15));
+      color: var(--primary-color);
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .statistics-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(58, 12, 163, 0.05), rgba(76, 201, 240, 0.08));
+      z-index: 1;
+    }
+
+    .statistics-hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .statistics-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .statistics-hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--primary-color);
+      opacity: 0.8;
+    }
+
+    .statistics-content {
+      padding: 4rem 0;
+    }
+
+    .feature-section {
+      margin-bottom: 4rem;
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .feature-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--brand-orange);
+    }
+
+    .feature-header i {
+      font-size: 2.5rem;
+      color: var(--brand-orange);
+      margin-right: 1rem;
+    }
+
+    .feature-header h2 {
+      color: var(--primary-color);
+      font-size: 2.2rem;
+      margin: 0;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: white;
+      border-left: 5px solid var(--primary-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-left-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+      border-left-color: var(--brand-orange);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--brand-orange);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-description {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .stat-source {
+      font-size: 0.95rem;
+      color: #666;
+      font-style: italic;
+      background: white;
+      padding: 0.5rem;
+      border-radius: 4px;
+      border: 1px solid #e9ecef;
+    }
+
+    .source-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .source-link:hover {
+      text-decoration: underline;
+    }
+
+    .key-insights {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 12px;
+      padding: 2rem;
+      margin: 3rem 0;
+    }
+
+    .key-insights h3 {
+      color: var(--primary-color);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .insight-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 2px solid var(--primary-color);
+    }
+
+    .insight-item h4 {
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .statistics-hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .statistics-hero p {
+        font-size: 1.1rem;
+      }
+
+      .feature-section {
+        padding: 1.5rem;
+      }
+
+      .feature-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .feature-header i {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation will be inserted here automatically by navigation.js -->
+
+  <main>
+    <section class="statistics-hero">
+      <div class="container">
+        <h1>Vital Statistics</h1>
+        <p>Research-backed data that proves the transformative power of employee recognition programs</p>
+      </div>
+    </section>
+
+    <section class="statistics-content">
+      <div class="container">
+        
+        <!-- Welcome Kits Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-gift"></i>
+            <h2>Welcome Kits & Onboarding</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">69%</span>
+              <div class="stat-description">of employees are more likely to stay with a company for three years if they experienced great onboarding</div>
+              <div class="stat-source"><a href="https://www.shrm.org/topics-tools/news/talent-acquisition/dont-underestimate-importance-good-onboarding" target="_blank">SHRM</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">82%</span>
+              <div class="stat-description">improvement in new hire retention with strong onboarding processes</div>
+              <div class="stat-source"><a href="https://www.strongdm.com/blog/employee-onboarding-statistics" target="_blank">Brandon Hall Group via StrongDM</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">50%</span>
+              <div class="stat-description">greater new hire productivity with standard onboarding processes</div>
+              <div class="stat-source"><a href="https://www.shrm.org/topics-tools/news/talent-acquisition/dont-underestimate-importance-good-onboarding" target="_blank">SHRM</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">77%</span>
+              <div class="stat-description">of new hires who met their first performance goals received formal onboarding training</div>
+              <div class="stat-source"><a href="https://www.myshortlister.com/insights/employee-onboarding-statistics" target="_blank">LinkedIn via Shortlister</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Years of Service Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-calendar-alt"></i>
+            <h2>Years of Service Recognition</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">5x</span>
+              <div class="stat-description">more likely to stay when employees feel appreciated</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">3.5</span>
+              <div class="stat-description">additional years of tenure with consistent recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">79%</span>
+              <div class="stat-description">of people who quit cite "lack of appreciation" as their reason for leaving</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">53%</span>
+              <div class="stat-description">of employees would stay longer if shown more appreciation</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Recognition Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-trophy"></i>
+            <h2>Performance Recognition</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">45%</span>
+              <div class="stat-description">less likely to have turned over after two years for well-recognized employees</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/650174/employee-retention-depends-getting-recognition-right.aspx" target="_blank">Gallup</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">18x</span>
+              <div class="stat-description">more likely to produce great work when employees are recognized</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report/2022-recognition" target="_blank">O.C. Tanner Global Culture Report 2022</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">84%</span>
+              <div class="stat-description">of employees say giving recognition inspires them to think about better ways to get things done</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">225%</span>
+              <div class="stat-description">increase in autonomy satisfaction through recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wellness Programs Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-heart"></i>
+            <h2>Wellness Programs</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">$3.27</span>
+              <div class="stat-description">return on investment for every $1 spent on workplace wellness programs</div>
+              <div class="stat-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7304414/" target="_blank">CDC / Mayo Clinic Proceedings</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">28%</span>
+              <div class="stat-description">reduction in sick leave with comprehensive wellness programs</div>
+              <div class="stat-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7304414/" target="_blank">CDC / Mayo Clinic Proceedings</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">26%</span>
+              <div class="stat-description">reduction in health care costs with effective wellness initiatives</div>
+              <div class="stat-source"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7304414/" target="_blank">CDC / Mayo Clinic Proceedings</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">52%</span>
+              <div class="stat-description">less stress when companies focus on physical, social, and mental wellbeing</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spot Recognition Section -->
+        <div class="feature-section" id="spot-recognition">
+          <div class="feature-header">
+            <i class="fas fa-bullhorn"></i>
+            <h2>Spot Recognition</h2>
+          </div>
+          <p class="feature-intro">Recognizing positive actions immediately reinforces desired behaviors and creates a culture of appreciation. Timely acknowledgment is far more powerful than delayed praise.</p>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">Weekly</span>
+              <div class="stat-description">To be most effective, employee recognition should be given at least every seven days.</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/236441/employee-recognition-low-cost-high-impact.aspx" target="_blank">Gallup</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">40%</span>
+              <div class="stat-description">of employees rank recognition from their manager as the most impactful.</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/236441/employee-recognition-low-cost-high-impact.aspx" target="_blank">Gallup</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">21%</span>
+              <div class="stat-description">increase in employee engagement with proper recognition investment</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">3x</span>
+              <div class="stat-description">more likely to recall recognition experiences that include symbolic awards</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Peer-to-Peer Recognition Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-users"></i>
+            <h2>Peer-to-Peer Recognition</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">4x</span>
+              <div class="stat-description">more likely to feel high inclusion with integrated recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/why-employees-leave" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">13x</span>
+              <div class="stat-description">more likely to feel they belong at the organization with recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/why-employees-leave" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">20x</span>
+              <div class="stat-description">more likely to feel connected when companies celebrate successes together</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/why-employees-leave" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">89%</span>
+              <div class="stat-description">of employees have high trust in leaders who recognize their accomplishments</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report/2022-recognition" target="_blank">O.C. Tanner Global Culture Report 2022</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Point-Based Rewards Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-coins"></i>
+            <h2>Point-Based Rewards</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">23%</span>
+              <div class="stat-description">higher profitability with highly engaged employees</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/654911/employee-engagement-sinks-year-low.aspx" target="_blank">Gallup - Employee Engagement Report 2025</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">18%</span>
+              <div class="stat-description">higher productivity with engaged employees</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank">Gallup - State of the Global Workplace</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">81%</span>
+              <div class="stat-description">lower absenteeism with highly engaged teams</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/647564/employee-engagement-inches-slightly-year-low.aspx" target="_blank">Gallup - Employee Engagement Analysis</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">64%</span>
+              <div class="stat-description">fewer safety incidents with engaged employees</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/659279/global-engagement-falls-second-time-2009.aspx" target="_blank">Gallup - Global Engagement Trends</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- General Awards Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-award"></i>
+            <h2>General Awards</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">2x</span>
+              <div class="stat-description">more likely to have increased revenue with highly integrated recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">114%</span>
+              <div class="stat-description">increase in sense of purpose with integrated recognition</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/why-employees-leave" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">151%</span>
+              <div class="stat-description">increase in feelings of success with recognition culture</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/why-employees-leave" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">70%</span>
+              <div class="stat-description">of employees say recognition is most meaningful when personalized</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report/2022-recognition" target="_blank">O.C. Tanner Global Culture Report 2022</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Incentive Programs Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-chart-line"></i>
+            <h2>Incentive Programs</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">24%</span>
+              <div class="stat-description">higher profit margin when companies invest in employee training</div>
+              <div class="stat-source"><a href="https://learning.linkedin.com/resources/workplace-learning-report" target="_blank">LinkedIn Learning - Workplace Learning Report</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">94%</span>
+              <div class="stat-description">of employees would stay longer if companies invested in their learning and development</div>
+              <div class="stat-source"><a href="https://learning.linkedin.com/resources/workplace-learning-report" target="_blank">LinkedIn Learning Report</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">228%</span>
+              <div class="stat-description">increase in employee experience when autonomy needs are satisfied</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">459%</span>
+              <div class="stat-description">increase in great work incidence when autonomy is satisfied</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance Recognition Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-calendar-check"></i>
+            <h2>Attendance Recognition</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">$225.8B</span>
+              <div class="stat-description">annual cost of absenteeism to U.S. employers in lost productivity</div>
+              <div class="stat-source"><a href="https://www.cdc.gov/chronicdisease/programs-impact/pop/workplace-health-worker-productivity.html" target="_blank">CDC - Workplace Health Promotion</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">41%</span>
+              <div class="stat-description">reduction in unscheduled absences with attendance recognition programs</div>
+              <div class="stat-source"><a href="https://www.shrm.org/topics-tools/tools/hr-answers/what-are-best-practices-attendance-management" target="_blank">SHRM - Attendance Management</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">23%</span>
+              <div class="stat-description">better project completion rates with attendance recognition programs</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/236366/right-culture-not-employee-satisfaction.aspx" target="_blank">Gallup - Workplace Culture</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">34%</span>
+              <div class="stat-description">higher engagement for employees who improve attendance by 15% or more</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/229424/employee-engagement-drive-growth.aspx" target="_blank">Gallup - Employee Engagement</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Safety Recognition Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-shield-alt"></i>
+            <h2>Safety Recognition</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">$170B</span>
+              <div class="stat-description">annual cost of workplace injuries to employers in direct and indirect costs</div>
+              <div class="stat-source"><a href="https://www.osha.gov/businesscase/costs" target="_blank">OSHA - Safety and Health Business Case</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">52%</span>
+              <div class="stat-description">fewer workplace incidents with robust safety recognition programs</div>
+              <div class="stat-source"><a href="https://www.nsc.org/getmedia/73deb8df-e9ec-43e4-af8a-d13073bde4fc/Incentive-programs-haddy-rojas.pdf" target="_blank">National Safety Council - Safety Incentive Programs</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">85%</span>
+              <div class="stat-description">higher safety suggestion rates in workplaces with safety recognition</div>
+              <div class="stat-source"><a href="https://www.safetyservicescompany.com/blog/roi-of-safety/" target="_blank">Safety Services Company - ROI of Safety</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">43%</span>
+              <div class="stat-description">better safety communication with recognition programs</div>
+              <div class="stat-source"><a href="https://www.osha.gov/businesscase/costs" target="_blank">OSHA - Safety Business Case</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Community Impact Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-hands-helping"></i>
+            <h2>Community Impact Programs</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">73%</span>
+              <div class="stat-description">of millennials willing to pay extra for sustainable products and services</div>
+              <div class="stat-source"><a href="https://www.deloitte.com/global/en/our-thinking/insights/topics/value-drivers-in-business/measuring-the-return-on-purpose.html" target="_blank">Deloitte - Return on Purpose</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">83%</span>
+              <div class="stat-description">of workers consider a company's purpose when deciding where to work</div>
+              <div class="stat-source"><a href="https://www.deloitte.com/global/en/our-thinking/insights/topics/value-drivers-in-business/measuring-the-return-on-purpose.html" target="_blank">Deloitte - Return on Purpose</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">38%</span>
+              <div class="stat-description">higher employee satisfaction with community engagement programs</div>
+              <div class="stat-source"><a href="https://www.deloitte.com/global/en/our-thinking/insights/topics/value-drivers-in-business/measuring-the-return-on-purpose.html" target="_blank">Deloitte - Purpose and Performance</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">16%</span>
+              <div class="stat-description">higher performance from purpose-driven employees</div>
+              <div class="stat-source"><a href="https://hbr.org/2018/10/creating-a-purpose-driven-organization" target="_blank">Harvard Business Review</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Recognition Section -->
+        <div class="feature-section">
+          <div class="feature-header">
+            <i class="fas fa-edit"></i>
+            <h2>Custom Recognition Programs</h2>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <span class="stat-number">34%</span>
+              <div class="stat-description">higher program participation with customized recognition programs</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">28%</span>
+              <div class="stat-description">better behavior change with custom programs vs off-the-shelf solutions</div>
+              <div class="stat-source"><a href="https://www.octanner.com/global-culture-report" target="_blank">O.C. Tanner Global Culture Report</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">67%</span>
+              <div class="stat-description">higher effectiveness maintained by adaptable recognition programs over time</div>
+              <div class="stat-source"><a href="https://www.gallup.com/workplace/236441/employee-recognition-low-cost-high-impact.aspx" target="_blank">Gallup - Recognition Impact</a></div>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">56%</span>
+              <div class="stat-description">higher satisfaction rates when employees help shape recognition criteria</div>
+              <div class="stat-source"><a href="https://www.octanner.com/white-papers/the-business-case-for-employee-recognition" target="_blank">O.C. Tanner Institute</a></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Insights Section -->
+        <div class="key-insights">
+          <h3>Key Research Insights</h3>
+          <div class="insights-grid">
+            <div class="insight-item">
+              <h4>Recognition Drives Retention</h4>
+              <p>Companies with strong recognition programs see 31% lower turnover and employees are 5x more likely to stay when they feel appreciated.</p>
+            </div>
+            <div class="insight-item">
+              <h4>Immediate Impact Matters</h4>
+              <p>Immediate recognition increases behavior repetition by 70%, making spot recognition a powerful tool for reinforcing positive behaviors.</p>
+            </div>
+            <div class="insight-item">
+              <h4>Safety & Attendance ROI</h4>
+              <p>Safety recognition programs reduce incidents by 52% while attendance recognition cuts unscheduled absences by 41%, creating substantial business value.</p>
+            </div>
+            <div class="insight-item">
+              <h4>Purpose-Driven Engagement</h4>
+              <p>83% of workers consider company purpose when choosing employers, and community impact programs drive 38% higher employee satisfaction.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>StayVisible Promotions</h3>
+          <p>Creating meaningful employee recognition programs that inspire, celebrate, and elevate your workforce.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="build-program.html">Build Program</a></li>
+            <li><a href="resources.html">Program Resources</a></li>
+            <li><a href="vital-statistics.html">Vital Statistics</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+          <p><i class="fas fa-envelope"></i> info@stayvisible.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 StayVisible Promotions. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('nav ul').classList.toggle('active');
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all stat cards
+    document.querySelectorAll('.stat-card, .insight-item').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>
