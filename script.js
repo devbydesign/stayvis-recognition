@@ -1316,19 +1316,19 @@ document.addEventListener('DOMContentLoaded', function() {
         `,
         products: [
           { name: "Tote Bag", image: "assets/images/tote1.jpg" },
-          { name: "Welcome Kit", image: "assets/images/kit1.png" },
+          { name: "Welcome Kit", image: "assets/images/kit1.PNG" },
           { name: "Travel Bag", image: "assets/images/travelbag1.jpg" },
           { name: "Complete Kit", image: "assets/images/BrandMErchandise2.png" }
         ],
         customizeProducts: [
-          { name: "Clothing Bundle", image: "assets/images/clothes1.png" },
-          { name: "Custom Bundle", image: "assets/images/bundle1.png" },
-          { name: "Custom Kit", image: "assets/images/kit2.png" },
-          { name: "Custom Gift Box", image: "assets/images/bundle3.png" },
+          { name: "Clothing Bundle", image: "assets/images/clothes1.PNG" },
+          { name: "Custom Bundle", image: "assets/images/bundle1.PNG" },
+          { name: "Custom Kit", image: "assets/images/kit2.PNG" },
+          { name: "Custom Gift Box", image: "assets/images/bundle3.PNG" },
           { name: "Drinkware", image: "assets/images/waterbottle1.png" },
-          { name: "Welcome Note Cards", image: "assets/images/Mat1.png" },
-          { name: "Fun Gifts", image: "assets/images/socks1.png" },
-          { name: "Apparel", image: "assets/images/jacket1.png" }
+          { name: "Welcome Note Cards", image: "assets/images/Mat1.PNG" },
+          { name: "Fun Gifts", image: "assets/images/socks1.PNG" },
+          { name: "Apparel", image: "assets/images/jacket1.PNG" }
         ]
       },
       service: {
@@ -1525,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', function() {
         products: [
           { name: "Certificate Frames", image: "assets/images/Womens-Words-to-live-by.jpg" },
           { name: "Desk Accessories", image: "assets/images/Ceramic Mugs.jpg" },
-          { name: "Time Management Tools", image: "assets/images/Mat1.png" },
+          { name: "Time Management Tools", image: "assets/images/Mat1.PNG" },
           { name: "Wellness Items", image: "assets/images/Warm and Cozy Sherpa.jpg" }
         ]
       },
@@ -1547,7 +1547,7 @@ document.addEventListener('DOMContentLoaded', function() {
         products: [
           { name: "Safety Awards", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
           { name: "Recognition Plaques", image: "assets/images/triblend-tshirts.jpg" },
-          { name: "Safety Gear", image: "assets/images/jacket1.png" },
+          { name: "Safety Gear", image: "assets/images/jacket1.PNG" },
           { name: "Team Celebration Items", image: "assets/images/Tie Dye Apparel.jpg" }
         ]
       },
