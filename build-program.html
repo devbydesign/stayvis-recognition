@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StayVisible Promotions - Build Your Program</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=1">
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png?v=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="navigation.css">
@@ -441,7 +444,7 @@
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.65rem;
     }
     
     .modal-products-grid {
@@ -491,7 +494,7 @@
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.65rem;
     }
     
     .modal-customize-grid {
@@ -710,6 +713,82 @@
         width: 100%;
       }
     }
+
+    /* Inspirational Note Container */
+    .inspirational-note-container {
+      margin: 2rem auto;
+      max-width: 600px;
+      padding: 0 1rem;
+    }
+
+    .inspirational-note-content {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid var(--brand-orange);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-style: italic;
+      color: #495057;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .inspirational-note-content i {
+      color: var(--brand-orange);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Form Features List Styling - Match Program Builder 2 */
+    .form-features-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .form-feature-item {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .form-feature-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary-color);
+    }
+
+    .form-feature-item h4 {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+        color: var(--primary-color);
+        font-weight: 600;
+    }
+
+    .form-feature-item p {
+        font-size: 0.9em;
+        line-height: 1.4;
+        color: #666;
+        font-style: italic;
+    }
+
+    /* Center and bold the Your Customized Selection title */
+    .form-selected-features h3 {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .form-features-list {
+            grid-template-columns: 1fr;
+        }
+    }
   </style>
   <!-- Load centralized navigation BEFORE your main script -->
   <script src="navigation.js"></script>
@@ -735,10 +814,7 @@
       <div class="builder-interface">
         <!-- Module Palette (Left Sidebar) -->
         <div id="module-palette" class="module-palette">
-          <h3>
-            Choose Your Elements
-            <a href="resources.html#detailed-features" class="see-more-link">See more detailed benefits of each feature</a>
-          </h3>
+          <h3>Choose Your Elements</h3>
           <div class="modules-grid">
             <div class="program-module" draggable="true" data-module-id="welcome" data-tooltip="Onboard new hires with essential gear and a warm welcome.">
               <div class="module-title">
@@ -871,6 +947,14 @@
         <button id="save-program-btn" class="btn">Save & Continue</button>
         <button id="start-over-btn" class="btn btn-outline">Start Over</button>
       </div>
+      
+      <!-- Inspirational Note -->
+      <div class="inspirational-note-container">
+        <div class="inspirational-note-content">
+          <i class="fas fa-heart"></i>
+          <span>The hardest part of anything is the first step—with us it's the easiest.</span>
+        </div>
+      </div>
     </section>
 
     <!-- Contact & Delivery Details Section -->
@@ -906,9 +990,6 @@
             <h3>Your Customized Selection</h3>
             <div id="form-features-list" class="form-features-list">
               <!-- Features will be populated by JavaScript -->
-            </div>
-            <div class="inspirational-text">
-              The hardest part of anything is the first step—with us it's the easiest.
             </div>
           </div>
           
@@ -1060,7 +1141,7 @@
       <img id="modal-img" src="" alt="Product Image">
       <h2 id="modal-title"></h2>
       <p id="modal-desc"></p>
-      <a href="contact.html?product=PRODUCT_TITLE" class="btn modal-quote-btn">Request Quote</a>
+      <a href="https://stayvisibleclientportal.com/browse-ideas-by-theme/" target="_blank" class="btn modal-quote-btn">Browse Ideas</a>
     </div>
   </div>
 

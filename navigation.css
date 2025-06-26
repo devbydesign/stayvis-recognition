@@ -46,6 +46,7 @@ nav ul li a {
 /* 3-Column Dropdown Layout for Program Resources */
 .dropdown-menu.three-column {
   display: flex !important;
+  align-items: flex-start !important;
   min-width: 600px !important;
   padding: 1rem 0 !important;
   gap: 0;
@@ -54,6 +55,7 @@ nav ul li a {
 .dropdown-column {
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex: 1;
   min-width: 0;
 }
@@ -63,6 +65,10 @@ nav ul li a {
   border-right: 1px solid #e0e0e0;
   padding-right: 1rem;
   margin-right: 1rem;
+}
+
+.dropdown-column.overview-column li a {
+  text-align: center !important;
 }
 
 .dropdown-column.features-column {

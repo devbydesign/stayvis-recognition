@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StayVisible Promotions - Build Your Program 2</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=1">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=1">
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/images/favicon.png?v=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="navigation.css">
@@ -678,7 +681,7 @@
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.65rem;
     }
     
     .modal-products-grid {
@@ -728,7 +731,7 @@
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.65rem;
     }
     
     .modal-customize-grid {
@@ -805,15 +808,16 @@
       box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2);
     }
     
-    /* Custom Module Styling */
-    .custom-module {
+    /* Custom Recognition Wide Styling */
+    .custom-recognition-wide {
+      grid-column: span 2;
       background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
       border: 2px solid var(--primary-color);
       position: relative;
       overflow: hidden;
     }
     
-    .custom-module::before {
+    .custom-recognition-wide::before {
       content: '';
       position: absolute;
       top: 0;
@@ -821,23 +825,6 @@
       right: 0;
       height: 3px;
       background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    }
-    
-    .custom-design-section {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border: 2px solid #e9ecef;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    }
-    
-    .custom-design-title {
-      color: var(--primary-color);
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-align: center;
     }
     
     .add-custom-program-btn {
@@ -870,14 +857,24 @@
       box-shadow: none;
     }
     
-    /* Full width custom feature */
-    .custom-recognition-section {
-      grid-column: 1 / -1;
-      margin-top: 2rem;
+    /* Custom Recognition Title Centering */
+    .custom-recognition-wide h3 {
+      text-align: center !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0.5rem !important;
     }
     
-    .full-width {
-      width: 100%;
+    .custom-recognition-wide h3 .module-icon {
+      margin-right: 0 !important;
+    }
+    
+    /* Responsive adjustments for custom recognition */
+    @media (max-width: 768px) {
+      .custom-recognition-wide {
+        grid-column: span 1;
+      }
     }
     
     .modal-actions {
@@ -1117,6 +1114,7 @@
         background: linear-gradient(135deg, rgba(58, 12, 163, 0.05), rgba(76, 201, 240, 0.05));
         border-radius: 12px;
         border-left: 4px solid var(--primary-color);
+        line-height: 1.2;
     }
 
     .inspirational-text::before {
@@ -1672,36 +1670,27 @@
               </div>
             </div>
 
-
-          </div>
-          
-          <!-- Custom Recognition Feature - Full Width at Bottom -->
-          <div class="custom-recognition-section">
-            <div class="detailed-module custom-module full-width" data-feature-id="custom">
-              <h3><i class="fas fa-edit module-icon"></i>Custom Recognition</h3>
-              <p class="module-description">Create a tailored recognition program that addresses your organization's unique values, challenges, and opportunities.</p>
+            <!-- Custom Recognition Feature - Spans Two Columns -->
+            <div class="detailed-module custom-recognition-wide" data-feature-id="custom">
+              <h3 style="text-align: center;">
+                <i class="fas fa-edit module-icon"></i>
+                Customize Your Personalized Program
+              </h3>
+              <p class="module-description" style="text-align: center;">Create a tailored recognition program that addresses your organization's unique values, challenges, and opportunities.</p>
               
-              <div class="custom-design-section">
-                <h4 class="custom-design-title">Design your tailored program</h4>
-                <div class="custom-form-group">
-                  <label for="custom-program-name">Program Name*</label>
-                  <input type="text" id="custom-program-name" placeholder="e.g., Innovation Awards, Customer Hero Recognition" required>
-                </div>
-                <div class="custom-form-group">
-                  <label for="custom-program-description">Program Description</label>
-                  <textarea id="custom-program-description" placeholder="Describe what behaviors or achievements you want to recognize..." rows="3"></textarea>
-                </div>
-                <button class="add-custom-program-btn" id="add-custom-program">
-                  <i class="fas fa-plus"></i> Add Custom Program
-                </button>
+              <div class="custom-form-group">
+                <label for="custom-program-name">Feature Name*</label>
+                <input type="text" id="custom-program-name" placeholder="e.g., Innovation Awards, Customer Hero Recognition" required>
               </div>
-              
-              <ul class="module-benefits">
-                <li>34% higher program participation</li>
-                <li>Better behavior change outcomes</li>
-                <li>Adaptable to evolving needs</li>
-              </ul>
+              <div class="custom-form-group">
+                <label for="custom-program-description">Feature Description</label>
+                <textarea id="custom-program-description" placeholder="Describe what behaviors or achievements you want to recognize..." rows="3"></textarea>
+              </div>
+              <button class="add-custom-program-btn" id="add-custom-program">
+                <i class="fas fa-plus"></i> Add Custom Program
+              </button>
             </div>
+
           </div>
         </div>
 
@@ -1957,6 +1946,11 @@
         captchaNum1Input.value = num1;
         captchaNum2Input.value = num2;
         if (captchaInput) captchaInput.value = '';
+        
+        // Add a small delay to ensure values are set properly
+        setTimeout(() => {
+          console.log('Captcha generated:', num1, '+', num2, '=', num1 + num2);
+        }, 10);
       }
       
       // Update modal button state
@@ -2158,7 +2152,10 @@
       finalizeBtn.addEventListener('click', function() {
         if (contactSection) {
           contactSection.style.display = 'block';
-          generateCaptcha();
+          // Add a small delay to ensure form elements are visible before generating captcha
+          setTimeout(() => {
+            generateCaptcha();
+          }, 100);
           populateFormFeatures();
           contactSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -2176,8 +2173,17 @@
           const captchaAnswer = parseInt(captchaInput.value);
           const correctAnswer = parseInt(captchaNum1Input.value) + parseInt(captchaNum2Input.value);
           
-          // Validate captcha
-          if (isNaN(captchaAnswer) || captchaAnswer !== correctAnswer) {
+          // Debug captcha validation
+          console.log('Captcha validation:', {
+            userAnswer: captchaAnswer,
+            correctAnswer: correctAnswer,
+            num1: captchaNum1Input.value,
+            num2: captchaNum2Input.value,
+            isValid: captchaAnswer === correctAnswer
+          });
+          
+          // Validate captcha with better error handling
+          if (isNaN(captchaAnswer) || isNaN(correctAnswer) || captchaAnswer !== correctAnswer) {
             alert('Security check failed. Please try again.');
             generateCaptcha();
             return;
@@ -2403,6 +2409,12 @@
             { name: "Premium Apparel", image: "assets/images/triblend-tshirts.jpg" },
             { name: "Travel Bag", image: "assets/images/Weekend Travel bag.jpg" },
             { name: "Sling Bag", image: "assets/images/Popular Sling Bag.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Performance Awards", image: "assets/images/GlassAward.PNG" },
+            { name: "Custom Plaques", image: "assets/images/WallAward.PNG" },
+            { name: "Premium Gifts", image: "assets/images/bundle2.PNG" },
+            { name: "Achievement Pins", image: "assets/images/PinsAndBadges.PNG" }
           ]
         },
         wellness: {
@@ -2425,6 +2437,12 @@
             { name: "Cozy Sherpa", image: "assets/images/Warm and Cozy Sherpa.jpg" },
             { name: "Travel Bag", image: "assets/images/Weekend Travel bag.jpg" },
             { name: "Sling Bag", image: "assets/images/Popular Sling Bag.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Wellness Kits", image: "assets/images/kit2.PNG" },
+            { name: "Fitness Apparel", image: "assets/images/clothes1.PNG" },
+            { name: "Health Accessories", image: "assets/images/waterbottle1.png" },
+            { name: "Comfort Items", image: "assets/images/socks1.PNG" }
           ]
         },
         spot: {
@@ -2447,6 +2465,12 @@
             { name: "Triblend T-Shirts", image: "assets/images/triblend-tshirts.jpg" },
             { name: "Arctic Zone Mug", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
             { name: "Tie Dye Apparel", image: "assets/images/Tie Dye Apparel.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Quick Awards", image: "assets/images/AwardImage.PNG" },
+            { name: "Recognition Cards", image: "assets/images/Mat1.PNG" },
+            { name: "Instant Gifts", image: "assets/images/bundle1.PNG" },
+            { name: "Appreciation Items", image: "assets/images/pens1.PNG" }
           ]
         },
         peer: {
@@ -2469,6 +2493,12 @@
             { name: "Words to Live By", image: "assets/images/Womens-Words-to-live-by.jpg" },
             { name: "Tie Dye Apparel", image: "assets/images/Tie Dye Apparel.jpg" },
             { name: "Backpack Tote", image: "assets/images/backpack-tote-combination.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Team Gifts", image: "assets/images/bundle3.PNG" },
+            { name: "Collaboration Tools", image: "assets/images/tote1.jpg" },
+            { name: "Peer Awards", image: "assets/images/ServicePins.PNG" },
+            { name: "Thank You Cards", image: "assets/images/Pamplets1.PNG" }
           ]
         },
         points: {
@@ -2491,6 +2521,12 @@
             { name: "Experience Vouchers", image: "assets/images/Weekend Travel bag.jpg" },
             { name: "Product Catalog", image: "assets/images/BrandMErchandise.png" },
             { name: "Custom Rewards", image: "assets/images/Ceramic Mugs.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Point Store Items", image: "assets/images/BrandMErchandise2.png" },
+            { name: "Reward Levels", image: "assets/images/CustomGiftLevels.PNG" },
+            { name: "Digital Rewards", image: "assets/images/waterbottle1.png" },
+            { name: "Experience Packages", image: "assets/images/travelbag1.jpg" }
           ]
         },
         awards: {
@@ -2513,6 +2549,12 @@
             { name: "Trophy Collection", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
             { name: "Certificate Frames", image: "assets/images/Womens-Words-to-live-by.jpg" },
             { name: "Branded Awards", image: "assets/images/triblend-tshirts.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Award Plaques", image: "assets/images/WallAward.PNG" },
+            { name: "Crystal Awards", image: "assets/images/GlassAward.PNG" },
+            { name: "Employee of Month", image: "assets/images/EmployeeOfTheMonth.PNG" },
+            { name: "Achievement Pins", image: "assets/images/PinsAndBadges.PNG" }
           ]
         },
         incentives: {
@@ -2535,6 +2577,12 @@
             { name: "Tech Accessories", image: "assets/images/Popular Sling Bag.jpg" },
             { name: "Premium Merchandise", image: "assets/images/Warm and Cozy Sherpa.jpg" },
             { name: "Custom Incentives", image: "assets/images/Tie Dye Apparel.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Goal Rewards", image: "assets/images/bundle2.PNG" },
+            { name: "Performance Gifts", image: "assets/images/CustomGiftLevels.PNG" },
+            { name: "Team Challenges", image: "assets/images/backpack1.jpg" },
+            { name: "Achievement Kits", image: "assets/images/kit1.PNG" }
           ]
         },
         attendance: {
@@ -2555,8 +2603,14 @@
           products: [
             { name: "Certificate Frames", image: "assets/images/Womens-Words-to-live-by.jpg" },
             { name: "Desk Accessories", image: "assets/images/Ceramic Mugs.jpg" },
-            { name: "Time Management Tools", image: "assets/images/Mat1.png" },
+            { name: "Time Management Tools", image: "assets/images/Mat1.PNG" },
             { name: "Wellness Items", image: "assets/images/Warm and Cozy Sherpa.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Perfect Attendance Awards", image: "assets/images/AwardImage.PNG" },
+            { name: "Reliability Pins", image: "assets/images/ServicePins.PNG" },
+            { name: "Attendance Certificates", image: "assets/images/Pamplets1.PNG" },
+            { name: "Motivational Items", image: "assets/images/socks1.PNG" }
           ]
         },
         safety: {
@@ -2577,8 +2631,14 @@
           products: [
             { name: "Safety Awards", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
             { name: "Recognition Plaques", image: "assets/images/triblend-tshirts.jpg" },
-            { name: "Safety Gear", image: "assets/images/jacket1.png" },
+            { name: "Safety Gear", image: "assets/images/jacket1.PNG" },
             { name: "Team Celebration Items", image: "assets/images/Tie Dye Apparel.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Safety Awards", image: "assets/images/YearsOfService_Safety.PNG" },
+            { name: "Safety Plaques", image: "assets/images/WallAward.PNG" },
+            { name: "Safety Pins", image: "assets/images/PinsAndBadges.PNG" },
+            { name: "Safety Certificates", image: "assets/images/AwardImage.PNG" }
           ]
         },
         community: {
@@ -2601,6 +2661,12 @@
             { name: "Community Event Supplies", image: "assets/images/tote1.jpg" },
             { name: "Recognition Certificates", image: "assets/images/Womens-Words-to-live-by.jpg" },
             { name: "Team Building Items", image: "assets/images/Weekend Travel bag.jpg" }
+          ],
+          customizeProducts: [
+            { name: "Volunteer Kits", image: "assets/images/kit2.PNG" },
+            { name: "Community Awards", image: "assets/images/AwardImage.PNG" },
+            { name: "Service Recognition", image: "assets/images/ServicePins.PNG" },
+            { name: "Team Apparel", image: "assets/images/clothes1.PNG" }
           ]
         },
         custom: {
@@ -2708,7 +2774,7 @@
               ctaSection.className = 'modal-cta-section';
               ctaSection.innerHTML = `
                 <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8f9fa; border: 2px solid var(--primary-color); border-radius: 8px; text-align: center;">
-                  <h4 style="margin-bottom: 1rem; color: var(--primary-color);">How Are You Going To Present It?</h4>
+                  <h4 style="margin-bottom: 1rem; color: var(--primary-color); font-size: 1.6rem;">How Are You Going To Present It?</h4>
                   <p style="margin: 0; font-weight: bold; font-size: 1.1em; color: #333;">In Person • Newsletter • Monthly Department Meeting • Deliver</p>
                   <p style="margin: 0.5rem 0 0 0; font-style: italic; color: #666;">Make every milestone moment memorable with the perfect presentation approach.</p>
                 </div>

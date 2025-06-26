@@ -199,8 +199,9 @@ document.addEventListener('DOMContentLoaded', function() {
       modalTitle.textContent = title;
       modalDesc.textContent = desc;
       
-      const quoteLink = `contact.html?product=${encodeURIComponent(title)}`;
+      const quoteLink = `https://stayvisibleclientportal.com/browse-ideas-by-theme/`;
       modalQuoteBtn.href = quoteLink;
+      modalQuoteBtn.target = '_blank';
       
       productModal.style.display = 'block';
       setTimeout(() => productModal.classList.add('show'), 10);
@@ -629,10 +630,14 @@ document.addEventListener('DOMContentLoaded', function() {
               
               modalProductsGrid.innerHTML = '';
               
-              // Remove any existing customize sections
+              // Remove any existing customize and CTA sections
               const existingCustomizeSection = document.querySelector('.modal-customize-section');
               if (existingCustomizeSection) {
                 existingCustomizeSection.remove();
+              }
+              const existingCtaSection = document.querySelector('.modal-cta-section');
+              if (existingCtaSection) {
+                existingCtaSection.remove();
               }
               
               feature.products.forEach(product => {
@@ -651,7 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ctaSection.className = 'modal-cta-section';
                 ctaSection.innerHTML = `
                   <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8f9fa; border: 2px solid var(--primary-color); border-radius: 8px; text-align: center;">
-                    <h4 style="margin-bottom: 1rem; color: var(--primary-color);">How Are You Going To Present It?</h4>
+                    <h4 style="margin-bottom: 1rem; color: var(--primary-color); font-size: 1.6rem !important;">How Are You Going To Present It?</h4>
                     <p style="margin: 0; font-weight: bold; font-size: 1.1em; color: #333;">In Person • Newsletter • Monthly Department Meeting • Deliver</p>
                     <p style="margin: 0.5rem 0 0 0; font-style: italic; color: #666;">Make every milestone moment memorable with the perfect presentation approach.</p>
                   </div>
@@ -690,6 +695,18 @@ document.addEventListener('DOMContentLoaded', function() {
               
               // Store the current feature key for modal handlers
               modal.dataset.currentFeature = featureKey;
+              
+              // Update the modal button state since this feature is already added
+              const modalAddToProgram = document.getElementById('modal-add-to-program');
+              if (modalAddToProgram) {
+                modalAddToProgram.dataset.customHandler = 'false';
+                modalAddToProgram.onclick = null;
+                
+                // Since this is from canvas, the feature is already added
+                modalAddToProgram.innerHTML = '<i class="fas fa-check"></i> Added';
+                modalAddToProgram.classList.add('added');
+                modalAddToProgram.disabled = true;
+              }
               
               // Show modal
               modal.style.display = 'block';
@@ -752,6 +769,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 canvasItem.remove();
                 updateProgramStrength();
                 saveCanvasState();
+                
+                // Update modal button state if modal is open
+                updateModalButtonState();
             }
         }
     });
@@ -809,6 +829,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       updateProgramStrength();
       saveCanvasState();
+      
+      // Update modal button state if modal is open
+      updateModalButtonState();
+      
       draggedModule = null;
     });
 
@@ -821,6 +845,30 @@ document.addEventListener('DOMContentLoaded', function() {
       else if (count >= 3) { widthPercent = 100; text = 'Great foundation!'; }
       strengthBar.style.width = `${widthPercent}%`;
       strengthText.textContent = text;
+    }
+
+    function updateModalButtonState() {
+      const modal = document.getElementById('feature-modal');
+      const modalAddToProgram = document.getElementById('modal-add-to-program');
+      
+      // Only update if modal is currently open and it's not a custom feature
+      if (modal && modal.style.display === 'block' && modalAddToProgram && modalAddToProgram.dataset.customHandler !== 'true') {
+        const currentFeatureKey = modal.dataset.currentFeature;
+        if (currentFeatureKey && featureData[currentFeatureKey]) {
+          const featureTitle = featureData[currentFeatureKey].title;
+          const isAlreadyAdded = selectedFeatures.includes(featureTitle);
+          
+          if (isAlreadyAdded) {
+            modalAddToProgram.innerHTML = '<i class="fas fa-check"></i> Added';
+            modalAddToProgram.classList.add('added');
+            modalAddToProgram.disabled = true;
+          } else {
+            modalAddToProgram.innerHTML = 'Add to Program';
+            modalAddToProgram.classList.remove('added');
+            modalAddToProgram.disabled = false;
+          }
+        }
+      }
     }
 
     function saveCanvasState() {
@@ -1706,7 +1754,7 @@ document.addEventListener('DOMContentLoaded', function() {
               ctaSection.className = 'modal-cta-section';
               ctaSection.innerHTML = `
                 <div style="margin-top: 2rem; padding: 1.5rem; background-color: #f8f9fa; border: 2px solid var(--primary-color); border-radius: 8px; text-align: center;">
-                  <h4 style="margin-bottom: 1rem; color: var(--primary-color);">How Are You Going To Present It?</h4>
+                  <h4 style="margin-bottom: 1rem; color: var(--primary-color); font-size: 1.6rem !important;">How Are You Going To Present It?</h4>
                   <p style="margin: 0; font-weight: bold; font-size: 1.1em; color: #333;">In Person • Newsletter • Monthly Department Meeting • Deliver</p>
                   <p style="margin: 0.5rem 0 0 0; font-style: italic; color: #666;">Make every milestone moment memorable with the perfect presentation approach.</p>
                 </div>
@@ -1862,14 +1910,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
               }, 100);
             } else {
-              // For non-custom features, ensure the button is reset to normal state
+              // For non-custom features, check if already added and update button accordingly
               const modalAddToProgram = document.getElementById('modal-add-to-program');
               if (modalAddToProgram) {
-                modalAddToProgram.disabled = false;
-                modalAddToProgram.textContent = 'Add to Program';
                 modalAddToProgram.dataset.customHandler = 'false';
                 // Clear any existing onclick handler
                 modalAddToProgram.onclick = null;
+                
+                // Check if this feature is already in the program
+                const featureTitle = feature.title;
+                const isAlreadyAdded = selectedFeatures.includes(featureTitle);
+                
+                if (isAlreadyAdded) {
+                  modalAddToProgram.innerHTML = '<i class="fas fa-check"></i> Added';
+                  modalAddToProgram.classList.add('added');
+                  modalAddToProgram.disabled = true;
+                } else {
+                  modalAddToProgram.innerHTML = 'Add to Program';
+                  modalAddToProgram.classList.remove('added');
+                  modalAddToProgram.disabled = false;
+                }
               }
             }
           }
