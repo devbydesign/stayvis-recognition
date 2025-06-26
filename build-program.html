@@ -377,6 +377,159 @@
       border-color: var(--primary-color);
       box-shadow: 0 0 0 3px rgba(58, 12, 163, 0.1);
     }
+
+    /* Disable mouse wheel on number inputs */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Feature summary styling matching program builder 2 */
+    .feature-summary-item {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .feature-summary-content strong {
+        font-size: 1.1rem;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Feature content layout for images and button */
+    .feature-content-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .feature-content-row .feature-product-images {
+        flex: none;
+        margin: 0 !important;
+        margin-top: 0 !important;
+        width: auto;
+        display: flex;
+        gap: 0.35rem;
+    }
+
+    .feature-product-thumb {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+        border: 2px solid #ddd;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-product-thumb:hover {
+        transform: scale(1.05);
+        border-color: var(--primary-color);
+    }
+
+    .browse-incentives-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        background-color: var(--brand-orange);
+        color: var(--light-color);
+        padding: 0.35rem 0.7rem;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        transition: all var(--transition-speed);
+        font-weight: 600;
+        border: 2px solid var(--brand-orange);
+        font-size: 0.85rem;
+        cursor: pointer;
+        width: fit-content;
+        white-space: nowrap;
+        flex-shrink: 0;
+        margin: 0;
+        margin-left: 0.25rem;
+    }
+
+    .browse-incentives-btn:hover {
+        background-color: var(--light-color);
+        color: var(--brand-orange);
+        border-color: var(--brand-orange);
+        text-decoration: none;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .browse-incentives-btn i {
+        font-size: 0.8rem;
+    }
+
+    /* For custom features, center the button vertically in the entire feature container */
+    .feature-summary-content:has(em) .feature-content-row {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: auto;
+        margin: 0;
+        gap: 0;
+    }
+
+    .feature-summary-content:has(em) {
+        position: relative;
+        padding-right: 90px;
+    }
+
+    .feature-summary-content em {
+        font-style: italic;
+        color: #666;
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    /* For features without images, center the button */
+    .feature-content-row:not(:has(.feature-product-images)):not(.feature-summary-content:has(em) .feature-content-row) {
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .feature-content-row {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+        }
+        
+        .browse-incentives-btn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .feature-product-images {
+            justify-content: center;
+        }
+
+        .feature-summary-content:has(em) .feature-content-row {
+            position: relative;
+            right: auto;
+            top: auto;
+            transform: none;
+            width: auto;
+            margin-top: 0.5rem;
+        }
+
+        .feature-summary-content:has(em) {
+            padding-right: 1rem;
+        }
+    }
     
     .custom-form-group textarea {
       resize: vertical;
@@ -966,6 +1119,14 @@
               <div class="form-group">
                 <label for="first-name">First Name*</label>
                 <input type="text" id="first-name" name="firstName" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name*</label>
+                <input type="text" id="last-name" name="lastName" required>
+              </div>
+              <div class="form-group">
+                <label for="company-name">Company Name*</label>
+                <input type="text" id="company-name" name="companyName" required>
               </div>
               <div class="form-group">
                 <label for="email">Email*</label>

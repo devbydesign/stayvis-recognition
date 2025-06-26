@@ -150,6 +150,83 @@
       transform: translateY(-1px);
       box-shadow: 0 2px 8px rgba(58, 12, 163, 0.3);
     }
+
+    /* Browse Incentives Button Styles - Using site's standard button styling */
+    .browse-incentives-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background-color: var(--brand-orange);
+      color: var(--light-color);
+      padding: 0.35rem 0.7rem;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      transition: all var(--transition-speed);
+      font-weight: 600;
+      border: 2px solid var(--brand-orange);
+      font-size: 0.85rem;
+      cursor: pointer;
+      width: fit-content;
+      white-space: nowrap;
+    }
+
+    .browse-incentives-btn:hover {
+      background-color: var(--light-color);
+      color: var(--brand-orange);
+      border-color: var(--brand-orange);
+      text-decoration: none;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .browse-incentives-btn i {
+      font-size: 0.8rem;
+    }
+
+    /* Feature content layout for images and button */
+    .feature-content-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-content-row .feature-product-images {
+      flex: none;
+      margin: 0 !important;
+      margin-top: 0 !important;
+      width: auto;
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .feature-content-row .browse-incentives-btn {
+      flex-shrink: 0;
+      margin: 0;
+      margin-left: 0.25rem;
+    }
+
+    /* For custom features, center the button vertically in the entire feature container */
+    .feature-summary-content:has(em) .feature-content-row {
+      position: absolute;
+      right: 0.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: auto;
+      margin: 0;
+      gap: 0;
+    }
+
+    .feature-summary-content:has(em) {
+      position: relative;
+      padding-right: 90px;
+    }
+
+    /* For features without images, center the button */
+    .feature-content-row:not(:has(.feature-product-images)):not(.feature-summary-content:has(em) .feature-content-row) {
+      justify-content: center;
+    }
     
     .program-counter {
       text-align: center;
@@ -974,7 +1051,7 @@
         margin-top: 40px;
         border-top: 1px solid #e9ecef;
         position: relative;
-        z-index: 1001;
+        z-index: 1;
         width: 100%;
         min-height: 100vh;
     }
@@ -1006,9 +1083,40 @@
 
     .form-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr 1fr;
         gap: 25px;
         margin-bottom: 30px;
+    }
+
+    /* First Name and Email on same row */
+    .form-grid .form-group:nth-child(1) {
+        grid-column: 1;
+    }
+    
+    .form-grid .form-group:nth-child(2) {
+        grid-column: 2;
+    }
+
+    /* Phone and captcha on same row beneath */
+    .form-grid .form-group:nth-child(3) {
+        grid-column: 1;
+    }
+    
+    .form-grid .form-group:nth-child(4) {
+        grid-column: 2;
+    }
+
+    @media (max-width: 768px) {
+        .form-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-grid .form-group:nth-child(1),
+        .form-grid .form-group:nth-child(2),
+        .form-grid .form-group:nth-child(3),
+        .form-grid .form-group:nth-child(4) {
+            grid-column: 1;
+        }
     }
 
     .form-group {
@@ -1039,15 +1147,24 @@
         box-shadow: 0 0 0 3px rgba(58, 12, 163, 0.1);
     }
 
+    /* Disable mouse wheel on number inputs */
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
     .form-group small {
         margin-top: 5px;
         color: #666;
         font-size: 0.9em;
     }
 
-    .captcha-group {
-        grid-column: 1 / -1;
-    }
+
 
     /* Selected Features Display */
     .form-selected-features {
@@ -1267,7 +1384,7 @@
          margin-top: 40px;
          border-top: 1px solid #e9ecef;
          position: relative;
-         z-index: 1002;
+         z-index: 1;
          width: 100%;
          min-height: 100vh;
      }
@@ -1725,6 +1842,14 @@
                 <input type="text" id="first-name" name="firstName" required>
               </div>
               <div class="form-group">
+                <label for="last-name">Last Name*</label>
+                <input type="text" id="last-name" name="lastName" required>
+              </div>
+              <div class="form-group">
+                <label for="company-name">Company Name*</label>
+                <input type="text" id="company-name" name="companyName" required>
+              </div>
+              <div class="form-group">
                 <label for="email">Email*</label>
                 <input type="email" id="email" name="email" required>
               </div>
@@ -1733,7 +1858,7 @@
                 <input type="tel" id="phone" name="phone">
                 <small>Optional: Only if you'd like a quick call.</small>
               </div>
-               <!-- Simple Math Captcha -->
+               <!-- Simple Math Captcha - Moved to same row as phone -->
               <div class="form-group captcha-group">
                   <label for="captcha">Security Check* <span id="captcha-question"></span> = ?</label>
                   <input type="number" id="captcha" name="captcha" required>
@@ -1786,7 +1911,7 @@
                 
                 <div class="summary-details-grid">
                     <div class="summary-left">
-                        <h3>Your customized Selection:</h3>
+                        <h3>Your Customized Selection:</h3>
                         <ul id="summary-modules-list"></ul>
                         <h3>Your Details:</h3>
                         <p id="summary-contact-info"></p>
@@ -1897,6 +2022,23 @@
       const captchaNum1Input = document.getElementById('captcha-num1');
       const captchaNum2Input = document.getElementById('captcha-num2');
       const captchaInput = document.getElementById('captcha');
+      
+      // Feature links for Browse Incentives buttons - moved to global scope
+      const featureLinks = {
+        'Welcome Kits': 'https://www.stayvisible.com/:quicksearch.htm?quicksearchbox=Welcome+Kits',
+        'Years of Service': 'https://www.stayvisible.com/:quicksearch.htm?quicksearchbox=service+award',
+        'Performance Bonuses': 'https://stayvisibleclientportal.com/sub_category_post/incentives-employee/',
+        'Wellness Programs': 'https://stayvisibleclientportal.com/sub_category_post/health-and-wellness-all-products/',
+        'Spot Recognition': 'https://stayvisibleclientportal.com/sub_category_post/employee-appreciation-all-products/',
+        'Peer-to-Peer': 'https://stayvisibleclientportal.com/simple_product/thank-you-notes/',
+        'Point-Based Rewards': 'https://stayvisibleclientportal.com/simple_product/merchandise-incentive-program-2/',
+        'General Awards': 'https://www.stayvisible.com/awards-recognition-paper-weights-crystal.htm',
+        'Incentive Programs': 'https://stayvisibleclientportal.com/sub_category_post/incentives-employee/',
+        'Attendance Recognition': 'https://stayvisibleclientportal.com/sub_category_post/employee-appreciation-merchandise-drinkware/',
+        'Safety Recognition': 'https://stayvisibleclientportal.com/sub_category_post/employee-appreciation-merchandise-apparel/',
+        'Community Impact': 'https://stayvisibleclientportal.com/sub_category_post/incentives-all-products/',
+        'Custom Recognition': 'https://promomonster-clientportal.com/sub_category_post/incentives-all-products/'
+      };
       
       // Local Storage Functions
       function saveSelectedFeatures() {
@@ -2098,6 +2240,8 @@
           'Custom Recognition': 'Tailored recognition programs that address your unique organizational values and goals'
         };
 
+
+
         formFeaturesList.innerHTML = '';
         
         if (selectedFeatures.size === 0) {
@@ -2136,7 +2280,7 @@
               ).join('');
               productImagesHTML = `<div class="feature-product-images">${productImages}</div>`;
             }
-            
+
             featureItem.innerHTML = `
               <h4>${feature}</h4>
               <p>${featureDescriptions[feature] || 'Enhancing your employee recognition program with proven strategies'}</p>
@@ -2168,6 +2312,8 @@
           
           // Get form data
           const firstName = document.getElementById('first-name').value.trim();
+          const lastName = document.getElementById('last-name').value.trim();
+          const companyName = document.getElementById('company-name').value.trim();
           const email = document.getElementById('email').value.trim();
           const phone = document.getElementById('phone').value.trim();
           const captchaAnswer = parseInt(captchaInput.value);
@@ -2184,8 +2330,7 @@
           
           // Validate captcha with better error handling
           if (isNaN(captchaAnswer) || isNaN(correctAnswer) || captchaAnswer !== correctAnswer) {
-            alert('Security check failed. Please try again.');
-            generateCaptcha();
+            alert('Security check failed. Please check your answer and try again.');
             return;
           }
           
@@ -2200,16 +2345,29 @@
               if (feature.startsWith('Custom: ')) {
                 const customName = feature.replace('Custom: ', '');
                 const customDescription = localStorage.getItem(`custom_desc_${customName}`);
+                const browseButton = featureLinks['Custom Recognition'] ? 
+                  `<a href="${featureLinks['Custom Recognition']}" target="_blank" class="browse-incentives-btn">
+                    <i class="fas fa-external-link-alt"></i> Browse Incentives
+                  </a>` : '';
+                
                 li.innerHTML = `
                   <div class="feature-summary-content">
                     <strong>${feature}</strong>
                     ${customDescription ? `<em>Description: ${customDescription}</em>` : ''}
+                    <div class="feature-content-row">
+                      ${browseButton}
+                    </div>
                   </div>
                 `;
               } else {
                 // Get feature data for product images
                 const featureKey = getFeatureKeyFromName(feature);
                 const featureInfo = featureData[featureKey];
+                
+                const browseButton = featureLinks[feature] ? 
+                  `<a href="${featureLinks[feature]}" target="_blank" class="browse-incentives-btn">
+                    <i class="fas fa-external-link-alt"></i> Browse Incentives
+                  </a>` : '';
                 
                 if (featureInfo && featureInfo.products) {
                   const productImages = featureInfo.products.slice(0, 4).map(product => 
@@ -2219,8 +2377,11 @@
                   li.innerHTML = `
                     <div class="feature-summary-content">
                       <strong>${feature}</strong>
-                      <div class="feature-product-images">
-                        ${productImages}
+                      <div class="feature-content-row">
+                        <div class="feature-product-images">
+                          ${productImages}
+                        </div>
+                        ${browseButton}
                       </div>
                     </div>
                   `;
@@ -2228,6 +2389,9 @@
                   li.innerHTML = `
                     <div class="feature-summary-content">
                       <strong>${feature}</strong>
+                      <div class="feature-content-row">
+                        ${browseButton}
+                      </div>
                     </div>
                   `;
                 }
@@ -2240,7 +2404,8 @@
           // Populate contact info
           if (summaryContactInfo) {
             summaryContactInfo.innerHTML = `
-              <strong>Name:</strong> ${firstName}<br>
+              <strong>Name:</strong> ${firstName} ${lastName}<br>
+              <strong>Company:</strong> ${companyName}<br>
               <strong>Email:</strong> ${email}
               ${phone ? `<br><strong>Phone:</strong> ${phone}` : ''}
             `;
@@ -2256,10 +2421,11 @@
           if (typeof emailjs !== 'undefined') {
             const selectedModuleNames = Array.from(selectedFeatures);
             const emailData = {
-              to_name: firstName,
+              to_name: `${firstName} ${lastName}`,
               to_email: email,
               from_name: 'StayVisible Promotions',
-              user_name: firstName,
+              user_name: `${firstName} ${lastName}`,
+              user_company: companyName,
               user_email: email,
               user_phone: phone || 'Not provided',
               selected_modules: selectedModuleNames.join(', '),
@@ -2994,11 +3160,27 @@
         });
       }
 
+      // Disable mouse wheel on number inputs to prevent accidental changes
+      function disableNumberInputScroll() {
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+        numberInputs.forEach(input => {
+          input.addEventListener('wheel', function(e) {
+            e.preventDefault();
+          });
+          input.addEventListener('focus', function() {
+            this.addEventListener('wheel', function(e) {
+              e.preventDefault();
+            });
+          });
+        });
+      }
+
       // Initialize
       // Load saved features first
       const hasLoadedFeatures = loadSelectedFeatures();
       updateStickyBuilder();
       generateCaptcha();
+      disableNumberInputScroll();
       
       // Set initial position after a short delay to ensure layout is complete
       setTimeout(positionStickyBuilder, 100);

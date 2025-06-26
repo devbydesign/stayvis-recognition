@@ -1845,35 +1845,128 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 
 /* Print Styles */
 @media print {
+  * {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 12pt;
+    line-height: 1.4;
+  }
+  
   body * {
     visibility: hidden;
   }
+  
   .plan-summary-section, .plan-summary-section * {
     visibility: visible;
   }
+  
   .plan-summary-section {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 1cm; /* Add padding for print */
-    border: none;
-    background-color: white;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0.5cm !important;
+    border: none !important;
+    background-color: white !important;
+    page-break-before: avoid !important;
   }
+  
   .plan-summary-content {
-    border: none;
-    box-shadow: none;
-    padding: 0;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
   }
-  .print-button {
-    display: none;
+  
+  .summary-header {
+    margin: 0 0 1rem 0 !important;
+    padding: 0 !important;
   }
-  header, footer, .program-builder-section, .contact-delivery-section, .next-step-section, .featured-products-section, .why-choose-us, .hero, .info-snippet {
-      display: none;
+  
+  .summary-logo {
+    max-width: 150px !important;
+    height: auto !important;
+    margin: 0 0 0.5rem 0 !important;
   }
+  
   .whats-next {
-      border: 1px solid #ccc;
-      background-color: #eee;
+    border: 1px solid #ccc !important;
+    background-color: #f5f5f5 !important;
+    padding: 0.5rem !important;
+    margin: 0.5rem 0 !important;
+    page-break-inside: avoid;
+  }
+  
+  .summary-details-grid {
+    display: block !important;
+  }
+  
+  .summary-left, .summary-right {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .get-started-faster {
+    margin-top: 1rem !important;
+    padding: 0.5rem !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  .print-button {
+    display: none !important;
+  }
+  
+  header, footer, .program-builder-section, .contact-delivery-section, .next-step-section, .featured-products-section, .why-choose-us, .hero, .info-snippet, .sticky-program-builder {
+    display: none !important;
+  }
+  
+  /* Ensure Browse Incentives buttons don't break layout in print */
+  .browse-incentives-btn {
+    font-size: 11pt !important;
+    padding: 0.3rem 0.6rem !important;
+    margin: 0.2rem !important;
+  }
+  
+  .feature-content-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    margin: 0.5rem 0 !important;
+  }
+  
+  .feature-product-images {
+    display: flex !important;
+    gap: 0.5rem !important;
+    margin: 0 !important;
+  }
+  
+  .feature-product-thumb {
+    width: 60px !important;
+    height: 60px !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+  }
+  
+  .feature-summary-item {
+    margin-bottom: 1rem !important;
+    padding: 0.8rem !important;
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    page-break-inside: avoid;
+  }
+  
+  .feature-summary-content strong {
+    font-size: 14pt !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
   }
 }
 

@@ -10,6 +10,24 @@ document.addEventListener('DOMContentLoaded', function() {
     currentYearSpan.textContent = new Date().getFullYear();
   }
 
+  // Disable mouse wheel on number inputs to prevent accidental changes
+  function disableNumberInputScroll() {
+    const numberInputs = document.querySelectorAll('input[type="number"]');
+    numberInputs.forEach(input => {
+      input.addEventListener('wheel', function(e) {
+        e.preventDefault();
+      });
+      input.addEventListener('focus', function() {
+        this.addEventListener('wheel', function(e) {
+          e.preventDefault();
+        });
+      });
+    });
+  }
+
+  // Initialize number input scroll prevention
+  disableNumberInputScroll();
+
   // Mobile Menu Toggle
   const menuButton = document.getElementById('mobile-menu');
   const navList = document.getElementById('nav-list');
@@ -1070,6 +1088,8 @@ document.addEventListener('DOMContentLoaded', function() {
       planDetailsForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const firstName = document.getElementById('first-name').value.trim();
+        const lastName = document.getElementById('last-name').value.trim();
+        const companyName = document.getElementById('company-name').value.trim();
         const email = document.getElementById('email').value.trim();
         const phone = document.getElementById('phone').value.trim();
         const captchaAnswer = parseInt(captchaInput.value, 10);
@@ -1082,8 +1102,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        if (!firstName || !email) {
-            alert('Please fill in your First Name and Email.');
+        if (!firstName || !lastName || !companyName || !email) {
+            alert('Please fill in all required fields: First Name, Last Name, Company Name, and Email.');
             return;
         }
 
@@ -1139,13 +1159,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     const parts = name.split('\nDescription: ');
                     const customTitle = parts[0];
                     const customDesc = parts[1];
-                    return `
-                        <li class="feature-summary-item">
-                            <div class="feature-summary-content">
-                                <strong>${customTitle}</strong>
-                                <div class="custom-description">Description: ${customDesc}</div>
-                            </div>
-                        </li>`;
+                                            return `
+                            <li class="feature-summary-item">
+                                <div class="feature-summary-content">
+                                    <strong>${customTitle}</strong>
+                                    <em>Description: ${customDesc}</em>
+                                    <div class="feature-content-row">
+                                        <a href="https://promomonster.com/" target="_blank" class="browse-incentives-btn">
+                                            <i class="fas fa-external-link-alt"></i> Browse Incentives
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>`;
                 }
                 
                 // Check if this is a custom feature without description in the name
@@ -1157,7 +1182,12 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li class="feature-summary-item">
                                 <div class="feature-summary-content">
                                     <strong>${name}</strong>
-                                    <div class="custom-description">Description: ${customDescription}</div>
+                                    <em>Description: ${customDescription}</em>
+                                    <div class="feature-content-row">
+                                        <a href="https://promomonster.com/" target="_blank" class="browse-incentives-btn">
+                                            <i class="fas fa-external-link-alt"></i> Browse Incentives
+                                        </a>
+                                    </div>
                                 </div>
                             </li>`;
                     } else {
@@ -1165,6 +1195,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <li class="feature-summary-item">
                                 <div class="feature-summary-content">
                                     <strong>${name}</strong>
+                                    <div class="feature-content-row">
+                                        <a href="https://promomonster.com/" target="_blank" class="browse-incentives-btn">
+                                            <i class="fas fa-external-link-alt"></i> Browse Incentives
+                                        </a>
+                                    </div>
                                 </div>
                             </li>`;
                     }
@@ -1179,12 +1214,35 @@ document.addEventListener('DOMContentLoaded', function() {
                         `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb">`
                     ).join('');
                     
+                    // Get Browse Incentives URL for this feature
+                    const browseUrls = {
+                        'Welcome Kits': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=quicksearch',
+                        'Years of Service': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=service',
+                        'Performance Bonuses': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=employee%20incentives',
+                        'Wellness Programs': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=health%20wellness',
+                        'Spot Recognition': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=employee%20appreciation',
+                        'Peer-to-Peer': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=thank%20you%20note',
+                        'Point-Based Rewards': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=merchandise%20incentive%20program',
+                        'General Awards': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=awards%20%26%20recognition',
+                        'Incentives': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=employee%20incentives',
+                        'Attendance Recognition': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=drinkware%20merchandise',
+                        'Safety Recognition': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=apparel%20merchandise',
+                        'Community Impact': 'https://stayvisibleclientportal.com/browse-ideas-by-theme/?text=all%20incentive%20product'
+                    };
+                    
+                    const browseUrl = browseUrls[name] || 'https://stayvisibleclientportal.com/browse-ideas-by-theme/';
+                    
                     return `
                         <li class="feature-summary-item">
                             <div class="feature-summary-content">
                                 <strong>${name}</strong>
-                                <div class="feature-product-images">
-                                    ${productImages}
+                                <div class="feature-content-row">
+                                    <div class="feature-product-images">
+                                        ${productImages}
+                                    </div>
+                                    <a href="${browseUrl}" target="_blank" class="browse-incentives-btn">
+                                        <i class="fas fa-external-link-alt"></i> Browse Incentives
+                                    </a>
                                 </div>
                             </div>
                         </li>`;
@@ -1192,7 +1250,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 return `<li>${name}</li>`;
             }).join('');
-            summaryContactInfo.innerHTML = `<strong>Name:</strong> ${firstName}<br><strong>Email:</strong> ${email}${phone ? `<br><strong>Phone:</strong> ${phone}` : ''}`;
+            summaryContactInfo.innerHTML = `<strong>Name:</strong> ${firstName} ${lastName}<br><strong>Company:</strong> ${companyName}<br><strong>Email:</strong> ${email}${phone ? `<br><strong>Phone:</strong> ${phone}` : ''}`;
             
             const getStartedFaster = planSummarySection.querySelector('.get-started-faster');
             if (getStartedFaster) {
@@ -1203,8 +1261,8 @@ document.addEventListener('DOMContentLoaded', function() {
             planSummarySection.scrollIntoView({ behavior: 'smooth' });
         }
         
-        const subject = `Program Plan Submission from ${firstName}`;
-        const body = `New Program Plan Request:\n\nSelected Modules:\n- ${selectedModuleNames.join('\n- ')}\n\nContact Information:\nName: ${firstName}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}`;
+        const subject = `Program Plan Submission from ${firstName} ${lastName}`;
+        const body = `New Program Plan Request:\n\nSelected Modules:\n- ${selectedModuleNames.join('\n- ')}\n\nContact Information:\nName: ${firstName} ${lastName}\nCompany: ${companyName}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}`;
         const mailtoLink = `mailto:rbadiner@rbbmarketing.com,theresa@stayvisible.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
         setTimeout(() => {
