@@ -1109,6 +1109,27 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   filter: brightness(0.95); /* Slightly brighter */
 }
 
+/* Medium tablet view - clip sides and shrink image */
+@media (max-width: 992px) {
+  .hero-landing-bg {
+    background-size: contain;
+    background-position: center;
+    background-color: #f9fafb; /* Match the why-matters section background */
+  }
+}
+
+/* Phone view - remove image entirely */
+@media (max-width: 768px) {
+  .hero-landing {
+    display: none;
+  }
+  
+  /* Adjust padding for 'Why Employee Recognition Matters' section */
+  .why-matters {
+    padding-top: 2rem;
+  }
+}
+
 /* Animation for subtle UI accents in hero */
 @keyframes pulse {
   0% { transform: scale(1); opacity: 0.7; }
@@ -2801,4 +2822,156 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   .module-palette .modules-grid {
     gap: 1.5rem;
   }
+}
+
+/* Tablet view adjustments */
+@media (max-width: 768px) {
+  .hero-landing { 
+    min-height: 35vh; 
+    padding: 3rem 1rem; 
+  }
+  .hero-landing h1 { 
+    font-size: 2.8125rem; 
+  }
+}
+
+/* Phone view - remove image entirely */
+@media (max-width: 576px) {
+  .hero-landing {
+    display: none;
+  }
+  
+  .why-matters {
+    padding-top: 2.5rem;
+  }
+  
+  .hero-landing h1 {
+    font-size: 2.25rem;
+  }
+}
+
+/* Tablet View (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-landing-bg {
+    background-size: 160% auto; /* Slightly wider than viewport */
+    background-position: center center; /* Center the clipped image */
+  }
+  
+  /* Optional: Adjust heading sizes for tablet */
+  .hero-landing h1 {
+    font-size: 2.5rem;
+  }
+  .hero-landing h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tooltip Styles for Statistics */
+.stat-tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.stat-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(51, 51, 51, 0.95);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  max-width: 400px;
+  min-width: 250px;
+  white-space: normal;
+  word-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.stat-tooltip::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  border: 6px solid transparent;
+  border-top-color: rgba(51, 51, 51, 0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.stat-tooltip:hover::after,
+.stat-tooltip:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hide browse incentives buttons in final form output - comment out to show again */
+.form-selected-features .browse-incentives-btn,
+.plan-summary-section .browse-incentives-btn {
+  display: none !important;
+}
+
+/* Improved modal close button styles for feature popups */
+.feature-modal-close {
+  position: absolute !important;
+  right: 20px !important;
+  top: 20px !important;
+  font-size: 36px !important; /* 30% larger than 28px */
+  font-weight: 900 !important; /* Much thicker */
+  color: #666 !important;
+  cursor: pointer !important;
+  z-index: 2001 !important; /* Higher than modal z-index */
+  width: 52px !important; /* 30% larger than 40px */
+  height: 52px !important; /* 30% larger than 40px */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 2px solid transparent !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  line-height: 0 !important; /* Ensure text is vertically centered */
+  text-align: center !important; /* Ensure text is horizontally centered */
+  vertical-align: middle !important; /* Force vertical centering */
+  font-family: Arial, sans-serif !important; /* Use consistent font for better centering 
+}
+
+.feature-modal-close:hover {
+  background-color: #f0f0f0 !important;
+  color: var(--primary-color) !important;
+  transform: scale(1.1) !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2) !important;
+}
+
+/* Ensure modal content positioning doesn't interfere */
+.feature-modal-content {
+  position: relative !important;
+}
+
+/* Override any conflicting styles from individual pages */
+#feature-modal .feature-modal-close,
+.feature-modal .feature-modal-close {
+  position: absolute !important;
+  right: 20px !important;
+  top: 20px !important;
+  font-size: 36px !important;
+  font-weight: 900 !important;
+  width: 52px !important;
+  height: 52px !important;
+  z-index: 2001 !important;
 }

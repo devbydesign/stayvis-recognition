@@ -1734,7 +1734,7 @@
               <ul class="module-benefits">
                 <li>28% faster goal achievement</li>
                 <li>22% higher collaboration</li>
-                <li>2.6x more effective than cash</li>
+                <li>72% cite goal setting as strong motivator</li>
               </ul>
               <div class="module-actions">
                 <button class="btn learn-more-btn" data-feature="incentives">View Ideas</button>
@@ -1930,6 +1930,12 @@
                                     <i class="fas fa-envelope"></i>
                                     <span>theresa@stayvisible.com</span>
                                 </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <a href="https://stayvisibleclientportal.com/lets-connect/" target="_blank" style="color: inherit; text-decoration: none;">
+                                        <span>Schedule a time with me!</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1961,7 +1967,7 @@
         </div>
         <div class="modal-actions">
           <button id="modal-add-feature" class="btn add-to-program-btn">Add to Program</button>
-          <button id="modal-chat" class="btn btn-outline">Chat with Us</button>
+          <button id="modal-chat" class="btn btn-outline">Talk with us!</button>
         </div>
       </div>
     </div>
@@ -2240,8 +2246,6 @@
           'Custom Recognition': 'Tailored recognition programs that address your unique organizational values and goals'
         };
 
-
-
         formFeaturesList.innerHTML = '';
         
         if (selectedFeatures.size === 0) {
@@ -2269,14 +2273,14 @@
               <p>${customDescription || 'A tailored recognition program designed specifically for your organization'}</p>
             `;
           } else {
-            // Get feature data for product images
+            // Get feature data for product images - ensure featureData is available
             const featureKey = getFeatureKeyFromName(feature);
-            const featureInfo = featureData[featureKey];
+            const featureInfo = (typeof featureData !== 'undefined' && featureData[featureKey]) ? featureData[featureKey] : null;
             
             let productImagesHTML = '';
-            if (featureInfo && featureInfo.products) {
+            if (featureInfo && featureInfo.products && featureInfo.products.length > 0) {
               const productImages = featureInfo.products.slice(0, 4).map(product => 
-                `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb">`
+                `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb" onerror="this.style.display='none'">`
               ).join('');
               productImagesHTML = `<div class="feature-product-images">${productImages}</div>`;
             }
@@ -2360,18 +2364,18 @@
                   </div>
                 `;
               } else {
-                // Get feature data for product images
+                // Get feature data for product images - ensure featureData is available
                 const featureKey = getFeatureKeyFromName(feature);
-                const featureInfo = featureData[featureKey];
+                const featureInfo = (typeof featureData !== 'undefined' && featureData[featureKey]) ? featureData[featureKey] : null;
                 
                 const browseButton = featureLinks[feature] ? 
                   `<a href="${featureLinks[feature]}" target="_blank" class="browse-incentives-btn">
                     <i class="fas fa-external-link-alt"></i> Browse Incentives
                   </a>` : '';
                 
-                if (featureInfo && featureInfo.products) {
+                if (featureInfo && featureInfo.products && featureInfo.products.length > 0) {
                   const productImages = featureInfo.products.slice(0, 4).map(product => 
-                    `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb">`
+                    `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb" onerror="this.style.display='none'">`
                   ).join('');
                   
                   li.innerHTML = `
@@ -2501,10 +2505,10 @@
             <p>First impressions matter more than ever in today's competitive talent market. A thoughtfully crafted welcome kit sets the tone for an employee's entire journey with your organization.</p>
             
             <h4>Why Welcome Kits Drive Success</h4>
-            <p>Research from the Society for Human Resource Management shows that <span class="stat-highlight">69% of employees</span> are more likely to stay with a company for three years if they experienced great onboarding. </p>
+            <p>Research from the Society for Human Resource Management shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Society for Human Resource Management (SHRM) - New Employee Onboarding Guide">69% of employees</span> are more likely to stay with a company for three years if they experienced great onboarding. </p>
             
             <h4>Proven Benefits</h4>
-            <p>Organizations with structured onboarding programs see <span class="stat-highlight">54% greater new-hire productivity</span> and <span class="stat-highlight">50% greater new-hire retention</span> according to the Aberdeen Group. Your welcome kit becomes the first touchpoint in this critical process.</p>
+            <p>Organizations with structured onboarding programs see <span class="stat-highlight stat-tooltip" data-tooltip="Source: Aberdeen Group - Perfecting the Onboarding Funnel Research">54% greater new-hire productivity</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Aberdeen Group - Perfecting the Onboarding Funnel Research">50% greater new-hire retention</span> according to the Aberdeen Group. Your welcome kit becomes the first touchpoint in this critical process.</p>
             
             <h4>What Makes Welcome Kits Effective</h4>
             <p>The most successful welcome kits combine practical items employees will use daily with branded elements that reinforce company culture. From premium drinkware to tech accessories that enhance productivity, each item serves as a daily reminder of belonging.</p>
@@ -2534,10 +2538,10 @@
             <p>Long-term employee retention is one of the greatest challenges facing modern organizations. Years of service recognition programs create powerful emotional connections that keep your best talent engaged.</p>
             
             <h4>The Retention Crisis</h4>
-            <p>With the average cost of replacing an employee reaching <span class="stat-highlight">$15,000</span> according to the Center for American Progress, retaining experienced team members is crucial.</p>
+            <p>With the average cost of replacing an employee reaching <span class="stat-highlight stat-tooltip" data-tooltip="Source: Society for Human Resource Management (SHRM) - Employee Replacement Cost Studies">$15,000</span> according to the Center for American Progress, retaining experienced team members is crucial.</p>
             
             <h4>Building Legacy and Loyalty</h4>
-            <p>Service recognition programs demonstrate that you value longevity and growth. Companies with recognition programs have <span class="stat-highlight">31% lower voluntary turnover</span> than those without, according to Bersin by Deloitte research.</p>
+            <p>Service recognition programs demonstrate that you value longevity and growth. Companies with recognition programs have <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup & Workhuman - Employee Retention Research 2024">31% lower voluntary turnover</span> than those without, according to Bersin by Deloitte research.</p>
             
             <h4>Building Lasting Loyalty</h4>
             <p>Encourages long-term retention, shows appreciation for loyalty, and reinforces a culture of stability and commitment. Celebrate employee milestones with personalized gifts or awards recognizing 1, 5, 10, 20+ years of dedication. Let's explore the possibilities and tailor a program just for you.</p>
@@ -2562,10 +2566,10 @@
             <p>High performers drive organizational success, yet many feel undervalued and unrecognized. Strategic performance recognition transforms your top talent into engaged champions of your company's mission.</p>
             
             <h4>The Performance-Recognition Connection</h4>
-            <p>Harvard Business Review research reveals that companies with recognition programs have <span class="stat-highlight">31% lower turnover rates</span> and <span class="stat-highlight">12x better business outcomes</span>. When high performers feel valued, they become force multipliers for your entire organization.</p>
+            <p>Harvard Business Review research reveals that companies with recognition programs have <span class="stat-highlight stat-tooltip" data-tooltip="Source: Harvard Business Review - The Value of Belonging at Work">31% lower turnover rates</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Bersin by Deloitte - Employee Recognition Research">12x better business outcomes</span>. When high performers feel valued, they become force multipliers for your entire organization.</p>
             
             <h4>Beyond Monetary Rewards</h4>
-            <p>While financial bonuses matter, tangible recognition items create lasting emotional connections. Deloitte found that <span class="stat-highlight">85% of employees</span> are motivated when management offers regular feedback and recognition, with physical tokens serving as ongoing reminders of achievement.</p>
+            <p>While financial bonuses matter, tangible recognition items create lasting emotional connections. Deloitte found that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Deloitte - Employee Engagement Strategies Report">85% of employees</span> are motivated when management offers regular feedback and recognition, with physical tokens serving as ongoing reminders of achievement.</p>
             
             <h4>Creating a Culture of Excellence</h4>
             <p>Performance recognition programs signal to all employees that exceptional work is noticed and valued. This creates positive peer pressure and aspirational behavior throughout your organization, driving overall performance improvements and establishing clear expectations for success.</p>
@@ -2590,13 +2594,13 @@
             <p>Employee wellness isn't just a nice-to-have benefit—it's a strategic business imperative that directly impacts productivity, healthcare costs, and organizational culture.</p>
             
             <h4>The Business Case for Wellness</h4>
-            <p>The CDC reports that employers see an average return of <span class="stat-highlight">$3.27 for every $1</span> invested in wellness programs. Companies with comprehensive wellness programs experience <span class="stat-highlight">28% reduction in sick days</span> and <span class="stat-highlight">26% reduction in healthcare costs</span>.</p>
+            <p>The CDC reports that employers see an average return of <span class="stat-highlight stat-tooltip" data-tooltip="Source: CDC - Workplace Health Promotion Model Evaluation">$3.27 for every $1</span> invested in wellness programs. Companies with comprehensive wellness programs experience <span class="stat-highlight stat-tooltip" data-tooltip="Source: CDC - Workplace Health Strategies Research">28% reduction in sick days</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: CDC - Workplace Health Cost Analysis">26% reduction in healthcare costs</span>.</p>
             
             <h4>More Than Physical Health</h4>
-            <p>Modern wellness programs address mental health, work-life balance, and stress management. Johnson & Johnson's wellness program has saved the company <span class="stat-highlight">$250 million</span> in healthcare costs over the past decade while improving employee satisfaction scores.</p>
+            <p>Modern wellness programs address mental health, work-life balance, and stress management. Johnson & Johnson's wellness program has saved the company <span class="stat-highlight stat-tooltip" data-tooltip="Source: Johnson & Johnson Health Affairs Publication - Recent Experience in Health Promotion">$250 million</span> in healthcare costs over the past decade while improving employee satisfaction scores.</p>
             
             <h4>Wellness as Culture Builder</h4>
-            <p>Wellness initiatives demonstrate genuine care for employee wellbeing, creating emotional loyalty that transcends traditional employment relationships. Employees who feel their company cares about their health are <span class="stat-highlight">3x more likely</span> to be engaged at work, according to Gallup research.</p>
+            <p>Wellness initiatives demonstrate genuine care for employee wellbeing, creating emotional loyalty that transcends traditional employment relationships. Employees who feel their company cares about their health are <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Engagement Research">3x more likely</span> to be engaged at work, according to Gallup research.</p>
           `,
           products: [
             { name: "Arctic Zone Mug", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
@@ -2615,22 +2619,22 @@
           title: "Spot Recognition",
           icon: "fas fa-star",
           description: `
-            <p>Immediate recognition has exponentially more impact than delayed acknowledgment. Spot recognition programs capture peak moments of achievement and reinforce positive behaviors in real-time.</p>
+            <p>Spot recognition allows managers and peers to acknowledge exceptional performance in real-time. Whether it’s staying late to comfort a patient’s family or stepping up during a staffing gap, this immediate, meaningful feedback energizes employees and reinforces positive behavior.</p>
             
             <h4>The Power of Immediate Feedback</h4>
-            <p>Neuroscience research shows that recognition within <span class="stat-highlight">7 days of achievement</span> is significantly more effective than delayed recognition. MIT studies demonstrate that immediate positive reinforcement increases the likelihood of behavior repetition by <span class="stat-highlight">70%</span>.</p>
+            <p>For recognition to be most effective, it needs to be timely. Quick recognition creates momentum, boosts morale, and keeps employees engaged—especially during high-stress periods.</p>
             
             <h4>Peer-to-Peer Impact</h4>
-            <p>When spot recognition happens publicly, it creates positive social proof throughout your organization. Employees who witness colleagues being recognized are <span class="stat-highlight">5x more likely</span> to exhibit similar positive behaviors, according to research from the University of Michigan.</p>
+            <p>When spot recognition happens publicly, it creates positive social proof throughout your organization. Employees who witness colleagues being recognized are <span class="stat-highlight stat-tooltip" data-tooltip="Source: University of Michigan Research - Peer Recognition Impact Studies">5x more likely</span> to exhibit similar positive behaviors, according to research from the University of Michigan.</p>
             
             <h4>Building Momentum</h4>
-            <p>Spot recognition creates positive momentum that compounds over time. Teams with regular spot recognition show <span class="stat-highlight">41% lower absenteeism</span> and <span class="stat-highlight">40% lower turnover</span> compared to teams without recognition programs, as reported by Gallup.</p>
+            <p>Spot recognition creates positive momentum that compounds over time. Teams with regular spot recognition show <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Engagement Research">41% lower absenteeism</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Engagement Research">40% lower turnover</span> compared to teams without recognition programs, as reported by Gallup.</p>
           `,
           products: [
-            { name: "Ceramic Mugs", image: "assets/images/Ceramic Mugs.jpg" },
-            { name: "Triblend T-Shirts", image: "assets/images/triblend-tshirts.jpg" },
-            { name: "Arctic Zone Mug", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
-            { name: "Tie Dye Apparel", image: "assets/images/Tie Dye Apparel.jpg" }
+            { name: "Spot Recognition", image: "assets/images/EmployeeOfTheMonth.png" },
+            { name: "Gift Cards", image: "assets/images/GiftCards.png" },
+            { name: "Redeemable Tokens", image: "assets/images/CustomizedTokens.png" },
+            { name: "Give Points", image: "assets/images/Points.jpg" }
           ],
           customizeProducts: [
             { name: "Quick Awards", image: "assets/images/AwardImage.PNG" },
@@ -2646,19 +2650,19 @@
             <p>The most authentic recognition often comes from colleagues who understand the daily challenges and contributions of their peers. Peer-to-peer recognition builds stronger team bonds and creates a culture of mutual appreciation.</p>
             
             <h4>Authentic Recognition</h4>
-            <p>Research from O.C. Tanner shows that <span class="stat-highlight">90% of employees</span> say peer recognition has a positive impact on their work experience. Unlike top-down recognition, peer acknowledgment feels more genuine and relatable because it comes from those working alongside them daily.</p>
+            <p>Peer-to-peer recognition empowers employees at all levels to highlight each other’s contributions. This grassroots form of appreciation builds trust, fosters teamwork, and promotes inclusivity in the workplace.</p>
             
             <h4>Team Cohesion and Collaboration</h4>
-            <p>Teams with peer recognition programs show <span class="stat-highlight">35% higher levels of collaboration</span> and <span class="stat-highlight">42% better team cohesion</span> according to studies by Workplace Research Foundation. When team members actively recognize each other's contributions, it creates psychological safety and trust.</p>
+            <p>Teams with peer recognition programs show <span class="stat-highlight stat-tooltip" data-tooltip="Source: Quantum Workplace - Team Collaboration Research">35% higher levels of collaboration</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: HR Cloud Research - Team Cohesion Studies">42% better team cohesion</span> according to studies by Workplace Research Foundation. When team members actively recognize each other's contributions, it creates psychological safety and trust.</p>
             
-            <h4>Cultural Transformation</h4>
-            <p>Peer recognition programs shift organizational culture from competitive to collaborative. Companies with strong peer recognition see <span class="stat-highlight">14% better employee engagement</span> and <span class="stat-highlight">18% higher performance ratings</span>, as reported by Bersin & Associates research.</p>
+            <h4>Synergistic Insights</h4>
+            <p>Peer recognition also gives managers insight into behind-the-scenes contributions that might otherwise go unnoticed. This leads to a more connected workforce, better communication, and ultimately, stronger patient outcomes.</p>
           `,
           products: [
-            { name: "Ceramic Mugs", image: "assets/images/Ceramic Mugs.jpg" },
-            { name: "Words to Live By", image: "assets/images/Womens-Words-to-live-by.jpg" },
-            { name: "Tie Dye Apparel", image: "assets/images/Tie Dye Apparel.jpg" },
-            { name: "Backpack Tote", image: "assets/images/backpack-tote-combination.jpg" }
+            { name: "Appreciation Gifts", image: "assets/images/AppreciationMagnets.png" },
+            { name: "Customized Tokens", image: "assets/images/CustomizedTokens.png" },
+            { name: "Small Gifts", image: "assets/images/StickyNotes.png" },
+            { name: "Thank You Notes", image: "assets/images/ThankyouNotes.png" }
           ],
           customizeProducts: [
             { name: "Team Gifts", image: "assets/images/bundle3.PNG" },
@@ -2674,18 +2678,18 @@
             <p>Point-based reward systems create flexible, engaging experiences that allow employees to choose rewards that truly matter to them. This approach maximizes satisfaction while minimizing administrative overhead.</p>
             
             <h4>The Psychology of Choice</h4>
-            <p>Research from behavioral economics shows that <span class="stat-highlight">choice increases satisfaction by 40%</span> compared to predetermined rewards. When employees can select their own recognition, it creates a stronger emotional connection to both the reward and the achievement.</p>
+            <p>The choice and visibility of rewards builds friendly competition and excitement across teams, reinforcing engagement, and aligns behavior with organizational priorities. This includes efficiency, patient satisfaction, and quality care metrics.</p>
             
             <h4>Flexible and Scalable</h4>
-            <p>Point systems allow you to recognize both small daily achievements and major milestones with appropriate reward levels. Companies using point-based systems report <span class="stat-highlight">23% higher participation rates</span> in recognition programs compared to fixed-reward systems.</p>
+            <p>Point systems allow you to recognize both small daily achievements and major milestones with appropriate reward levels. Companies using point-based systems report <span class="stat-highlight stat-tooltip" data-tooltip="Source: Quantum Workplace - Point-Based Recognition Research">23% higher participation rates</span> in recognition programs compared to fixed-reward systems.</p>
             
             <h4>Building Engagement Over Time</h4>
-            <p>Points create anticipation and goal-setting behavior among employees. Studies show that <span class="stat-highlight">employees earning points are 2.5x more likely</span> to actively seek opportunities to contribute beyond their basic job requirements, driving innovation and continuous improvement.</p>
+            <p>Points create anticipation and goal-setting behavior among employees. Studies show that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Quantum Workplace - Employee Motivation Research">employees earning points are 2.5x more likely</span> to actively seek opportunities to contribute beyond their basic job requirements, driving innovation and continuous improvement.</p>
           `,
           products: [
             { name: "Gift Cards", image: "assets/images/Popular Sling Bag.jpg" },
             { name: "Experience Vouchers", image: "assets/images/Weekend Travel bag.jpg" },
-            { name: "Product Catalog", image: "assets/images/BrandMErchandise.png" },
+            { name: "Product Catalog", image: "assets/images/Points.jpg" },
             { name: "Custom Rewards", image: "assets/images/Ceramic Mugs.jpg" }
           ],
           customizeProducts: [
@@ -2699,22 +2703,22 @@
           title: "General Awards",
           icon: "fas fa-award",
           description: `
-            <p>Formal award programs provide structure and ceremony to recognition, creating memorable moments that employees treasure throughout their careers. These programs establish clear criteria for excellence and inspire aspirational behavior.</p>
+            <p>Formal awards—such as engraved crystal trophies or plaques—offer public, prestigious recognition for outstanding contributions. Presented during annual ceremonies or team meetings, these awards create moments of pride and boost employee visibility across departments.</p>
             
             <h4>The Power of Formal Recognition</h4>
-            <p>Formal awards carry more weight than informal recognition because they represent organizational values and standards. Research shows that <span class="stat-highlight">employees receiving formal awards are 4x more likely</span> to recommend their workplace to others, significantly improving your employer brand.</p>
+            <p>Formal awards carry more weight than informal recognition because they represent organizational values and standards. Research shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup Research - Employee Recognition Impact">employees receiving formal awards are 4x more likely</span> to recommend their workplace to others, significantly improving your employer brand.</p>
             
             <h4>Creating Memorable Moments</h4>
-            <p>Award ceremonies and presentations create lasting memories that extend far beyond the moment of recognition. Studies indicate that <span class="stat-highlight">91% of award recipients</span> still remember details of their recognition experience years later, demonstrating the lasting impact of formal programs.</p>
+            <p>Award ceremonies and presentations create lasting memories that extend far beyond the moment of recognition. Studies indicate that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Recognition Low Cost High Impact">33% of employees</span> strongly agree they received recognition in the past week, demonstrating the need for more frequent recognition programs.</p>
             
             <h4>Setting Standards of Excellence</h4>
-            <p>Well-designed award programs communicate what exceptional performance looks like, providing clear benchmarks for all employees. Organizations with structured award programs see <span class="stat-highlight">15% improvement in overall performance metrics</span> as teams align their efforts with recognized standards of excellence.</p>
+            <p>Recognizing excellence in categories like innovation, teamwork, or patient advocacy sets clear expectations and highlights role models within the organization. This reinforces core values, elevates culture, and shows potential hires that your organization celebrates and invests in its people.</p>
           `,
           products: [
-            { name: "Custom Plaques", image: "assets/images/Ceramic Mugs.jpg" },
-            { name: "Trophy Collection", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
-            { name: "Certificate Frames", image: "assets/images/Womens-Words-to-live-by.jpg" },
-            { name: "Branded Awards", image: "assets/images/triblend-tshirts.jpg" }
+            { name: "Custom Plaques", image: "assets/images/PlaquesWithStands.png" },
+            { name: "Trophy Collection", image: "assets/images/UniqueTrophies.png" },
+            { name: "Custom Glassware", image: "assets/images/CustomGlassware.png.png" },
+            { name: "Unique Awards", image: "assets/images/timepieces.png" }
           ],
           customizeProducts: [
             { name: "Award Plaques", image: "assets/images/WallAward.PNG" },
@@ -2730,19 +2734,19 @@
             <p>Strategic incentive programs drive specific behaviors and outcomes while creating excitement and engagement around key business objectives. These programs turn abstract goals into tangible, achievable milestones.</p>
             
             <h4>Driving Specific Outcomes</h4>
-            <p>Unlike general recognition, incentive programs target specific behaviors or results that directly impact business success. Companies using targeted incentives report <span class="stat-highlight">28% faster goal achievement</span> compared to organizations relying solely on traditional motivational approaches.</p>
+            <p>Unlike general recognition, incentive programs target specific behaviors or results that directly impact business success. Companies using targeted incentives report <span class="stat-highlight stat-tooltip" data-tooltip="Source: Rewardian Research - Goal Achievement Studies">28% faster goal achievement</span> compared to organizations relying solely on traditional motivational approaches.</p>
             
             <h4>Creating Healthy Competition</h4>
-            <p>Well-designed incentive programs foster positive competition that energizes teams without creating destructive rivalry. Research shows that <span class="stat-highlight">teams with incentive programs show 22% higher collaboration</span> when programs emphasize collective success alongside individual achievement.</p>
+            <p>Well-designed incentive programs foster positive competition that energizes teams without creating destructive rivalry. Research shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: HR Cloud Research - Team Collaboration Studies">teams with incentive programs show 22% higher collaboration</span> when programs emphasize collective success alongside individual achievement.</p>
             
-            <h4>Tangible Motivation</h4>
-            <p>Physical rewards and experiences create stronger motivation than purely financial incentives. Studies demonstrate that <span class="stat-highlight">non-cash incentives are 2.6x more effective</span> at motivating performance than cash equivalents, because tangible rewards create lasting emotional connections to achievement.</p>
+            <h4>Cost-Saving Initiative</h4>
+            <p>Incentive programs tied to cost-saving initiatives—such as reducing waste, managing overtime, or improving patient throughput—encourage smart, proactive behavior. Employees are rewarded not just for effort but for results that help the organization operate more efficiently.</p>
           `,
           products: [
             { name: "Experience Packages", image: "assets/images/Weekend Travel bag.jpg" },
-            { name: "Tech Accessories", image: "assets/images/Popular Sling Bag.jpg" },
-            { name: "Premium Merchandise", image: "assets/images/Warm and Cozy Sherpa.jpg" },
-            { name: "Custom Incentives", image: "assets/images/Tie Dye Apparel.jpg" }
+            { name: "Tech Accessories", image: "assets/images/UsefulTech.png" },
+            { name: "Premium Merchandise", image: "assets/images/UsefulUtilities.png" },
+            { name: "Custom Incentives", image: "assets/images/Apparel2.png" }
           ],
           customizeProducts: [
             { name: "Goal Rewards", image: "assets/images/bundle2.PNG" },
@@ -2755,22 +2759,22 @@
           title: "Attendance Recognition",
           icon: "fas fa-calendar-check",
           description: `
-            <p>Consistent attendance is the foundation of productivity and team reliability. Recognition programs that celebrate perfect attendance and improvement create positive reinforcement that benefits the entire organization.</p>
+            <p>Rewarding employees for consistent attendance encourages dependability and helps reduce the disruption caused by callouts or chronic absenteeism. This is especially vital in healthcare, where patient care continuity is critical.</p>
             
             <h4>The Hidden Cost of Absenteeism</h4>
-            <p>The CDC estimates that absenteeism costs U.S. employers <span class="stat-highlight">$225.8 billion annually</span> in lost productivity. Companies with attendance recognition programs see <span class="stat-highlight">41% reduction in unscheduled absences</span> according to research from the Society for Human Resource Management.</p>
+            <p>The CDC estimates that absenteeism costs U.S. employers <span class="stat-highlight stat-tooltip" data-tooltip="Source: CDC - Workplace Health Worker Productivity Report">$225.8 billion annually</span> in lost productivity. Companies with attendance recognition programs see <span class="stat-highlight stat-tooltip" data-tooltip="Source: SHRM - Attendance Management Best Practices">41% reduction in unscheduled absences</span> according to research from the Society for Human Resource Management.</p>
             
             <h4>Building Reliability Culture</h4>
-            <p>When attendance is recognized and celebrated, it creates a culture where being present matters. Studies show that <span class="stat-highlight">teams with attendance recognition have 23% better project completion rates</span> and <span class="stat-highlight">18% higher customer satisfaction scores</span> due to improved consistency and reliability.</p>
+            <p>When attendance is recognized and celebrated, it creates a culture where being present matters. Studies show that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Workplace Culture Research">teams with attendance recognition have 23% better project completion rates</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Customer Satisfaction Studies">18% higher customer satisfaction scores</span> due to improved consistency and reliability.</p>
             
             <h4>Beyond Perfect Attendance</h4>
-            <p>Modern attendance programs recognize improvement, not just perfection. Employees who improve their attendance by <span class="stat-highlight">15% or more show 34% higher engagement</span> and are <span class="stat-highlight">2.8x more likely</span> to recommend their workplace to others, according to Gallup research.</p>
+            <p>Modern attendance programs recognize improvement, not just perfection. Whether it's monthly or quarterly-this recognition can include points, small gifts, or public praise, all of which boost employee commitment. This reduces overtime burden on others, and positively impacts the patient experience and care quality.</p>
           `,
           products: [
-            { name: "Certificate Frames", image: "assets/images/Womens-Words-to-live-by.jpg" },
-            { name: "Desk Accessories", image: "assets/images/Ceramic Mugs.jpg" },
-            { name: "Time Management Tools", image: "assets/images/Mat1.PNG" },
-            { name: "Wellness Items", image: "assets/images/Warm and Cozy Sherpa.jpg" }
+            { name: "Public Recognition", image: "assets/images/PublicRecognition.jpg" },
+            { name: "Points System", image: "assets/images/Points.jpg" },
+            { name: "Drinkware", image: "assets/images/Drinkware.png" },
+            { name: "Apparel", image: "assets/images/Apparel.png" }
           ],
           customizeProducts: [
             { name: "Perfect Attendance Awards", image: "assets/images/AwardImage.PNG" },
@@ -2783,22 +2787,22 @@
           title: "Safety Recognition",
           icon: "fas fa-shield-alt",
           description: `
-            <p>Workplace safety isn't just about compliance—it's about creating a culture where every team member feels valued and protected. Safety recognition programs drive behavior change and demonstrate genuine care for employee wellbeing.</p>
+            <p>Safety recognition programs encourage adherence to protocols and promote a culture of accountability. Recognizing teams or individuals for accident-free days, compliance with PPE guidelines, or participation in safety trainings increases awareness and reduces workplace incidents.</p>
             
             <h4>The Business Impact of Safety</h4>
-            <p>OSHA reports that workplace injuries cost employers <span class="stat-highlight">$170 billion annually</span> in direct and indirect costs. Companies with robust safety recognition programs experience <span class="stat-highlight">52% fewer workplace incidents</span> and <span class="stat-highlight">40% lower workers' compensation costs</span> according to the National Safety Council.</p>
+            <p>OSHA reports that workplace injuries cost employers <span class="stat-highlight stat-tooltip" data-tooltip="Source: OSHA - Safety and Health Business Case">$170 billion annually</span> in direct and indirect costs. Companies with robust safety recognition programs experience <span class="stat-highlight stat-tooltip" data-tooltip="Source: National Safety Council - Safety Incentive Programs">52% fewer workplace incidents</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: National Safety Council - Workers Compensation Cost Analysis">40% lower workers' compensation costs</span> according to the National Safety Council.</p>
             
             <h4>Creating Safety Champions</h4>
-            <p>Recognition programs transform employees into safety advocates. Research shows that <span class="stat-highlight">workplaces with safety recognition have 85% higher safety suggestion rates</span> and <span class="stat-highlight">67% better near-miss reporting</span>, creating proactive safety cultures that prevent incidents before they occur.</p>
+            <p>Recognition programs transform employees into safety advocates. Research shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Safety Services Company - ROI of Safety Programs">workplaces with safety recognition have 85% higher safety suggestion rates</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Safety Services Company - Near-Miss Reporting Studies">67% better near-miss reporting</span>, creating proactive safety cultures that prevent incidents before they occur.</p>
             
             <h4>Psychological Safety and Physical Safety</h4>
-            <p>When employees feel recognized for safety contributions, it creates psychological safety that encourages open communication about risks. Teams with safety recognition show <span class="stat-highlight">43% better safety communication</span> and <span class="stat-highlight">31% faster hazard resolution times</span>, according to industrial psychology research.</p>
+            <p>When employees feel recognized for safety contributions, it creates psychological safety that encourages open communication about risks. Teams with safety recognition show <span class="stat-highlight stat-tooltip" data-tooltip="Source: OSHA - Safety Communication Research">43% better safety communication</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: OSHA - Hazard Resolution Studies">31% faster hazard resolution times</span>, according to industrial psychology research.</p>
           `,
           products: [
-            { name: "Safety Awards", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
-            { name: "Recognition Plaques", image: "assets/images/triblend-tshirts.jpg" },
-            { name: "Safety Gear", image: "assets/images/jacket1.PNG" },
-            { name: "Team Celebration Items", image: "assets/images/Tie Dye Apparel.jpg" }
+            { name: "Insulated Drinkware", image: "assets/images/InsulatedDrinkware.png" },
+            { name: "Point System", image: "assets/images/Points.jpg" },
+            { name: "Lunch Cooler", image: "assets/images/LunchCooler.png" },
+            { name: "Team Tech Items", image: "assets/images/TechItems.png" }
           ],
           customizeProducts: [
             { name: "Safety Awards", image: "assets/images/YearsOfService_Safety.PNG" },
@@ -2814,19 +2818,19 @@
             <p>Employee volunteer programs and community engagement initiatives create purpose-driven cultures that attract top talent and build meaningful connections beyond the workplace.</p>
             
             <h4>The Purpose-Driven Workforce</h4>
-            <p>Deloitte research shows that <span class="stat-highlight">73% of millennials</span> are willing to pay extra for sustainable products and services, and <span class="stat-highlight">83% consider a company's purpose</span> when deciding where to work. Community impact programs address this growing demand for meaningful work.</p>
+            <p>Deloitte research shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Deloitte - Return on Purpose Research">73% of millennials</span> are willing to pay extra for sustainable products and services, and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Deloitte - Purpose and Performance Studies">83% consider a company's purpose</span> when deciding where to work. Community impact programs address this growing demand for meaningful work.</p>
             
             <h4>Building Team Bonds Through Service</h4>
-            <p>Volunteer activities create unique bonding experiences outside normal work contexts. Companies with community engagement programs report <span class="stat-highlight">38% higher employee satisfaction</span> and <span class="stat-highlight">45% better cross-department collaboration</span> according to Points of Light Foundation research.</p>
+            <p>Volunteer activities create unique bonding experiences outside normal work contexts. Companies with community engagement programs report <span class="stat-highlight stat-tooltip" data-tooltip="Source: Deloitte - Purpose and Performance Research">38% higher employee satisfaction</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Deloitte - Cross-Department Collaboration Studies">45% better cross-department collaboration</span> according to Points of Light Foundation research.</p>
             
             <h4>Attracting Mission-Driven Talent</h4>
-            <p>Organizations known for community impact attract employees who care deeply about their work's broader meaning. These purpose-driven employees show <span class="stat-highlight">16% higher performance</span> and <span class="stat-highlight">125% lower burnout rates</span> compared to employees in organizations without clear community mission, as reported by Harvard Business Review.</p>
+            <p>Organizations known for community impact attract employees who care deeply about their work's broader meaning. These purpose-driven employees show <span class="stat-highlight stat-tooltip" data-tooltip="Source: Harvard Business Review - Creating Purpose-Driven Organizations">16% higher performance</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: Harvard Business Review - Burnout Prevention Research">125% lower burnout rates</span> compared to employees in organizations without clear community mission, as reported by Harvard Business Review.</p>
           `,
           products: [
-            { name: "Volunteer T-Shirts", image: "assets/images/triblend-tshirts.jpg" },
-            { name: "Community Event Supplies", image: "assets/images/tote1.jpg" },
-            { name: "Recognition Certificates", image: "assets/images/Womens-Words-to-live-by.jpg" },
-            { name: "Team Building Items", image: "assets/images/Weekend Travel bag.jpg" }
+            { name: "Unique Signage", image: "assets/images/Signage.png" },
+            { name: "Fun Gifts", image: "assets/images/socks1.PNG" },
+            { name: "Matching Apparel", image: "assets/images/Apparel3.png.png" },
+            { name: "Custom Drinkware", image: "assets/images/Drinkware2.png.png" }
           ],
           customizeProducts: [
             { name: "Volunteer Kits", image: "assets/images/kit2.PNG" },
@@ -2855,7 +2859,7 @@
             </div>
             
             <h4>Why Custom Recognition Works</h4>
-            <p>Research shows that <span class="stat-highlight">34% higher participation rates</span> occur when recognition programs align with specific organizational values and goals.</p>
+            <p>Research shows that <span class="stat-highlight stat-tooltip" data-tooltip="Source: Quantum Workplace - Program Participation Research">34% higher participation rates</span> occur when recognition programs align with specific organizational values and goals.</p>
           `,
           products: [
             { name: "Custom Awards", image: "assets/images/Arctic-Zone-Titan-24-oz.-Copper-Mug-1024x1024.jpg" },
