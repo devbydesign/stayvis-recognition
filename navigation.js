@@ -23,6 +23,7 @@ const navigationHTML = `
               <li><a href="community-impact.html">Community Impact</a></li>
               <li><a href="general-awards.html">General Awards</a></li>
               <li><a href="incentive-programs.html">Incentive Programs</a></li>
+              <li><a href="patient-care.html">Patient Care Recognition</a></li>
               <li><a href="peer-to-peer.html">Peer-to-Peer</a></li>
               <li><a href="performance-bonuses.html">Performance Bonuses</a></li>
             </div>
@@ -77,7 +78,7 @@ function loadNavigation() {
          'years-of-service.html', 'performance-bonuses.html', 'wellness-programs.html',
          'spot-recognition.html', 'peer-to-peer.html', 'point-based-rewards.html',
          'general-awards.html', 'incentive-programs.html', 'attendance-recognition.html',
-         'safety-recognition.html', 'community-impact.html'].includes(currentPage)) {
+         'safety-recognition.html', 'community-impact.html', 'patient-care.html'].includes(currentPage)) {
       link.classList.add('active');
     }
   });

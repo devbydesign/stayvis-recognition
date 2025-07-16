@@ -34,6 +34,7 @@
     .sticky-program-builder {
       position: fixed;
       top: 50%;
+      left: 20px;
       transform: translateY(-50%);
       width: 380px;
       height: fit-content;
@@ -1787,6 +1788,21 @@
               </div>
             </div>
 
+            <!-- Patient Care Recognition Feature -->
+            <div class="detailed-module" data-feature-id="patientcare">
+              <h3><i class="fas fa-heart-pulse module-icon"></i>Patient Care Recognition</h3>
+              <p class="module-description">Celebrate exceptional care and compassion.</p>
+              <ul class="module-benefits">
+                <li>Increase patient satisfaction</li>
+                <li>Improve team morale</li>
+                <li>Boost team cohesion</li>
+              </ul>
+              <div class="module-actions">
+                <button class="btn learn-more-btn" data-feature="patientcare">View Ideas</button>
+                <button class="add-to-program-btn" data-feature="Patient Care Recognition">Add to Program</button>
+              </div>
+            </div>
+
             <!-- Custom Recognition Feature - Spans Two Columns -->
             <div class="detailed-module custom-recognition-wide" data-feature-id="custom">
               <h3 style="text-align: center;">
@@ -2043,6 +2059,7 @@
         'Attendance Recognition': 'https://stayvisibleclientportal.com/sub_category_post/employee-appreciation-merchandise-drinkware/',
         'Safety Recognition': 'https://stayvisibleclientportal.com/sub_category_post/employee-appreciation-merchandise-apparel/',
         'Community Impact': 'https://stayvisibleclientportal.com/sub_category_post/incentives-all-products/',
+        'Patient Care Recognition': 'https://stayvisibleclientportal.com/sub_category_post/health-and-wellness-all-products/',
         'Custom Recognition': 'https://promomonster-clientportal.com/sub_category_post/incentives-all-products/'
       };
       
@@ -2243,6 +2260,7 @@
           'Attendance Recognition': 'Building reliability culture and reducing absenteeism through consistent recognition',
           'Safety Recognition': 'Creating safety champions and preventing workplace incidents through proactive recognition',
           'Community Impact': 'Building purpose-driven culture through recognition of volunteer and community engagement',
+          'Patient Care Recognition': 'Strengthening healthcare excellence by celebrating exceptional patient care and empathy',
           'Custom Recognition': 'Tailored recognition programs that address your unique organizational values and goals'
         };
 
@@ -2491,7 +2509,8 @@
           'Incentive Programs': 'incentives',
           'Attendance Recognition': 'attendance',
           'Safety Recognition': 'safety',
-          'Community Impact': 'community'
+          'Community Impact': 'community',
+          'Patient Care Recognition': 'patientcare'
         };
         return nameMapping[name] || null;
       }
@@ -2619,7 +2638,7 @@
           title: "Spot Recognition",
           icon: "fas fa-star",
           description: `
-            <p>Spot recognition allows managers and peers to acknowledge exceptional performance in real-time. Whether it’s staying late to comfort a patient’s family or stepping up during a staffing gap, this immediate, meaningful feedback energizes employees and reinforces positive behavior.</p>
+            <p>Spot recognition allows managers and peers to acknowledge exceptional performance in real-time. Whether it's staying late to comfort a patient's family or stepping up during a staffing gap, this immediate, meaningful feedback energizes employees and reinforces positive behavior.</p>
             
             <h4>The Power of Immediate Feedback</h4>
             <p>For recognition to be most effective, it needs to be timely. Quick recognition creates momentum, boosts morale, and keeps employees engaged—especially during high-stress periods.</p>
@@ -2650,7 +2669,7 @@
             <p>The most authentic recognition often comes from colleagues who understand the daily challenges and contributions of their peers. Peer-to-peer recognition builds stronger team bonds and creates a culture of mutual appreciation.</p>
             
             <h4>Authentic Recognition</h4>
-            <p>Peer-to-peer recognition empowers employees at all levels to highlight each other’s contributions. This grassroots form of appreciation builds trust, fosters teamwork, and promotes inclusivity in the workplace.</p>
+            <p>Peer-to-peer recognition empowers employees at all levels to highlight each other's contributions. This grassroots form of appreciation builds trust, fosters teamwork, and promotes inclusivity in the workplace.</p>
             
             <h4>Team Cohesion and Collaboration</h4>
             <p>Teams with peer recognition programs show <span class="stat-highlight stat-tooltip" data-tooltip="Source: Quantum Workplace - Team Collaboration Research">35% higher levels of collaboration</span> and <span class="stat-highlight stat-tooltip" data-tooltip="Source: HR Cloud Research - Team Cohesion Studies">42% better team cohesion</span> according to studies by Workplace Research Foundation. When team members actively recognize each other's contributions, it creates psychological safety and trust.</p>
@@ -2839,6 +2858,26 @@
             { name: "Team Apparel", image: "assets/images/clothes1.PNG" }
           ]
         },
+        patientcare: {
+          title: "Patient Care Recognition",
+          icon: "fas fa-heart-pulse",
+          description: `
+             <h4>Reinforcing the Mission</h4>
+            <p>Recognizing employees for exceptional patient care—based on feedback, outcomes, or peer nominations—reinforces your core mission. These programs center the patient experience, encouraging staff to prioritize empathy, communication, and responsiveness in every interaction.</p>
+            
+            <h4>Enhancing Patient Experience</h4>
+            <p>A culture that celebrates caring behavior enhances the patient journey and builds loyalty. Recognition programs motivate staff to deliver compassionate care, boosting patient satisfaction scores. For example, <span class="stat-highlight stat-tooltip" data-tooltip="Source: Press Ganey - Why Employee Engagement Matters for Optimal Healthcare Outcomes">hospitals with robust recognition programs see a 12% improvement in patient satisfaction scores</span>.</p>
+            
+            <h4>Boosting Staff Motivation</h4>
+            <p>Recognizing patient care efforts creates a workplace where employees feel valued, increasing motivation and reducing turnover. <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Recognition: Low Cost, High Impact">Organizations with strong recognition programs have 31% lower voluntary turnover</span> than those without. This focus on clinical excellence and human connection distinguishes facilities, attracting patients and top talent.</p>
+          `,
+          products: [
+            { name: "Comfort Blankets", image: "assets/images/Blankets.png.png" },
+            { name: "Personalized Pens", image: "assets/images/PersonalizedPen.png.png" },
+            { name: "Custom Socks", image: "assets/images/CustomSocks.png.png" },
+            { name: "Service Awards", image: "assets/images/ServicePins.PNG" }
+          ]
+        },
         custom: {
           title: "Custom Recognition",
           icon: "fas fa-edit",
@@ -2907,6 +2946,7 @@
               'attendance': 'Recognize Reliability',
               'safety': 'Celebrate Safety',
               'community': 'Honor Service',
+              'patientcare': 'Celebrate Exceptional Care',
               'custom': 'Create Something Unique'
             };
             
@@ -2991,6 +3031,7 @@
               'attendance': 'Attendance Recognition',
               'safety': 'Safety Recognition',
               'community': 'Community Impact',
+              'patientcare': 'Patient Care Recognition',
               'custom': 'Custom Recognition'
             };
             

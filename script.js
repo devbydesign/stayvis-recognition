@@ -637,7 +637,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 'incentives': 'Motivate Success',
                 'attendance': 'Build Reliability',
                 'safety': 'Promote Safety',
-                'community': 'Honor Service'
+                'community': 'Honor Service',
+                'patientcare': 'Celebrate Exceptional Care',
+                'custom': 'Create Something Unique'
               };
               
               // Update the products section title
@@ -897,14 +899,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function loadCanvasState() {
       const savedState = localStorage.getItem('programBuilderCanvas');
-      if (!savedState) {
-          addDefaultModule();
-          return;
+      const moduleIds = savedState ? JSON.parse(savedState) : [];
+      
+      // Also check selectedFeatures localStorage and add any missing features
+      let selectedFeatures = [];
+      try {
+        const storedFeatures = localStorage.getItem('selectedFeatures');
+        if (storedFeatures) {
+          selectedFeatures = JSON.parse(storedFeatures);
+        }
+      } catch (e) {
+        console.error('Error reading selectedFeatures from localStorage:', e);
       }
-      const moduleIds = JSON.parse(savedState);
+      
+      // Convert feature names to module IDs and add to canvas if not already there
+      selectedFeatures.forEach(featureName => {
+        if (featureName && featureName !== 'undefined') {
+          let moduleId = null;
+          
+          // Handle custom features
+          if (featureName.startsWith('Custom: ')) {
+            // For custom features, we need to find or create a unique ID
+            const customName = featureName.replace('Custom: ', '');
+            // Look for existing custom features with this name
+            const existingCustomIds = moduleIds.filter(id => id.startsWith('custom-'));
+            let foundExisting = false;
+            
+            for (const existingId of existingCustomIds) {
+              const existingData = localStorage.getItem(`custom_feature_${existingId}`);
+              if (existingData) {
+                const data = JSON.parse(existingData);
+                if (data.title === featureName) {
+                  foundExisting = true;
+                  break;
+                }
+              }
+            }
+            
+            if (!foundExisting) {
+              // Create new custom feature
+              moduleId = `custom-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+              const customFeatureData = {
+                title: featureName,
+                description: localStorage.getItem(`custom_desc_${customName}`) || '',
+                moduleId: moduleId
+              };
+              localStorage.setItem(`custom_feature_${moduleId}`, JSON.stringify(customFeatureData));
+            }
+          } else {
+            // Handle regular features
+            moduleId = getFeatureKeyFromName(featureName);
+          }
+          
+          // Add to canvas if not already there and moduleId is valid
+          if (moduleId && !moduleIds.includes(moduleId)) {
+            moduleIds.push(moduleId);
+          }
+        }
+      });
+      
+      // If no modules at all, add default
       if (moduleIds.length === 0) {
-           addDefaultModule();
-           return;
+        addDefaultModule();
+        return;
       }
 
       moduleIds.forEach(id => {
@@ -953,6 +1010,9 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       });
+      
+      // Update localStorage with the new module list
+      localStorage.setItem('programBuilderCanvas', JSON.stringify(moduleIds));
       updateProgramStrength();
       syncPaletteVisibility();
     }
@@ -1009,7 +1069,8 @@ document.addEventListener('DOMContentLoaded', function() {
           'Incentives': 'Strategic programs that drive specific behaviors and accelerate goal achievement',
           'Attendance Recognition': 'Building reliability culture and reducing absenteeism through consistent recognition',
           'Safety Recognition': 'Creating safety champions and preventing workplace incidents through proactive recognition',
-          'Community Impact': 'Building purpose-driven culture through recognition of volunteer and community engagement'
+          'Community Impact': 'Building purpose-driven culture through recognition of volunteer and community engagement',
+          'Patient Care Recognition': 'Strengthening healthcare excellence by celebrating exceptional patient care and empathy'
         };
 
         formFeaturesList.innerHTML = '';
@@ -1417,7 +1478,8 @@ document.addEventListener('DOMContentLoaded', function() {
             'Incentives': 'incentives',
             'Attendance Recognition': 'attendance',
             'Safety Recognition': 'safety',
-            'Community Impact': 'community'
+            'Community Impact': 'community',
+            'Patient Care Recognition': 'patientcare'
         };
         return nameMapping[name] || null;
     }
@@ -1705,6 +1767,26 @@ document.addEventListener('DOMContentLoaded', function() {
           { name: "Custom Drinkware", image: "assets/images/Drinkware2.png.png" }
         ]
       },
+      patientcare: {
+        title: "Patient Care Recognition",
+        icon: "fas fa-heart-pulse",
+        description: `
+          <h4>Reinforcing the Mission</h4>
+          <p>Recognizing employees for exceptional patient care—based on feedback, outcomes, or peer nominations—reinforces your core mission. These programs center the patient experience, encouraging staff to prioritize empathy, communication, and responsiveness in every interaction.</p>
+          
+          <h4>Enhancing Patient Experience</h4>
+          <p>A culture that celebrates caring behavior enhances the patient journey and builds loyalty. Recognition programs motivate staff to deliver compassionate care, boosting patient satisfaction scores. For example, <span class="stat-highlight stat-tooltip" data-tooltip="Source: Press Ganey - Why Employee Engagement Matters for Optimal Healthcare Outcomes">hospitals with robust recognition programs see a 12% improvement in patient satisfaction scores</span>.</p>
+          
+          <h4>Boosting Staff Motivation</h4>
+          <p>Recognizing patient care efforts creates a workplace where employees feel valued, increasing motivation and reducing turnover. <span class="stat-highlight stat-tooltip" data-tooltip="Source: Gallup - Employee Recognition: Low Cost, High Impact">Organizations with strong recognition programs have 31% lower voluntary turnover</span> than those without. This focus on clinical excellence and human connection distinguishes facilities, attracting patients and top talent.</p>
+        `,
+        products: [
+          { name: "Comfort Blankets", image: "assets/images/Blankets.png.png" },
+          { name: "Personalized Pens", image: "assets/images/PersonalizedPen.png.png" },
+          { name: "Custom Socks", image: "assets/images/CustomSocks.png.png" },
+          { name: "Customized Awards", image: "assets/images/ServicePins.PNG" }
+        ]
+      },
       custom: {
         title: "Custom Recognition",
         icon: "fas fa-edit",
@@ -1775,6 +1857,7 @@ document.addEventListener('DOMContentLoaded', function() {
               'attendance': 'Recognize Reliability',
               'safety': 'Celebrate Safety',
               'community': 'Honor Service',
+              'patientcare': 'Celebrate Exceptional Care',
               'custom': 'Create Something Unique'
             };
             
