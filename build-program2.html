@@ -1803,6 +1803,21 @@
               </div>
             </div>
 
+            <!-- Volunteer Recognition Feature -->
+            <div class="detailed-module" data-feature-id="volunteer">
+              <h3><i class="fas fa-hands-helping module-icon"></i>Volunteer Recognition</h3>
+              <p class="module-description">Foster a purpose-driven culture through volunteer recognition.</p>
+              <ul class="module-benefits">
+                <li>Build purpose-driven culture</li>
+                <li>Boost satisfaction and retention</li>
+                <li>Enhance organizational image</li>
+              </ul>
+              <div class="module-actions">
+                <button class="btn learn-more-btn" data-feature="volunteer" onclick="console.log('Volunteer button clicked directly!'); window.testVolunteerFeature();">View Ideas</button>
+                <button class="add-to-program-btn" data-feature="Volunteer Recognition">Add to Program</button>
+              </div>
+            </div>
+
             <!-- Custom Recognition Feature - Spans Two Columns -->
             <div class="detailed-module custom-recognition-wide" data-feature-id="custom">
               <h3 style="text-align: center;">
@@ -2510,7 +2525,8 @@
           'Attendance Recognition': 'attendance',
           'Safety Recognition': 'safety',
           'Community Impact': 'community',
-          'Patient Care Recognition': 'patientcare'
+          'Patient Care Recognition': 'patientcare',
+          'Volunteer Recognition': 'volunteer'
         };
         return nameMapping[name] || null;
       }
@@ -2878,6 +2894,28 @@
             { name: "Service Awards", image: "assets/images/ServicePins.PNG" }
           ]
         },
+        volunteer: {
+          title: "Volunteer Recognition",
+          icon: "fas fa-hands-helping",
+          description: `
+            <p>Recognizing employees for volunteer efforts fosters a purpose-driven culture and boosts engagement. Below you'll see how celebrating volunteerism enhances satisfaction, retention, and organizational image, supported by verified statistics.</p>
+            
+            <h4>Building a Purpose-Driven Culture</h4>
+            <p>Recognizing employees who volunteer—within or outside the organization—supports a purpose-driven culture. Celebrating volunteer hours through awards or time-off incentives encourages civic engagement and aligns with company values, fostering pride and community connection.</p>
+            
+            <h4>Boosting Satisfaction and Retention</h4>
+            <p>Tracking and celebrating volunteerism deepens employee satisfaction and supports mental wellness. For example, recent survey findings show that <span class="stat-highlight stat-tooltip" data-tooltip="Source: ASE Online - Deloitte Survey on Workplace Volunteer Programs">87% of professionals consider volunteer opportunities</span> "an important factor when deciding to stay" and <span class="stat-highlight stat-tooltip" data-tooltip="Source: ASE Online - Deloitte Survey on Workplace Volunteer Programs">91% say they enhance connection and positivity at work</span>.</p>
+            
+            <h4>Enhancing Organizational Image</h4>
+            <p>Recognizing volunteer efforts attracts values‑based candidates and builds goodwill. It positions the company as socially responsible, enhancing reputation and strengthening culture both internally and externally.</p>
+          `,
+          products: [
+            { name: "Blankets", image: "assets/images/Blankets.png.png" },
+            { name: "Custom Apparel", image: "assets/images/Apparel.png" },
+            { name: "Sling Bag", image: "assets/images/Popular Sling Bag.jpg" },
+            { name: "Insulated Drinkware", image: "assets/images/InsulatedDrinkware.png" }
+          ]
+        },
         custom: {
           title: "Custom Recognition",
           icon: "fas fa-edit",
@@ -2909,6 +2947,30 @@
         }
       };
       
+      console.log('FeatureData keys:', Object.keys(featureData)); // Debug log
+      console.log('Volunteer feature exists:', !!featureData.volunteer); // Debug log
+      
+      // Test function for volunteer feature
+      window.testVolunteerFeature = function() {
+        console.log('Testing volunteer feature manually...');
+        const feature = featureData.volunteer;
+        console.log('Volunteer feature data:', feature);
+        if (feature) {
+          console.log('Feature found, attempting to open modal...');
+          const modal = document.getElementById('feature-modal');
+          const modalTitle = document.getElementById('modal-title');
+          if (modal && modalTitle) {
+            modalTitle.textContent = feature.title;
+            modal.style.display = 'block';
+            console.log('Modal should be visible now');
+          } else {
+            console.error('Modal elements not found:', {modal, modalTitle});
+          }
+        } else {
+          console.error('Volunteer feature not found in featureData');
+        }
+      };
+      
       // Modal functionality
       const modal = document.getElementById('feature-modal');
       const modalTitle = document.getElementById('modal-title');
@@ -2921,10 +2983,14 @@
       
       // Learn more button functionality
       const learnMoreBtns = document.querySelectorAll('.learn-more-btn');
+      console.log('Found learn-more buttons:', learnMoreBtns.length); // Debug log
+      console.log('Button features:', Array.from(learnMoreBtns).map(btn => btn.dataset.feature)); // Debug log
       learnMoreBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           const featureKey = this.dataset.feature;
+          console.log('Feature key:', featureKey); // Debug log
           const feature = featureData[featureKey];
+          console.log('Feature data:', feature); // Debug log
           
           if (feature) {
             // Populate modal content
@@ -2947,6 +3013,7 @@
               'safety': 'Celebrate Safety',
               'community': 'Honor Service',
               'patientcare': 'Celebrate Exceptional Care',
+              'volunteer': 'Celebrate Community Service',
               'custom': 'Create Something Unique'
             };
             
@@ -3131,6 +3198,8 @@
                 }
               }, 100);
             }
+          } else {
+            console.error('Feature not found:', featureKey, 'Available features:', Object.keys(featureData));
           }
         });
       });

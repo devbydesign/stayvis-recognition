@@ -31,6 +31,7 @@ const navigationHTML = `
               <li><a href="point-based-rewards.html">Point-Based Rewards</a></li>
               <li><a href="safety-recognition.html">Safety Recognition</a></li>
               <li><a href="spot-recognition.html">Spot Recognition</a></li>
+              <li><a href="volunteer-recognition.html">Volunteer Recognition</a></li>
               <li><a href="welcome-kits.html">Welcome Kits</a></li>
               <li><a href="wellness-programs.html">Wellness Programs</a></li>
               <li><a href="years-of-service.html">Years of Service</a></li>
@@ -78,7 +79,8 @@ function loadNavigation() {
          'years-of-service.html', 'performance-bonuses.html', 'wellness-programs.html',
          'spot-recognition.html', 'peer-to-peer.html', 'point-based-rewards.html',
          'general-awards.html', 'incentive-programs.html', 'attendance-recognition.html',
-         'safety-recognition.html', 'community-impact.html', 'patient-care.html'].includes(currentPage)) {
+         'safety-recognition.html', 'community-impact.html', 'patient-care.html',
+         'volunteer-recognition.html'].includes(currentPage)) {
       link.classList.add('active');
     }
   });

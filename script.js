@@ -1479,13 +1479,36 @@ document.addEventListener('DOMContentLoaded', function() {
             'Attendance Recognition': 'attendance',
             'Safety Recognition': 'safety',
             'Community Impact': 'community',
-            'Patient Care Recognition': 'patientcare'
+            'Patient Care Recognition': 'patientcare',
+            'Volunteer Recognition': 'volunteer'
         };
         return nameMapping[name] || null;
     }
 
     // Feature modal data for See Details functionality
     const featureData = {
+      volunteer: {
+        title: "Volunteer Recognition",
+        icon: "fas fa-hands-helping",
+        description: `
+          <p>Recognizing employees for volunteer efforts fosters a purpose-driven culture and boosts engagement. Below you'll see how celebrating volunteerism enhances satisfaction, retention, and organizational image, supported by verified statistics.</p>
+          
+          <h4>Building a Purpose-Driven Culture</h4>
+          <p>Recognizing employees who volunteer—within or outside the organization—supports a purpose-driven culture. Celebrating volunteer hours through awards or time-off incentives encourages civic engagement and aligns with company values, fostering pride and community connection.</p>
+          
+          <h4>Boosting Satisfaction and Retention</h4>
+          <p>Tracking and celebrating volunteerism deepens employee satisfaction and supports mental wellness. For example, recent survey findings show that <span class="stat-highlight stat-tooltip" data-tooltip="Source: ASE Online - Deloitte Survey on Workplace Volunteer Programs">87% of professionals consider volunteer opportunities</span> "an important factor when deciding to stay" and <span class="stat-highlight stat-tooltip" data-tooltip="Source: ASE Online - Deloitte Survey on Workplace Volunteer Programs">91% say they enhance connection and positivity at work</span>.</p>
+          
+          <h4>Enhancing Organizational Image</h4>
+          <p>Recognizing volunteer efforts attracts values‑based candidates and builds goodwill. It positions the company as socially responsible, enhancing reputation and strengthening culture both internally and externally.</p>
+        `,
+        products: [
+          { name: "Blankets", image: "assets/images/Blankets.png.png" },
+          { name: "Custom Apparel", image: "assets/images/Apparel.png" },
+          { name: "Sling Bag", image: "assets/images/Popular Sling Bag.jpg" },
+          { name: "Insulated Drinkware", image: "assets/images/InsulatedDrinkware.png" }
+        ]
+      },
       welcome: {
         title: "Welcome Kits",
         icon: "fas fa-gift",
