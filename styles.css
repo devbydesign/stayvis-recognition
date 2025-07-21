@@ -523,7 +523,7 @@ Base Section & Card Layouts
 
 /* Standard Section Styling */
 .content-section {
-  padding: 3rem 1rem;
+  padding: 3rem 30px;
   margin: 0 auto;
   max-width: 1400px;
 }
@@ -2691,7 +2691,7 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 
 /* Reduce section padding for compact sections */
 .content-section:has(.compact-grid) {
-  padding: 2rem 0;
+  padding: 2rem 30px;
 }
 
 .content-section:has(.compact-grid) .section-intro {
@@ -2974,4 +2974,36 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   width: 52px !important;
   height: 52px !important;
   z-index: 2001 !important;
+}
+
+/* Background Container and Highlighted Section Padding Rules */
+.background-container {
+  padding: 30px !important;
+  border-radius: 12px;
+}
+
+/* Ensure content-section nth-child(even) has minimum 30px horizontal padding */
+.content-section:nth-child(even) {
+  background-color: #f8f9fb;
+  padding: 3rem 30px !important;
+  border-radius: 12px;
+}
+
+/* Ensure inline background styles have minimum padding */
+[style*="background-color: #f8f9fb"] {
+  padding: 30px !important;
+  border-radius: 12px;
+}
+
+/* Specific overrides for sections that already have more padding */
+.detailed-modules-grid {
+  padding: 2rem !important;
+  background-color: #f8f9fb;
+  border-radius: 12px;
+}
+
+.resource-grid {
+  padding: 30px !important;
+  background-color: #f8f9fb;
+  border-radius: 12px;
 }

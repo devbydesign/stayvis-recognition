@@ -87,6 +87,14 @@
       white-space: nowrap;
       max-width: 100%;
       box-sizing: border-box;
+      word-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1.2;
+      white-space: normal;
     }
     
     .selected-feature-item .remove-feature {
@@ -101,6 +109,9 @@
       padding: 0;
       width: auto;
       height: auto;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     
     .finalize-program-btn {
@@ -217,11 +228,17 @@
       width: auto;
       margin: 0;
       gap: 0;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     .feature-summary-content:has(em) {
       position: relative;
       padding-right: 90px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     /* For features without images, center the button */
@@ -558,6 +575,9 @@
         margin: 0.25rem;
         display: block;
         width: fit-content;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
       
       .finalize-program-btn,
@@ -623,6 +643,9 @@
         padding: 0.5rem 0.75rem;
         font-size: 0.85rem;
         margin: 0.2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
       }
       
       .selected-features {
