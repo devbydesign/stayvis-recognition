@@ -349,7 +349,7 @@ nav ul li a.active {
 
 /* Main Content */
 main {
-  padding: 2rem 0;
+  padding: 0rem 0;
 }
 
 .btn {
@@ -1260,6 +1260,10 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
 .demo-section {
   padding: var(--section-padding);
   text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  z-index: auto; /* Override container z-index to prevent stacking context */
 }
 
 .demo-content h3 {
