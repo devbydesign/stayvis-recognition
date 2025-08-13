@@ -93,6 +93,14 @@ function loadNavigation() {
       link.classList.add('active');
     }
   });
+
+  // Ensure centralized footer is loaded on every page
+  if (!document.querySelector('script[src$="footer.js"]')) {
+    const footerScript = document.createElement('script');
+    footerScript.src = 'footer.js';
+    footerScript.defer = true;
+    document.body.appendChild(footerScript);
+  }
 }
 
 // Load navigation when DOM is ready
