@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="navigation.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js" defer></script>
+  <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+  <script>
+    emailjs.init("Ymk4ILqxc716wQA3q");
+  </script>
   <style>
 
     /* Plan Summary Section Styling */
@@ -118,7 +122,7 @@
             grid-template-columns: 1fr;
             gap: 25px;
         }
-        
+
         .container-wide {
             padding: 0 15px;
         }
@@ -194,13 +198,13 @@
             padding: 1.75rem 1.5rem;
             gap: 1rem;
         }
-        
+
         .consultation-icon {
             font-size: 1.25rem;
             padding: 0.625rem;
             border-radius: 10px;
         }
-        
+
         .consultation-note p {
             font-size: 0.95rem;
             line-height: 1.5;
@@ -266,7 +270,7 @@
       background-color: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(5px);
     }
-    
+
     .feature-modal-content {
       background-color: white;
       margin: 2% auto;
@@ -278,7 +282,7 @@
       box-shadow: 0 20px 60px rgba(58, 12, 163, 0.3);
       animation: modalSlideIn 0.4s ease-out;
     }
-    
+
     @keyframes modalSlideIn {
       from {
         opacity: 0;
@@ -289,7 +293,7 @@
         transform: translateY(0) scale(1);
       }
     }
-    
+
     .feature-modal-close {
       position: absolute;
       right: 20px;
@@ -307,13 +311,13 @@
       border-radius: 50%;
       transition: all 0.3s ease;
     }
-    
+
     .feature-modal-close:hover {
       background-color: #f0f0f0;
       color: var(--primary-color);
       transform: scale(1.1);
     }
-    
+
     .feature-modal-header {
       background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
       color: white;
@@ -322,13 +326,13 @@
       text-align: center;
       position: relative;
     }
-    
+
     .feature-modal-header i {
       font-size: 3rem;
       margin-bottom: 1rem;
       opacity: 0.9;
     }
-    
+
     .feature-modal-header h2,
     #modal-title {
       margin: 0;
@@ -336,11 +340,11 @@
       font-weight: 700;
       color: white !important;
     }
-    
+
     .feature-modal-body {
       padding: 2rem 2.5rem;
     }
-    
+
     /* Custom Form Styles */
     .custom-form-container {
       background: #f8f9fa;
@@ -349,18 +353,18 @@
       margin: 1.5rem 0;
       border: 2px solid #e9ecef;
     }
-    
+
     .custom-form-group {
       margin-bottom: 1.5rem;
     }
-    
+
     .custom-form-group label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 600;
       color: var(--primary-color);
     }
-    
+
     .custom-form-group input,
     .custom-form-group textarea {
       width: 100%;
@@ -370,7 +374,7 @@
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
-    
+
     .custom-form-group input:focus,
     .custom-form-group textarea:focus {
       outline: none;
@@ -507,12 +511,12 @@
             align-items: stretch;
             gap: 0.75rem;
         }
-        
+
         .browse-incentives-btn {
             width: 100%;
             justify-content: center;
         }
-        
+
         .feature-product-images {
             justify-content: center;
         }
@@ -530,12 +534,12 @@
             padding-right: 1rem;
         }
     }
-    
+
     .custom-form-group textarea {
       resize: vertical;
       min-height: 100px;
     }
-    
+
     .custom-add-btn {
       background: var(--primary-color);
       color: white;
@@ -547,33 +551,33 @@
       transition: all 0.3s ease;
       width: 100%;
     }
-    
+
     .custom-add-btn:hover {
       background: var(--secondary-color);
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(58, 12, 163, 0.2);
     }
-    
+
     .validation-note {
       color: #dc3545;
       font-size: 0.875rem;
       margin-top: 0.25rem;
       display: block;
     }
-    
+
     .modal-description {
       margin-bottom: 2rem;
       line-height: 1.7;
       font-size: 1.1rem;
       color: #444;
     }
-    
+
     .modal-description h4 {
       color: #444;
       margin: 1.5rem 0 0.8rem 0;
       font-size: 1.3rem;
     }
-    
+
     .modal-description .stat-highlight {
       background: none;
       color: black;
@@ -588,25 +592,25 @@
       background-position: 0 100%;
       padding-bottom: 2px;
     }
-    
+
     .modal-products {
       margin: 2rem 0;
     }
-    
+
     .modal-products h3 {
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
       font-size: 1.65rem;
     }
-    
+
     .modal-products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
-    
+
     .modal-product-card {
       background: #f8f9fa;
       border-radius: 12px;
@@ -615,13 +619,13 @@
       transition: all 0.3s ease;
       border: 2px solid transparent;
     }
-    
+
     .modal-product-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       border-color: var(--accent-color);
     }
-    
+
     .modal-product-card img {
       width: 120px;
       height: 120px;
@@ -629,7 +633,7 @@
       border-radius: 8px;
       margin-bottom: 0.3rem;
     }
-    
+
     .modal-product-card h5 {
       margin: 0;
       font-size: 1.1rem;
@@ -642,21 +646,21 @@
     .modal-customize-section {
       margin: 2rem 0;
     }
-    
+
     .modal-customize-section h3 {
       color: #444;
       margin-bottom: 1.5rem;
       text-align: center;
       font-size: 1.65rem;
     }
-    
+
     .modal-customize-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-bottom: 2rem;
     }
-    
+
     @media (max-width: 768px) {
       .modal-customize-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -802,7 +806,7 @@
       z-index: 10;
       margin-top: 2rem;
     }
-    
+
     .modal-actions .btn {
       height: 44px;
       padding: 0 1.5rem;
@@ -823,44 +827,44 @@
       background-color: transparent;
       color: var(--primary-color);
     }
-    
+
     .modal-actions .add-to-program-btn {
       background-color: var(--primary-color) !important;
       color: white !important;
       border-color: var(--primary-color) !important;
     }
-    
+
     .modal-actions .add-to-program-btn:hover {
       background-color: #2d0a8a;
       border-color: #2d0a8a;
     }
-    
+
     .modal-actions .add-to-program-btn:disabled {
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
       cursor: not-allowed;
       opacity: 0.8;
     }
-    
+
     .modal-actions .add-to-program-btn.added {
       background-color: var(--secondary-color);
       border-color: var(--secondary-color);
       opacity: 0.8;
     }
-    
+
     .modal-actions .btn:hover {
       background-color: var(--primary-color);
       color: white;
       transform: translateY(-1px);
       box-shadow: 0 2px 8px rgba(58, 12, 163, 0.2);
     }
-    
+
     @media (max-width: 768px) {
       .modal-actions {
         flex-direction: column;
         padding: 1rem;
       }
-      
+
       .modal-actions .btn {
         min-width: auto;
         width: 100%;
@@ -942,6 +946,10 @@
             grid-template-columns: 1fr;
         }
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
   <!-- Load centralized navigation BEFORE your main script -->
   <script src="navigation.js"></script>
@@ -968,12 +976,18 @@
         <!-- Module Palette (Left Sidebar) -->
         <div id="module-palette" class="module-palette">
           <h3>Design Your Program</h3>
+        <form id="plan-details-form" class="plan-details-form-1">
+          <input name="affiliateName" type="hidden" value="Theresa Gonzalez">
+          <input name="affiliateEmail" type="hidden" value="theresa@stayvisible.com">
+          <input name="headerImgPath" type="hidden" value="https://htmlgen.webdevbydesign.com/img/rbb-header.png">
+          <input name="footerImgPath" type="hidden" value="https://htmlgen.webdevbydesign.com/img/rbb-footer.png">
           <div class="modules-grid">
             <div class="program-module" draggable="true" data-module-id="welcome" data-tooltip="Onboard new hires with essential gear and a warm welcome.">
               <div class="module-title">
                 <i class="fas fa-gift"></i>
                 Welcome Kits
               </div>
+              <input type="checkbox" name="planList" id="welcome" value="Welcome Kits" class="hidden">
               <p class="module-summary">Create memorable first impressions for new team members.</p>
               <button class="see-details-btn" data-feature="welcome">View Ideas</button>
             </div>
@@ -982,6 +996,7 @@
                 <i class="fas fa-calendar-alt"></i>
                 Years of Service
               </div>
+              <input type="checkbox" name="planList" id="anniversary" value="Years of Service" class="hidden">
               <p class="module-summary">Honor loyalty and celebrate career milestones.</p>
               <button class="see-details-btn" data-feature="service">View Ideas</button>
             </div>
@@ -990,6 +1005,7 @@
                 <i class="fas fa-trophy"></i>
                 Performance Bonuses
               </div>
+              <input type="checkbox" name="planList" id="performance" value="Performance Bonuses" class="hidden">
               <p class="module-summary">Recognize and reward outstanding achievements.</p>
               <button class="see-details-btn" data-feature="performance">View Ideas</button>
             </div>
@@ -998,6 +1014,7 @@
                 <i class="fas fa-heartbeat"></i>
                 Wellness Programs
               </div>
+              <input type="checkbox" name="planList" id="wellness" value="Wellness Programs" class="hidden">
               <p class="module-summary">Support employee health and work-life balance.</p>
               <button class="see-details-btn" data-feature="wellness">View Ideas</button>
             </div>
@@ -1006,6 +1023,7 @@
                 <i class="fas fa-star"></i>
                 Spot Recognition
               </div>
+              <input type="checkbox" name="planList" id="spot" value="Spot Recognition" class="hidden">
               <p class="module-summary">Provide instant appreciation for exceptional work.</p>
               <button class="see-details-btn" data-feature="spot">View Ideas</button>
             </div>
@@ -1014,6 +1032,7 @@
                 <i class="fas fa-users"></i>
                 Peer-to-Peer
               </div>
+              <input type="checkbox" name="planList" id="peer" value="Peer-to-Peer" class="hidden">
               <p class="module-summary">Empower team members to celebrate each other.</p>
               <button class="see-details-btn" data-feature="peer">View Ideas</button>
             </div>
@@ -1022,6 +1041,7 @@
                 <i class="fas fa-star-half-alt"></i>
                 Point-Based Rewards
               </div>
+              <input type="checkbox" name="planList" id="points" value="Point-Based Rewards" class="hidden">
               <p class="module-summary">Create flexible, engaging reward experiences.</p>
               <button class="see-details-btn" data-feature="points">View Ideas</button>
             </div>
@@ -1030,6 +1050,7 @@
                 <i class="fas fa-award"></i>
                 General Awards
               </div>
+              <input type="checkbox" name="planList" id="awards" value="General Awards" class="hidden">
               <p class="module-summary">Celebrate specific accomplishments formally.</p>
               <button class="see-details-btn" data-feature="awards">View Ideas</button>
             </div>
@@ -1038,7 +1059,8 @@
                 <i class="fas fa-concierge-bell"></i>
                 Incentives
               </div>
-              <p class="module-summary">Drive desired behaviors with meaningful rewards.</p>
+              <input type="checkbox" name="planList" id="incentives" value="Incentives" class="hidden">
+              <p class="module-summary">Drive desired behaviorsgful rewards.</p>
               <button class="see-details-btn" data-feature="incentives">View Ideas</button>
             </div>
             <div class="program-module" draggable="true" data-module-id="attendance" data-tooltip="Recognize perfect attendance and improvement to build reliability culture.">
@@ -1046,6 +1068,7 @@
                 <i class="fas fa-calendar-check"></i>
                 Attendance Recognition
               </div>
+              <input type="checkbox" name="planList" id="attendance" value="Attendance Recognition" class="hidden">
               <p class="module-summary">Celebrate reliable team members and reduce absenteeism.</p>
               <button class="see-details-btn" data-feature="attendance">View Ideas</button>
             </div>
@@ -1054,6 +1077,7 @@
                 <i class="fas fa-shield-alt"></i>
                 Safety Recognition
               </div>
+              <input type="checkbox" name="planList" id="safety" value="Safety Recognition" class="hidden">
               <p class="module-summary">Build a culture of safety and prevent workplace incidents.</p>
               <button class="see-details-btn" data-feature="safety">View Ideas</button>
             </div>
@@ -1062,6 +1086,7 @@
                 <i class="fas fa-hands-helping"></i>
                 Community Impact
               </div>
+              <input type="checkbox" name="planList" id="community" value="Community Impact" class="hidden">
               <p class="module-summary">Honor service and build purpose-driven culture.</p>
               <button class="see-details-btn" data-feature="community">View Ideas</button>
             </div>
@@ -1070,6 +1095,7 @@
                 <i class="fas fa-heart-pulse"></i>
                 Patient Care Recognition
               </div>
+              <input type="checkbox" name="planList" id="patientcare" value="Patient Care Recognition" class="hidden">
               <p class="module-summary">Celebrate exceptional care and compassion.</p>
               <button class="see-details-btn" data-feature="patientcare">View Ideas</button>
             </div>
@@ -1078,6 +1104,7 @@
                 <i class="fas fa-hands-helping"></i>
                 Volunteer Recognition
               </div>
+              <input type="checkbox" name="planList" id="volunteer" value="Volunteer Recognition" class="hidden">
               <p class="module-summary">Celebrate community service and engagement.</p>
               <button class="see-details-btn" data-feature="volunteer">View Ideas</button>
             </div>
@@ -1086,6 +1113,7 @@
                 <i class="fas fa-edit"></i>
                 Custom Recognition
               </div>
+              <input type="checkbox" name="planList" id="custom" value="Custom Recognition" class="hidden">
               <p class="module-summary">Design something unique for your organization.</p>
               <button class="see-details-btn" data-feature="custom">Design Here</button>
             </div>
@@ -1116,7 +1144,7 @@
         <button id="save-program-btn" class="btn">Save & Continue</button>
         <button id="start-over-btn" class="btn btn-outline">Start Over</button>
       </div>
-      
+
       <!-- Inspirational Note -->
       <div class="inspirational-note-container">
         <div class="inspirational-note-content">
@@ -1130,7 +1158,6 @@
     <section id="contact-delivery-section" class="contact-delivery-section" style="display: none;">
       <div class="form-container">
         <h2>Submit and Save Your Plan.</h2>
-        <form id="plan-details-form">
           <div class="form-grid">
               <div class="form-group">
                 <label for="first-name">First Name*</label>
@@ -1161,7 +1188,7 @@
                   <input type="hidden" id="captcha-num2">
               </div>
           </div>
-          
+
           <!-- Selected Features Display -->
           <div id="form-selected-features" class="form-selected-features">
             <h3>Your Customized Selection</h3>
@@ -1169,7 +1196,7 @@
               <!-- Features will be populated by JavaScript -->
             </div>
           </div>
-          
+
           <!-- Consultation Note -->
           <div class="consultation-note">
             <div class="consultation-note-content">
@@ -1177,7 +1204,7 @@
               <p>Submit your plan today to receive a <strong>no-charge consultation</strong> with us. We can share ideas that fit your goals and budget -- at no cost to you!</p>
             </div>
           </div>
-          
+
           <button type="submit" id="generate-plan-btn" class="btn">Save My Plan</button>
         </form>
       </div>
@@ -1200,7 +1227,7 @@
                          <li>We'll reach out shortly to talk about your personalized plan!</li>
                      </ul>
                 </div>
-                
+
                 <div class="summary-details-grid">
                     <div class="summary-left">
                         <h3>Your Customized Selection:</h3>
@@ -1208,7 +1235,7 @@
                         <h3>Your Details:</h3>
                         <p id="summary-contact-info"></p>
                     </div>
-                    
+
                     <div class="summary-right">
                         <div class="get-started-faster">
                             <h3>Get Started Faster</h3>
@@ -1239,8 +1266,8 @@
 
     <!-- MOVED: Existing content moved below the new sections -->
     <!-- The following container and its content will be removed -->
-    <!-- 
-    <div class="container"> 
+    <!--
+    <div class="container">
         <section class="featured-products-section">
           [...]
         </section>
@@ -1248,7 +1275,7 @@
         <section class="why-choose-us">
           [...]
         </section>
-    </div> 
+    </div>
     -->
 
   </main> <!-- Close main content wrapper -->
@@ -1329,6 +1356,44 @@
   </div>
 
   <!-- Inline script removed - functionality moved to script.js -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("plan-details-form");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
 
+        visiblePlanInputs = Array.from(document.querySelectorAll('.modules-grid .program-module[style*="display: none;"] input[name="planList"]'));
+        formattedPlans = `<ul>${visiblePlanInputs.map(input => `<li>${input.value}</li>`).join('')}</ul>`;
+        affiliateName = document.getElementsByName('affiliateName')[0]?.value || '';
+        affiliateEmail = document.getElementsByName('affiliateEmail')[0]?.value || '';
+        headerImgPath = document.getElementsByName('headerImgPath')[0]?.value || '';
+        footerImgPath = document.getElementsByName('footerImgPath')[0]?.value || '';
+        firstName = document.getElementsByName('firstName')[0]?.value || '';
+        lastName = document.getElementsByName('lastName')[0]?.value || '';
+        phone = document.getElementsByName('phone')[0]?.value || '';
+        email = document.getElementsByName('email')[0]?.value || '';
+        companyName = document.getElementsByName('companyName')[0]?.value || '';
+
+        emailjs.send("service_00hboeb", "template_1cfzg9f", {
+          planList: formattedPlans,
+          affiliateName: affiliateName,
+          affiliateEmail: affiliateEmail,
+          headerImgPath: headerImgPath,
+          footerImgPath: footerImgPath,
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+          email: email,
+          companyName: companyName,
+        })
+          .then(() => {
+            alert("Your submission was successful!");
+            form.reset();
+          }, (error) => {
+            alert("Your submission failed to save: " + JSON.stringify(error));
+          });
+      });
+});
+</script>
+<script src="footer.js" defer></script>
 </body>
- 
