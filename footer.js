@@ -9,9 +9,9 @@ const footerHTML = `
     <div class="footer-section footer-links">
       <h3>Quick Links</h3>
       <ul>
-        <li><a href="#" onclick="document.querySelector('#search-form-header input[type=search]')?.focus(); return false;">Search</a></li>
+        
         <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="contact.html">Support</a></li>
+        
         <li><a href="contact.html">Feedback and Suggestions</a></li>
       </ul>
     </div>
