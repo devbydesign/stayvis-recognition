@@ -1746,6 +1746,10 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
+.plan-details-form-1 {
+  max-width: 10000px;
+  margin: 0;
+}
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
