@@ -12,8 +12,13 @@
   <link rel="stylesheet" href="navigation.css">
   <!-- Load centralized navigation BEFORE your main script -->
   <script src="navigation.js"></script>
-  <script src="footer.js" defer></script>
-  <script src="script.js" defer></script>
+  
+
+   <script src="https://cdn.emailjs.com/sdk/2.6.4/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("Ymk4ILqxc716wQA3q");
+  </script>
 </head>
 <body>
   <!-- Navigation will be inserted here automatically by navigation.js -->
@@ -52,7 +57,11 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
-        
+
+          <input type="hidden" name="affiliateName" value="Chuck Feldman">
+        <input type="hidden" name="affiliateEmail" value="chuck.feldman@promo-monster.com">
+        <input name="headerImgPath" type="hidden" value="https://htmlgen.tempbuild.org/img/Blank-classic-header-PromoMonster-transbottom.png">
+        <input name="footerImgPath" type="hidden" value="https://htmlgen.webdevbydesign.com/img/PromoMonster-footer-no-catalog.png">
         <button type="submit" class="btn">Send Message</button>
       </form>
     </section>
@@ -95,5 +104,39 @@
       <p>&copy; <span id="current-year"></span> StayVisible Promotions. All rights reserved. | Website by YourName/Company</p>
     </div>
   </footer>
+
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+          const form = document.getElementById("contact-form");
+          form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            affiliateName = document.getElementsByName('affiliateName')[0]?.value || '';
+            affiliateEmail = document.getElementsByName('affiliateEmail')[0]?.value || '';
+            name = document.getElementsByName('name')[0]?.value || '';
+            message = document.getElementsByName('message')[0]?.value || '';
+            email = document.getElementsByName('email')[0]?.value || '';
+            headerImgPath = document.getElementsByName('headerImgPath')[0]?.value || '';
+            footerImgPath = document.getElementsByName('footerImgPath')[0]?.value || '';
+    
+            emailjs.send("service_ag1505e", "template_f4w145i", {
+              affiliateName: affiliateName,
+              affiliateEmail: affiliateEmail,
+              name: name,
+              message: message,
+              email: email,
+              headerImgPath: headerImgPath,
+              footerImgPath: footerImgPath,
+            })
+              .then(() => {
+                alert("Your submission was successful!");
+                form.reset();
+              }, (error) => {
+                alert("Your submission failed to save: " + JSON.stringify(error));
+              });
+          });
+    });
+  </script>
 </body>
 </html> 
