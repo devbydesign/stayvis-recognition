@@ -1600,8 +1600,60 @@
              padding: 12px;
              gap: 12px;
          }
-     }
-  </style>
+         }
+
+    /* Program Builder 2 Layout Improvements */
+    .program-builder-section.container {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .program-builder-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .program-features-content h2 {
+      text-align: left !important;
+      margin-bottom: 2rem;
+    }
+
+    /* Make cards wider and center them properly */
+    .detailed-modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      background-color: #f8f9fb;
+      border-radius: 12px;
+      justify-content: center;
+    }
+
+    .plan-details-form-1.detailed-modules-grid {
+      max-width: 1200px;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .detailed-modules-grid {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .detailed-modules-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+    }
+    </style>
   <!-- Load centralized navigation BEFORE your main script -->
   <script src="navigation.js"></script>
   <script src="footer.js" defer></script>
@@ -1627,12 +1679,11 @@
         <!-- Main Content: Recognition Program Features -->
         <div class="program-features-content">
           <h2>Design Your Program</h2>
-        <form id="plan-details-form" class="plan-details-form-1">
+        <form id="plan-details-form" class="plan-details-form-1 detailed-modules-grid">
           <input name="affiliateName" type="hidden" value="Theresa Gonzalez">
           <input name="affiliateEmail" type="hidden" value="theresa@stayvisible.com">
           <input name="headerImgPath" type="hidden" value="https://htmlgen.webdevbydesign.com/img/StayVis-Header-2025-600.png">
           <input name="footerImgPath" type="hidden" value="https://htmlgen.webdevbydesign.com/img/Stay-Vis-footer-2025-q4-600.png">
-          <div class="detailed-modules-grid">
             <!-- Welcome Kits Feature -->
             <div class="detailed-module" data-feature-id="welcome">
               <h3>
@@ -1870,7 +1921,7 @@
               </button>
             </div>
 
-          </div>
+        </form>
         </div>
 
         <!-- Sticky Program Builder (Right Side) -->
