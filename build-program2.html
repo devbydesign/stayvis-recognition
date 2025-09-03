@@ -1916,7 +1916,7 @@
                 <label for="custom-program-description">Feature Description</label>
                 <textarea id="custom-program-description" placeholder="Describe what behaviors or achievements you want to recognize..." rows="3"></textarea>
               </div>
-              <button class="add-custom-program-btn" id="add-custom-program">
+              <button type="button" class="add-custom-program-btn" id="add-custom-program">
                 <i class="fas fa-plus"></i> Add Custom Program
               </button>
             </div>
@@ -1944,11 +1944,12 @@
       </div>
     </section>
 
-    <!-- Contact & Delivery Details Section -->
-    <section id="contact-delivery-section" class="contact-delivery-section" style="display: none;">
-      <div class="form-container">
-                    <h2>Submit and Save Your Plan.</h2>
-          <div class="form-grid">
+         <!-- Contact & Delivery Details Section -->
+     <section id="contact-delivery-section" class="contact-delivery-section" style="display: none;">
+       <div class="form-container">
+                     <h2>Submit and Save Your Plan.</h2>
+         <form id="contact-form">
+           <div class="form-grid">
               <div class="form-group">
                 <label for="first-name">First Name*</label>
                 <input type="text" id="first-name" name="firstName" required>
@@ -2126,10 +2127,16 @@
   <script>
     // Program Builder 2 Functionality
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM Content Loaded - initializing program builder');
       const selectedFeatures = new Set();
       const selectedFeaturesContainer = document.getElementById('selected-features');
       const featureCounter = document.getElementById('feature-count');
       const finalizeBtn = document.getElementById('finalize-program-btn');
+      console.log('Elements found:', {
+        selectedFeaturesContainer: !!selectedFeaturesContainer,
+        featureCounter: !!featureCounter,
+        finalizeBtn: !!finalizeBtn
+      });
       const addToProgamBtns = document.querySelectorAll('.add-to-program-btn');
       const contactSection = document.getElementById('contact-delivery-section');
       const planDetailsForm = document.getElementById('plan-details-form');
@@ -2240,6 +2247,7 @@
           selectedFeaturesContainer.innerHTML = '<span class="empty-message">Select features to build your program</span>';
           selectedFeaturesContainer.classList.add('empty');
           finalizeBtn.disabled = true;
+          console.log('Finalize button disabled - no features selected');
         } else {
           selectedFeaturesContainer.classList.remove('empty');
           selectedFeaturesContainer.innerHTML = '';
@@ -2262,6 +2270,7 @@
           });
 
           finalizeBtn.disabled = false;
+          console.log('Finalize button enabled - features selected:', selectedFeatures.size);
         }
 
         // Update button states
@@ -2410,24 +2419,192 @@
         });
       }
 
-      // Finalize program button - show contact form like Save & Continue
-      finalizeBtn.addEventListener('click', function() {
-        if (contactSection) {
-          contactSection.style.display = 'block';
-          // Add a small delay to ensure form elements are visible before generating captcha
-          setTimeout(() => {
-            generateCaptcha();
-          }, 100);
-          populateFormFeatures();
-          // Ensure the full form is visible by scrolling slightly past the section top
-          requestAnimationFrame(() => {
-                 const rect = contactSection.getBoundingClientRect();
-                 const extraOffset = Math.round(window.innerHeight * -0.03);
-                 const y = rect.top + window.scrollY + extraOffset;
-                 window.scrollTo({ top: y, behavior: 'smooth' });
-               });
-        }
-      });
+             // Finalize program button - show contact form like Save & Continue
+       if (finalizeBtn) {
+         finalizeBtn.addEventListener('click', function(e) {
+           console.log('Finalize button clicked!');
+           
+           if (contactSection) {
+             console.log('Showing contact section...');
+             contactSection.style.display = 'block';
+             // Add a small delay to ensure form elements are visible before generating captcha
+             setTimeout(() => {
+               generateCaptcha();
+             }, 100);
+             populateFormFeatures();
+             // Ensure the full form is visible by scrolling slightly past the section top
+             requestAnimationFrame(() => {
+                    const rect = contactSection.getBoundingClientRect();
+                    const extraOffset = Math.round(window.innerHeight * -0.03);
+                    const y = rect.top + window.scrollY + extraOffset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                  });
+           } else {
+             console.error('Contact section not found!');
+           }
+         });
+       } else {
+         console.error('Finalize button not found!');
+       }
+
+       // Handle contact form submission (Save My Plan button)
+       const contactForm = document.getElementById('contact-form');
+       if (contactForm) {
+         contactForm.addEventListener('submit', async function(e) {
+           e.preventDefault();
+           console.log('Save My Plan button clicked!');
+
+           // Get form data from the contact form
+           const firstName = document.getElementById('first-name').value.trim();
+           const lastName = document.getElementById('last-name').value.trim();
+           const companyName = document.getElementById('company-name').value.trim();
+           const email = document.getElementById('email').value.trim();
+           const phone = document.getElementById('phone').value.trim();
+           const captchaAnswer = parseInt(document.getElementById('captcha').value);
+           const correctAnswer = parseInt(document.getElementById('captcha-num1').value) + parseInt(document.getElementById('captcha-num2').value);
+
+           // Validate required fields
+           if (!firstName || !lastName || !companyName || !email) {
+             alert('Please fill in all required fields.');
+             return;
+           }
+
+           // Validate captcha
+           if (isNaN(captchaAnswer) || isNaN(correctAnswer) || captchaAnswer !== correctAnswer) {
+             alert('Security check failed. Please check your answer and try again.');
+             return;
+           }
+
+           // Get selected features for the email
+           const featureItems = Array.from(document.querySelectorAll('#form-features-list .form-feature-item'));
+           const ul = document.createElement('ul');
+           featureItems.forEach(item => {
+             const h4 = item.querySelector('h4');
+             const p = item.querySelector('p');
+             const li = document.createElement('li');
+             if (h4 && /custom/i.test(h4.textContent)) {
+               li.textContent = `${h4.textContent}: ${p?.textContent || ''}`;
+               ul.appendChild(li);
+             } else {
+               li.textContent = `${h4.textContent}`;
+               ul.appendChild(li);
+             }
+           });
+           const formattedPlans = ul.outerHTML;
+
+           // Get hidden form values
+           const affiliateName = document.getElementsByName('affiliateName')[0]?.value || '';
+           const affiliateEmail = document.getElementsByName('affiliateEmail')[0]?.value || '';
+           const headerImgPath = document.getElementsByName('headerImgPath')[0]?.value || '';
+           const footerImgPath = document.getElementsByName('footerImgPath')[0]?.value || '';
+
+           // Populate summary with selected features
+           if (summaryModulesList) {
+             summaryModulesList.innerHTML = '';
+             selectedFeatures.forEach(feature => {
+               const li = document.createElement('li');
+               li.className = 'feature-summary-item';
+
+               // Check if this is a custom feature and get its description
+               if (feature.startsWith('Custom: ')) {
+                 const customName = feature.replace('Custom: ', '');
+                 const customDescription = localStorage.getItem(`custom_desc_${customName}`);
+                 const browseButton = featureLinks['Custom Recognition'] ?
+                   `<a href="${featureLinks['Custom Recognition']}" target="_blank" class="browse-incentives-btn">
+                     <i class="fas fa-external-link-alt"></i> Browse Incentives
+                   </a>` : '';
+
+                 li.innerHTML = `
+                   <div class="feature-summary-content">
+                     <strong>${feature}</strong>
+                     ${customDescription ? `<em>Description: ${customDescription}</em>` : ''}
+                     <div class="feature-content-row">
+                       ${browseButton}
+                     </div>
+                   </div>
+                 `;
+               } else {
+                 // Get feature data for product images - ensure featureData is available
+                 const featureKey = getFeatureKeyFromName(feature);
+                 const featureInfo = (typeof featureData !== 'undefined' && featureData[featureKey]) ? featureData[featureKey] : null;
+
+                 const browseButton = featureLinks[feature] ?
+                   `<a href="${featureLinks[feature]}" target="_blank" class="browse-incentives-btn">
+                     <i class="fas fa-external-link-alt"></i> Browse Incentives
+                   </a>` : '';
+
+                 if (featureInfo && featureInfo.products && featureInfo.products.length > 0) {
+                   const productImages = featureInfo.products.slice(0, 4).map(product =>
+                     `<img src="${product.image}" alt="${product.name}" class="feature-product-thumb" onerror="this.style.display='none'">`
+                   ).join('');
+
+                   li.innerHTML = `
+                     <div class="feature-summary-content">
+                       <strong>${feature}</strong>
+                       <div class="feature-content-row">
+                         <div class="feature-product-images">
+                           ${productImages}
+                         </div>
+                         ${browseButton}
+                       </div>
+                     </div>
+                   `;
+                 } else {
+                   li.innerHTML = `
+                     <div class="feature-summary-content">
+                       <strong>${feature}</strong>
+                       <div class="feature-content-row">
+                         ${browseButton}
+                       </div>
+                     </div>
+                   `;
+                 }
+               }
+
+               summaryModulesList.appendChild(li);
+             });
+           }
+
+           // Populate contact info
+           if (summaryContactInfo) {
+             summaryContactInfo.innerHTML = `
+               <strong>Name:</strong> ${firstName} ${lastName}<br>
+               <strong>Company:</strong> ${companyName}<br>
+               <strong>Email:</strong> ${email}
+               ${phone ? `<br><strong>Phone:</strong> ${phone}` : ''}
+             `;
+           }
+
+           try {
+             // Send email using EmailJS
+             await emailjs.send("service_ag1505e", "template_1cfzg9f", {
+               planList: formattedPlans,
+               affiliateName: affiliateName,
+               affiliateEmail: affiliateEmail,
+               headerImgPath: headerImgPath,
+               footerImgPath: footerImgPath,
+               firstName: firstName,
+               lastName: lastName,
+               phone: phone,
+               email: email,
+               companyName: companyName,
+             });
+
+             alert("Your submission was successful!");
+             
+             // Show the plan summary section
+             if (planSummarySection) {
+               planSummarySection.style.display = 'block';
+               planSummarySection.scrollIntoView({ behavior: 'smooth' });
+             }
+             
+             // Reset the form
+             contactForm.reset();
+           } catch (error) {
+             alert("Your submission failed to save: " + JSON.stringify(error));
+           }
+         });
+       }
 
       // Handle form submission
       if (planDetailsForm) {
