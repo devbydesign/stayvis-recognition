@@ -1895,7 +1895,7 @@
                 <li>Enhance organizational image</li>
               </ul>
               <div class="module-actions">
-                <button type="button" class="btn learn-more-btn" data-feature="volunteer" onclick="console.log('Volunteer button clicked directly!'); window.testVolunteerFeature();">View Ideas</button>
+                <button type="button" class="btn learn-more-btn" data-feature="volunteer">View Ideas</button>
                 <button type="button" class="add-to-program-btn" data-feature="Volunteer Recognition">Add to Program</button>
               </div>
             </div>
@@ -2137,7 +2137,7 @@
         featureCounter: !!featureCounter,
         finalizeBtn: !!finalizeBtn
       });
-      const addToProgamBtns = document.querySelectorAll('.add-to-program-btn');
+      const addToProgramBtns = document.querySelectorAll('.add-to-program-btn');
       const contactSection = document.getElementById('contact-delivery-section');
       const planDetailsForm = document.getElementById('plan-details-form');
       const planSummarySection = document.getElementById('plan-summary-section');
@@ -2274,7 +2274,7 @@
         }
 
         // Update button states
-        addToProgamBtns.forEach(btn => {
+        addToProgramBtns.forEach(btn => {
           const feature = btn.dataset.feature;
           const moduleCard = btn.closest('.detailed-module');
           if (selectedFeatures.has(feature)) {
@@ -2298,7 +2298,7 @@
       }
 
       // Add feature to program
-      addToProgamBtns.forEach(btn => {
+      addToProgramBtns.forEach(btn => {
         btn.addEventListener('click', function() {
           const feature = this.dataset.feature;
 
@@ -3363,6 +3363,7 @@
               'safety': 'Safety Recognition',
               'community': 'Community Impact',
               'patientcare': 'Patient Care Recognition',
+              'volunteer': 'Volunteer Recognition',
               'custom': 'Custom Recognition'
             };
 
