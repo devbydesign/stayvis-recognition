@@ -1980,6 +1980,7 @@ main.container > h1 + p { /* Selects paragraph immediately following h1 in main 
   .feature-product-thumb {
     width: 60px !important;
     height: 60px !important;
+    max-width: 45%;
     border: 1px solid #ddd !important;
     border-radius: 4px !important;
   }
