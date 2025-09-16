@@ -8,7 +8,7 @@ const navigationHTML = `
     <nav>
       <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <ul id="nav-list">
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html">Recognition</a></li>
         <li><a href="build-program2.html">Build Your Program</a></li>
         <li class="dropdown">
           <a href="resources.html">Program Resources <i class="fas fa-chevron-down"></i></a>
